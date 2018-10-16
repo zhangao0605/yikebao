@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../bower_components/jquery-3.2.1.min.js"></script>
+<script>
+    var successMsg = '{"155LZSKNQCTSUW6T221": "[{\"msg\":\"\",\"nickname1\":\"\",\"wxid\":\"15810519383\",\"state\":3}]"}'
+
+    var qq = successMsg.split(';')
+    var oo1 = [];
+    var oo2 = [];
+    var oo3 = [];
+    for (var i = 0; i < qq.length; i++) {
+        oo2.push(qq[i].slice(25, -2))
+        oo3.push(qq[i].slice(2, 16))
+    }
+    var oo4 = []
+    for (var i = 0; i < oo3.length; i++) {
+        oo4.push(JSON.parse(oo2[i]))
+    }
+    for (var i = 0; i < oo3.length; i++) {
+        oo4[i].push({'devices': oo3[i]})
+    }
+
+
+
+    var ii={
+        "code":200,
+        "data":{
+            "addTime":"2018-01-18 13:39:20",
+            "data":"{\"msg\":[\"\"],\"clear\":1,\"count\":1,\"interval\":[\"1\",\"10\"],\"idList\":[\"15810519383\"],\"strategy\":1,\"remarkList\":[\"15810519383\"]}",
+            "deviceIds":"[\"855LZSKNQCTSUW6T\"]",
+            "doneTime":"2018-01-18 13:40:12",
+            "id":1532,
+            "scriptChName":"微信精准加人",
+            "scriptEnName":"addFriendsFromId",
+            "status":2,
+            "successMsg":[
+                {
+                    "855LZSKNQCTSUW6T":"[{\"msg\":\"\",\"nickname\":\"\",\"wxid\":\"15810519383\",\"state\":3}];755LZSKNQCTSUW6T"
+                }
+            ]
+        },
+        "msg":"success"
+    }
+
+//    console.log(ii.data.successMsg);
+var att=[]
+var att1=[]
+var att2=[]
+    for(var i=0;i<ii.data.successMsg.length;i++){
+        var item=ii.data.successMsg[i];
+
+        var key=Object.keys(item);
+        att.push(key)
+        att1.push(JSON.parse(item[key]))
+
+    }
+        for (var i=0;i<att.length;i++){
+            att1[i].push({'devices':att[i]})
+        }
+        console.log(att1)
+        console.log(att1[0][0].wxid)
+</script>
+</body>
+</html>

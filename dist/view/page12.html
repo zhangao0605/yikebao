@@ -1,0 +1,230 @@
+<div class="page-box">
+    <div class="wx-group-box" style="height: 1270px">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-tw mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p>
+                            <input type="checkbox" group-check-all-tw mess_id="{{g.id}}">
+                        </p>
+                        <h4 new-list-show>
+                            {{g.name}}
+                        </h4>
+                        <h5 new-list-show>{{g.count}}
+                        </h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos">
+                            <label>
+                                <p>
+
+                                    <input type="checkbox" group-check-one-tw
+                                           class="new-wx-equip-input12">
+                                </p>
+
+                                <h2 title="{{d.device}}">
+                                    {{d.rank}}
+                                </h2>
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top12"></a>
+            <a ng-click="getNav()" class="get-back-logo"></a>
+
+            <h2 class="page-title">微信群管理</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title" ng-show="outSideBox">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>微信帐号列表</h2>
+        </div>
+        <div class="page12-floor-one page-s-box" ng-show="outSideBox">
+            <ul class="page12-floor-one-list">
+                <li class="page12-floor-one-li first-li">
+                    <ul>
+                        <li style="width: 10.6%"  class="title-li">编号</li>
+                        <li style="width: 16.6%"  class="title-li">微信名称</li>
+                        <li  style="width: 16.6%" class="title-li">微信号</li>
+                        <li style="width: 16.6%"  class="title-li">添加时间</li>
+                        <li style="width: 22.6%"  class="title-li">手机编号</li>
+                        <li style="width: 16.6%"  class="title-li">操作</li>
+                    </ul>
+                </li>
+                <li class="page12-floor-one-li normal-li" ng-repeat="m in MemberList12" ng-class="isEven($index)">
+                    <ul>
+                        <li style="width: 10.6%">{{m.rank}}</li>
+                        <li style="width: 16.6%">{{m.wechatVo.nickname||'-'}}</li>
+                        <li style="width: 16.6%">{{m.wechatVo.number||'-'}}</li>
+                        <li style="width: 16.6%">{{m.wechatVo.time}}</li>
+                        <li style="width: 22.6%">{{m.device}}</li>
+                        <li style="width: 16.6%">
+                            <button ng-click="getInsideBox(m.wechatVo.number,m.wechatVo.id)">查看群列表</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!--<div class="fucking-pages" id="pages12"style="margin-top: 15px"></div>-->
+        </div>
+        <div class="page-floor-title" ng-show="ceelue">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="page16-floor-two page-s-box" style="height: 460px" ng-show="ceelue">
+            <ul class="page16-floor-two-list">
+                <li class="page16-first-li">
+                    选择最大时间间隔: <input type="number" min="5" max="10" class="page16-first-number" ng-model="maxInterval"> 秒
+                </li>
+                <li class="page16-first-li">
+                    选择最小时间间隔: <input type="number" min="1" max="5" class="page16-first-number" ng-model="minInterval"> 秒
+                </li>
+                <li class="page16-first-li" style="margin-top: 10px">
+                    发送信息方式:
+                    <select class="page12-select-type page16-choose"
+                            style="margin-left: 42px;text-indent: 0;width: 209px;height: 34px">
+                        <option value="0">请选择群组类别</option>
+                        <option value="1">所有群组</option>
+                        <option value="2">置顶群组</option>
+                        <option value="3">输入群组数量</option>
+                    </select>
+                </li>
+                <li class="page16-first-li writeNums" style="display: none">
+                    输入群组数量:<input type="number" style="margin-left:47px" class="page16-first-number" ng-model="sendNum">
+                    个
+                </li>
+                <li class="page16-first-li">
+                    打招呼用语:<input type="text" class="page9-say-hello" ng-model="sayHello" style="margin-left: 63px">
+                </li>
+            </ul>
+            <ul class="pic-up-list" style="position: relative;top: -40px">
+                <li><p>1</p><input type="file" upload-image1 ></li>
+                <li style="display: none"><p>2</p><input type="file" upload-image2 ></li>
+                <li style="display: none"><p>3</p><input type="file" upload-image3 ></li>
+                <li style="display: none"><p>4</p><input type="file" upload-image4 ></li>
+                <li style="display: none"><p>5</p><input type="file" upload-image5 ></li>
+                <li style="display: none"><p>6</p><input type="file" upload-image6 ></li>
+                <li style="display: none"><p>7</p><input type="file" upload-image7 ></li>
+                <li style="display: none"><p>8</p><input type="file" upload-image8 ></li>
+                <li style="display: none"><p>9</p><input type="file" upload-image9 ></li>
+            </ul>
+            <a class="page16-last-button" ng-click="sendAll()">点击执行</a>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="page-floor-title" ng-show="inSideBox">
+            <span class="page-floor-title-logo phone"></span>
+
+            <h2>微信群聊列表</h2>
+            <button class="back-wx-button" ng-click="getBack()">返回微信群列表</button>
+            <button class="page12-in-title-button" ng-click="getMessageSendBox()">点击发群消息</button>
+            <button class="page12-in-title-button2" ng-click="getGroupNew(WxMemberId)">实时刷新群列表</button>
+        </div>
+        <div class="page12-floor-two page-s-box" ng-show="inSideBox">
+            <ul class="page12-floor-two-list">
+                <li class="page12-floor-two-li first-li">
+                    <ul>
+                        <li class="page12-s-li">
+                            <div class="page12-checkAll-div"><input type="checkbox" group-all-checked-tw></div>
+                        </li>
+                        <li class="page12-b-li title-li">群聊名称</li>
+                        <li class="page12-b-li title-li">标签</li>
+                        <li class="page12-b-li title-li">创建时间</li>
+                        <li class="page12-b-li title-li">操作</li>
+                    </ul>
+                </li>
+                <li class="page12-floor-two-li" ng-repeat="w in WxList" ng-class="isEven($index)">
+                    <ul>
+                        <li class="page12-s-li">
+                            <div class="page12-div-checkbox cleanOn" group_id="{{w.id}}" club_name="{{w.clubName}}"><input
+                                    type="checkbox" group-checked-tw></div>
+                        </li>
+                        <li class="page12-b-li">{{w.displayName||'-'}}</li>
+                        <li class="page12-b-li">-</li>
+                        <li class="page12-b-li">{{w.time||'-'}}</li>
+                        <li class="page12-b-li">
+                            <button ng-click="getLabelBox(w.id)">标签</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages122"></div>
+        </div>
+    </div>
+</div>
+<div class="page12-label-box" ng-show="labelBox">
+    <div class="label-box">
+        <h2>添加标签</h2>
+
+        <div class="label-floor-one">
+            标签: <input type="text" placeholder="请输入添加字段" ng-model="TagName">
+        </div>
+        <div class="label-floor-two">
+            <button ng-click="cancelLabelBox()">取消</button>
+            <button ng-click="SureLabelBox(TagId)">确定</button>
+        </div>
+    </div>
+</div>
+<div class="page12-message-send-box" ng-show="messageSendBox">
+    <div class="message-send-box">
+        <h2 class="message-send-box-title">
+            发群消息
+            <!--<span ng-show="sendPhoto" ng-click="getPhotoSendList()"></span>-->
+            <!--<span ng-show="sendWords" ng-click="getMessageSend()"></span>-->
+        </h2>
+        <textarea placeholder="说点什么.." ng-model="saySomething"></textarea>
+        <!--<ul class="message-send-pic-list" ng-show="photoSendList">-->
+        <!--<li><p>1</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>2</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>3</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>4</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>5</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>6</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>7</p><input type="file" send-image></li>-->
+        <!--</ul>-->
+        <div class="send-message-button">
+            <button ng-click="cancelMessageSendBox()">取消</button>
+            <button ng-click="sureMessageSendBox()">确定</button>
+        </div>
+    </div>
+</div>
+<div id="addColor"></div>
+<div id="addColor1"></div>

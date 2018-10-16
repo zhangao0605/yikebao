@@ -1,0 +1,513 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-title1">
+            已选择设备（<span>{{table2AllChecks}}</span>/<span>{{hhalk1}}</span>）
+        </div>
+        <div class="wx-group-list" id="qx">
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                </p>
+            </label>
+            <div class="wx-group-list" id="">
+                <label class="page14-qx-input">
+                    <p>
+                        <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                    </p>
+                </label>
+                <div class="new-wx-group-all-title">
+                    <h2 class="new-wx-group-all">所有设备</h2>
+
+                    <h3 class="new-wx-group-number" style="margin-top: -22px">({{hhalk1}})</h3>
+                </div>
+                <!-------点击二级三级勾选框--------->
+
+                <ul class="new-wx-group-list">
+                    <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                        <div class="list_dt">
+                            <p class="page17-all-checked">
+                                <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                            </p>
+                            <h4 new-list-show ng-click="fvcMe($index)">
+                                {{g.name}}
+                            </h4>
+                            <i class="list_dt_icon"></i>
+                            <h5>
+                                {{g.count}}
+                            </h5>
+                        </div>
+                        <ul style="display: none" class="list_dd">
+                            <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four
+                                                                              class="page17-wx-input"></p>
+                                <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top4"></a>
+            <h2 class="page-title-high">帐号管理</h2></a>
+            <div class="page-inside-user">
+
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <div class="page-floor-title page2-title-button">
+
+            <button class="page2-title-button-but2" ng-click="tableSwitch(2)">好友管理</button>
+            <button class="page2-title-button-but3" ng-click="tableSwitch(3)">群组管理</button>
+            <button class="page2-title-button-but1" ng-click="tableSwitch(1)">账号管理</button>
+        </div>
+        <!--账号管理部分-->
+        <div class="page4-floor-one page-s-box" ng-show="outSideBox ">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">微信账号选择</span>
+                <select class="page2-floor-first-select" ng-show="resetSelect" ng-model="resetNumber">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                </select>
+                <button class="page4-back-button" ng-show="assMoveTo" ng-click="resetButton()">切换</button>
+
+                <button class="page4-back-button" ng-click="getAssBack()" ng-show="assBack">返回</button>
+                &#12288;<sapn style="color:#2ABF9E">注：请确保您要切换的微信账号登录过当前设备且无需进行登录验证</sapn>
+            </div>
+            <table id="example1"
+                   class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-first">
+                <thead>
+                <tr>
+                    <th>设备编号</th>
+                    <th>设备分组</th>
+                    <th>微信昵称</th>
+                    <th>好友数量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="mailbox-messages ">
+                <tr ng-repeat="e in equipList4" ng-class="isEven($index)">
+                    <td style="width: 15%;">
+                        {{e.rank}}
+                    </td>
+                    <td style="width:15%" class="page2-b-td">{{e.groupVo.name||'-'}}</td>
+                    <td style="width:15%">
+                        {{e.wechatVo.nickname}}
+                    </td>
+                    <td style="width: 15%;">{{e.contactSize||'-'}}</td>
+                    <td style="width:25%" class="page2-table-td-last">
+                        <button ng-click="getInside(e.device)">微信帐号管理</button>
+                    </td>
+                </tbody>
+            </table>
+            <div class="M-box1 page2-table1-page lalaldemaxiya"></div>
+        </div>
+        <div class="page4-floor-two page-s-box" ng-show="insideBox">
+            <div class="page2-floor-first-two">
+                <span>账号管理</span>
+                <button class="page4-back-button" style=" width: 104px;
+  height: 32px;
+  border-radius: 2px;
+  background-color:#2ABF9E;" ng-click="getAssBack()">返回
+                </button>
+            </div>
+            <ul class="page4-floor-two-list page-list page2-first-two-list">
+                <li class="page4-floor-two-li first-li">
+                    <ul>
+                        <li class="page4-bb-li title-li">序号</li>
+                        <li class="page4-bb-li title-li">帐号</li>
+                        <li class="page4-bb-li title-li">密码</li>
+                        <li class="page4-bb-li title-li">昵称</li>
+                        <li class="page4-bb-li title-li">备注</li>
+                        <li class="page4-bb-li title-li">操作</li>
+                    </ul>
+                </li>
+                <li class="page4-floor-two-li" ng-repeat="a in assList">
+                    <ul>
+                        <li class="page4-bb-li">{{$index+1}}</li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.number" class="page4-wx-number"></li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.password" class="page4-wx-password"></li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.nickname" class="page4-wx-nickname"></li>
+                        <li class="page4-bb-li"><input type="text"></li>
+                        <li class="page4-bb-li">
+                            <button ng-click="moveUp(a.rank)" ng-class="isRankOne(a.rank)"
+                                    ng-disabled="rankDisabled(a.rank)">上移
+                            </button>
+                            <button ng-click="moveDown(a.rank)" ng-class="isRankLast(a.rank)"
+                                    ng-disabled="rankDisabledLast(a.rank)">下移
+                            </button>
+                            <button class="save-page4-button" get-save mess_id="{{a.id}}" wn="{{a.wechatNumber}}">保存
+                            </button>
+                            <button class="edit-page4-button" get-edit>编辑</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--好友管理部分-->
+        <div class="page11-outside-box" ng-show="inSideBox1">
+            <div class="page11-floor-two" style="height: 880px">
+                <div class="page2-floor-first-two">
+                    <span>微信好友列表</span>
+                    <!--<button class="back-wx-button page2-2-back-wx-button" ng-click="getBack()">返回微信帐号列表</button>-->
+                    <button class="right-wx-button page2-2-back-wx-button" ng-click="ThumbsUp()">朋友圈点赞</button>
+                    <button class="right-wx-button page2-2-back-wx-button" ng-click="getMessageSendBox()">发送消息</button>
+                    <button class="right-wx-button right-wx-button-hide page2-2-back-wx-button1"
+                            ng-click="getNew()">更新好友列表
+                    </button>
+                </div>
+                <table id="example3"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox1 page3-div-checkbox-friends"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th>所属设备</th>
+                        <th>所属微信</th>
+                        <th>好友昵称</th>
+                        <!--<th>好友性别</th>-->
+                        <th>标签</th>
+                        <th>好友来源</th>
+                        <!--<th>操作</th>-->
+
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="e in WxList" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox" device_id="{{e.wechatNumber}}"><input
+                                        data="{{e.username}}"
+                                        type="checkbox"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page2-table3-friend"
+                                        friend_id="{{e.id}}"
+                                        friend_Phone="{{e.wechatNumber}}"
+                                        ng-disabled="getDisabled(i.status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+
+                        <td style="width:19%" class="page2-b-td text-over">
+                            {{e.rank}}
+
+                        </td>
+                        <td style="width:19%" class="text-over">
+                            {{nameSlice(e.wechatNickname||'-')}}
+
+                        </td>
+                        <td style="width: 19%;">
+                            {{showWhichName(e.nickname||'-',e.remark||'')}}
+
+                        </td>
+                        <!--<td style="width: 19%;">-->
+                        <!--{{showSex(e.sex)}}-->
+
+                        <!--</td>-->
+                        <td style="width: 19%;">{{e.tags||'-'}}</td>
+                        <td style="width: 19%;">
+                            {{e.source||'-'}}
+                        </td>
+                        <!--<td style="width:25%" class="page2-table-td-last">-->
+                        <!--<li>-->
+                        <!--<button ng-click="getEditBoxOne(e.id)">编辑</button>-->
+                        <!--<button ng-click="getEditBoxTwo(e.id)">标签</button>-->
+                        <!--</li>-->
+                        <!--</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left: 1.8%;color:#2ABF9E ">注：发送消息和点赞只对设备下已有好友有效</div>
+                <div class="M-box1 page2-table2-page "></div>
+            </div>
+        </div>
+        <!--群组管理部分-->
+        <div class="page11-outside-box" ng-show="page2Table3Group">
+            <div class="page11-floor-two" style="height: 880px">
+                <div class="page2-floor-first-two">
+                    <span>微信群列表</span>
+                    <!--<button class="back-wx-button page2-2-back-wx-button" ng-click="getBack()">返回微信帐号列表</button>-->
+                    <button class="right-wx-button page2-2-back-wx-button" ng-click="getMessageSendBoxGroup()">发送群消息
+                    </button>
+                    <!--<button class="right-wx-button page2-2-back-wx-button" ng-click="getNewFriendInGroup()">入群加好友-->
+                    <!--</button>-->
+                    <button class="right-wx-button right-wx-button-hide page2-2-back-wx-button1"
+                            ng-click="getInsideBoxInGroup()">更新群列表
+                    </button>
+                </div>
+
+                <table id="example4"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox"
+                                                                       ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox1 page3-div-checkbox-Groups"
+                                                                       ng-model="checkAll"
+                                                                       ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th>所属设备</th>
+                        <th>微信昵称</th>
+                        <th>群聊名称</th>
+                        <th>群聊人数</th>
+                        <th>创建时间</th>
+                        <!--<th>操作</th>-->
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="e in WxList1" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{e.device}}"><input
+                                        data="{{e.wechatNumber}}"
+                                        data1="{{e.displayName}}"
+                                        data2="{{e.id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page3-div-checkbox-Groups-one"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(i.status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 19%;">
+                            {{e.rank}}
+                        </td>
+                        <td style="width:19%" class="page2-b-td">{{nameSlice(e.wechatNickname||'-')}}</td>
+                        <td style="width:19%">
+                            {{nameSlice(e.displayName||'-')}}
+                        </td>
+                        <td style="width: 19%;">{{e.tag||'-'}}</td>
+                        <td style="width: 19%;">
+                            {{TimeSlice(e.time||'-')}}
+                        </td>
+                        <!--<td style="width:20%" class="page2-table-td-last">-->
+                        <!--<li>-->
+                        <!--<button ng-click="getEditBoxOne(e.id)">编辑</button>-->
+                        <!--</li>-->
+                        <!--</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left: 1.8%;color:#2ABF9E ">注：入群加好友和发送群消息只对设备下已有群有效</div>
+                <div class="M-box1 page2-table3-page"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="move-box-four" ng-show="moveBox">
+    <div class="move-group-box">
+        <h2>移动到新群组</h2>
+        <ul>
+            <li ng-repeat="g in groupNames"><label><span><input type="radio" name="group-ass-name"></span>{{g.group.name}}</label>
+            </li>
+        </ul>
+        <div class="move-group-buttons">
+            <button ng-click="cancelMoveTo()">取消</button>
+            <button ng-click="sureMoveTo()">确认</button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<!--------------------给好友添加备注------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="page2TableChangeName">
+
+    <h2 class="page-inner-title">更改昵称</h2>
+
+    <div class="page-inner-content page-inner-content1 ">
+        <div class="page1-new-group-name  page1-edit-group-name">
+            昵称：<input type="text" placeholder=" &nbsp;&nbsp;&nbsp;请输入昵称" ng-model="newName">
+        </div>
+
+    </div>
+    <button class="page1-inner-box-button" ng-click="SureButtonOne()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelButton()">取消</button>
+</div>
+<!--------------------给好友添打标签------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="page2TableChangeTag">
+
+    <h2 class="page-inner-title">添加标签</h2>
+
+    <div class="page-inner-content page-inner-content1 ">
+        <div class="page1-new-group-name  page1-edit-group-name">
+            标签：<input type="text" placeholder=" &nbsp;&nbsp;&nbsp;请输入添加标签" ng-model="newTaFriend">
+        </div>
+
+    </div>
+    <button class="page1-inner-box-button" ng-click="SureButtonTwo()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelButton()">取消</button>
+</div>
+<!--------------------给好友发消息------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="sendMsgFri">
+
+    <h2 class="page-inner-title">发送信息给好友</h2>
+
+    <div class="page-inner-content page-inner-content1 ">
+        <textarea
+                style="resize: none;width: 80%;height: 50%;margin-left: 10%;margin-top: 5%;padding: 10px;outline: none;border-radius: 3px"
+                placeholder="说点什么.." ng-model="page2table2saySomething"></textarea>
+
+    </div>
+    <button class="page1-inner-box-button" ng-click="sureMessageSendBox()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="NoMessageSendBox()">取消</button>
+</div>
+<!--------------------给好友朋友圈点赞------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="ThumbsUpTurn">
+
+    <h2 class="page-inner-title">朋友圈点赞</h2>
+    <div class="page-inner-content page-inner-content1 ">
+        <div class="page1-new-group-name  page1-edit-group-name">
+            输入点赞数量：<input style="width: 60%;text-align: center" type="number" max="30" min="1" ng-model="ThumbsUpNums"
+                          ng-blur="lastFound()">
+        </div>
+    </div>
+    <button class="page1-inner-box-button" ng-click="sureThumbsUpTurn()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="NoThumbsUpTurn()">取消</button>
+</div>
+<!--------------------入群加好友------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="page2AddPeople">
+
+    <h2 class="page-inner-title">入群加好友</h2>
+    <div class="page-inner-content page-inner-content1 ">
+        <div class="page1-new-group-name  page1-edit-group-name"
+             style="position: absolute;margin-top: -5%;margin-left: 10%">
+            添加好友数量：<input style="width: 15%;text-align: center;height: 30px" type="number" min="1"
+                          ng-model="page2GroupAddNum"> 人
+            <div style="margin-left: 0;margin-top:-10px">
+                加人时间间隔：<input
+                    style="width: 15%;text-align: center;height: 30px" min="1" type="number" ng-model="page2GroupTiM1">
+                ~<input
+                    style="width: 15%;text-align: center;height: 30px" min="1" type="number" ng-model="page2GroupTiM2">
+                秒
+            </div>
+            <div style="margin-left: 0;margin-top: 10px">
+                &#12288;打招呼用语：
+                <div id="editor" class="page12-emjoy12" contenteditable="true"
+                     style="width:300px;margin-left: 109px;border-radius: 3px;height:70px;border: 1px solid gray;margin-top: -35px;overflow: auto;padding: 0">
+                </div>
+                <button style="position: absolute;margin-left: 3.2%;margin-top: -7%" id="btn"
+                        class="btn btn-sm btn-default">:)
+                </button>
+            </div>
+        </div>
+    </div>
+    <button class="page1-inner-box-button" ng-click="sureaddPeople()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="NoaddPeople()">取消</button>
+</div>
+<!--------------------给群组发消息------------------->
+<div class="page1-inner-box-one page-inner-box" ng-show="sendMsgFriToGroup">
+
+    <h2 class="page-inner-title">发送信息给群组</h2>
+
+    <div class="page-inner-content page-inner-content1 ">
+        <textarea
+                style="resize: none;width: 80%;height: 50%;margin-left: 10%;margin-top: 5%;padding: 10px;outline: none;border-radius: 3px"
+                placeholder="说点什么.." ng-model="saySomethingahsdhas"></textarea>
+
+    </div>
+    <button class="page1-inner-box-button" ng-click="cancelMessageSendBox()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="sureMessageSendBoxGroup()">取消</button>
+</div>

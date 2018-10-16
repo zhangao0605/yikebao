@@ -1,0 +1,107 @@
+<div class="page-box">
+    <div class="page2-header">
+        <a id="page-top2"></a>
+        <h2>设备管理</h2>
+        <div class="page-inside-user">
+            <span></span>
+            <p>USER</p>
+        </div>
+    </div>
+    <div class="page2-title-box" ng-show="outSideBox">
+        <span class="page-floor-title-logo phone"></span>
+        <h2>设备列表</h2>
+        <!--<button class="page2-top-button-three" ng-click="getNewList()">获取微信</button>-->
+        <!--<button ng-click="initAllApp()" class="page2-top-button">一键初始化</button>-->
+        <button ng-click="getSweepBox()" class="page2-top-button-three">扫描新设备</button>
+    </div>
+    <div class="page2-floor-box" ng-show="outSideBox">
+        <div class="page2-table-outer">
+            <table class="page2-table-box">
+                <thead>
+                <tr>
+                    <td class="page2-ss-td">序号</td>
+                    <td class="page2-b-td">设备编号</td>
+                    <td class="page2-b-td">设备IMEI</td>
+                    <td class="page2-s-td">微信</td>
+                    <td class="page2-s-td">输入法</td>
+                    <td class="page2-s-td">GPS</td>
+                    <td class="page2-s-td">状态</td>
+                    <td class="page2-b-td">操作</td>
+                    <td class="page2-b-td"></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="i in DataList" ng-class="isEven($index)">
+                    <td class="page2-ss-td">{{getPage($index+1)}}</td>
+                    <td class="page2-b-td"><input type="text" ng-value="rankAss(i.rank)" ng-class="couldChange(i.rank)"
+                                                  ng-readonly="couldRead(i.rank)"></td>
+                    <td class="page2-b-td">{{i.imei||'-'}}</td>
+                    <td class="page2-s-td">{{getLoad(i.apps.wechat)}}</td>
+                    <td class="page2-s-td">{{getLoad(i.apps.input)}}</td>
+                    <td class="page2-s-td">{{getLoad(i.apps.gps)}}</td>
+                    <td class="page2-s-td" ng-class="statusHigh(i.status)">{{Status(i.status)}}</td>
+                    <td class="page2-b-td page2-b-td-buttons">
+                        <button class="page2-s-button" table-save mess_device="{{i.device}}"
+                                ng-class="couldSave(i.rank)">保存
+                        </button>
+                        <button class="page2-s-button" table-edit ng-class="couldEdit(i.rank)">编辑</button>
+                        <button class="page2-s-button" ng-click="deleteEquip(i.device)">删除</button>
+                    </td>
+                    <td class="page2-b-td">
+                        <button class="page2-b-button" ng-click="showMyEquip(i.device)" ng-show="isShow(i.status)">
+                            查找我的设备
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="way-out-button" ng-click="wayOut()">导出表格</button>
+        <div class="fucking-pages" id="pages2"></div>
+    </div>
+    <div class="page2-floor-two page-s-box" ng-show="inSideBox">
+        <table class="way-out-table">
+            <thead>
+            <tr>
+                <td>设备编号</td>
+                <td>设备IMEI</td>
+                <td>微信</td>
+                <td>输入法</td>
+                <td>GPS</td>
+                <td>设备状态</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="a in DataList">
+                <td>{{a.rank}}</td>
+                <td>{{a.imei||'-'}}</td>
+                <td>{{getLoad(a.apps.wechat)}}</td>
+                <td>{{getLoad(a.apps.input)}}</td>
+                <td>{{getLoad(a.apps.gps)}}</td>
+                <td>{{Status(a.status)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="page-outside-box" ng-show="sweepBox">
+    <div class="page1-inner-box-one page-inner-box" ng-show="sweepBoxOne">
+        <h2 class="page-inner-title">初始化</h2>
+        <h3>感谢您选择蚁控群系统</h3>
+        <h4>请点击确定按钮，对已连接设备进行初始化</h4>
+        <h3>开始初始化</h3>
+        <button class="page1-inner-box-button" ng-click="getSweepTwo()">确定</button>
+    </div>
+    <div class="sweep-box-one" ng-show="sweepBoxTwo">
+        <h2>扫描设备进度</h2>
+        <h3>扫描中</h3>
+        <div><p class="sweep-box-one-block" ng-class="sweepAssBlock"></p></div>
+    </div>
+    <div class="sweep-box-one" ng-show="sweepBoxThree">
+        <h2>扫描设备</h2>
+        <h4>扫描完成，共耗时{{sweepShowTime}}秒</h4>
+        <h4>共有{{sweepEquipNumber}}台在线设备</h4>
+        <h4>共有{{sweepOffLineNumber}}台离线设备</h4>
+        <button ng-click="getDataList(response)">确定</button>
+    </div>
+</div>

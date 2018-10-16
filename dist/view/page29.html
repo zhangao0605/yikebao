@@ -1,0 +1,329 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-el mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p>
+                            <input type="checkbox" group-check-all-el mess_id="{{g.id}}">
+                        </p>
+                        <h4 new-list-show>
+                            {{g.name}}
+                        </h4>
+                        <h5 new-list-show>
+                            {{g.count}}
+                        </h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos">
+                            <label>
+                                <p>
+                                    <input type="checkbox" group-check-one-el class="new-wx-equip-input11">
+                                </p>
+                                <h2 title="{{d.device}}">
+                                    {{d.rank}}
+                                </h2>
+                            </label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top11"></a>
+            <a ng-click="getNav()" class="get-back-logo"></a>
+            <h2 class="page-title">远程任务</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>远程任务</p>
+            </div>
+        </div>
+        <div class="page11-outside-box">
+            <div class="page-floor-title">
+                <span class="page-floor-title-logo phone"></span>
+                <h2>远程任务</h2>
+                <button class="page29-back-wx-button" ng-click="turnOk()">已就绪</button>
+                <button class="page29-back-wx-button" ng-click="turnNoOk()">未就绪</button>
+                <button class="page29-back-wx-button" ng-click="turnOkYes()">已完成</button>
+                <div class="TellWaring">注：由于微信限制因此每台设备每次加人上限为15人</div>
+            </div>
+            <!--已就绪-->
+            <div class="page11-floor-two" ng-show="okOne">
+                <ul class="page11-floor-two-list">
+                    <li class="page11-floor-two-li first-li">
+                        <ul>
+                            <li class="page11-title-one" style="width: 10%">选择</li>
+                            <li class="page11-title-one" style="width: 22.5%">任务</li>
+                            <li class="page11-title-one" style="width: 22.5%">状态</li>
+                            <li class="page11-title-one" style="width: 22.5%">可添加总量</li>
+                            <li class="page11-title-one" style="width: 22.5%">已添加总量</li>
+                        </ul>
+                    </li>
+                    <li class="page11-floor-two-li" ng-class="isEven($index)">
+                        <ul class="you" ng-repeat="w in okState">
+                            <li style="width: 10%" class="page11-s-li">
+                                <div class="page11-div-checkbox"><input data="{{StatusTurn1(w.type)}}"
+                                                                        data1="{{w.state}}" data2="{{w.wnum}}"
+                                                                        data3="{{w.number}}" data4="{{w.tid}}"
+                                                                        data5="{{w.type}}" type="checkbox"
+                                                                        group-checked-ss class="clickMe"></div>
+                            </li>
+                            <li style="width: 22.5%">{{w.name}}</li>
+                            <li style="width: 22.5%">已就绪</li>
+                            <li style="width: 22.5%">{{w.quantity}}</li>
+                            <li style="width: 22.5%">{{w.indexs}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!--未就绪-->
+            <div class="page11-floor-two" ng-show="okOne1">
+                <ul class="page11-floor-two-list">
+                    <li class="page11-floor-two-li first-li">
+                        <ul>
+                            <li class="page11-title-one" style="width: 25%">任务</li>
+                            <li class="page11-title-one" style="width: 25%">状态</li>
+                            <li class="page11-title-one" style="width: 25%">可添加总量</li>
+                            <li class="page11-title-one" style="width: 25%">已添加总量</li>
+                        </ul>
+                    </li>
+                    <li class="page11-floor-two-li" ng-class="isEven($index)">
+                        <ul class="you" ng-repeat="w1 in noState">
+                            <li style="width: 25%">{{StatusTurn1(w1.type)}}</li>
+                            <li style="width: 25%">未就绪</li>
+                            <li style="width: 25%">{{w1.quantity}}</li>
+                            <li style="width: 25%">{{w.indexs}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!--已完成-->
+            <div class="page11-floor-two" ng-show="okOne2">
+                <ul class="page11-floor-two-list">
+                    <li class="page11-floor-two-li first-li">
+                        <ul>
+                            <li class="page11-title-one" style="width: 25%">任务</li>
+                            <li class="page11-title-one" style="width: 25%">状态</li>
+                            <li class="page11-title-one" style="width: 25%">可添加总量</li>
+                            <li class="page11-title-one" style="width: 25%">已添加总量</li>
+                        </ul>
+                    </li>
+                    <li class="page11-floor-two-li" ng-class="isEven($index)">
+                        <ul class="you" ng-repeat="w2 in okOver">
+                            <li style="width: 25%">{{StatusTurn1(w2.type)}}</li>
+                            <li style="width: 25%">已完成</li>
+                            <li style="width: 25%">{{w2.quantity}}</li>
+                            <li style="width: 25%">{{w2.quantity}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--通讯录加人任务配置策略-->
+        </div>
+        <!----------------------------------------------------------------通讯录加人加人--------------------------------------------------------------------------->
+
+        <div class="page-floor-title tongxun">
+            <span class="page-floor-title-logo phone"></span>
+
+            <h2>通讯录加人配置策略</h2>
+        </div>
+        <div class="page6-floor-two tongxun">
+            <ul class="page6-floor-left" style="width: 283px;">
+
+                <!--==============================================最大最小时间间隔==============================================================-->
+                <li class="page6-second-li" style="margin-top: 26px">选择加人数量: <input type="number"
+                                                                                    style="margin-left: 32px;width: 80px"
+                                                                                    class="third-number"
+                                                                                    min="1"
+                                                                                    ng-model="addPeopleCount"> 人
+                </li>
+                <li class="page6-second-li" style="margin-top: 25px">选择最大时间间隔:<input style="width: 80px" type="number"
+                                                                                     min="5" max="10"
+                                                                                     ng-model="maxTime"> 秒
+                </li>
+                <li class="page6-second-li" style="margin-top: 25px">选择最小时间间隔:<input style="width: 80px" type="number"
+                                                                                     min="1" max="5" ng-model="minTime">
+                    秒
+                </li>
+                <li class="page6-second-li" style="margin-top: 25px">
+                    选择加人方式:
+                    <select class="page7-select-type clickSelect1" style="margin-left: 135px;margin-top: -50px">
+                        <option value="1" ng-click="selectone1()">精准加人</option>
+                        <option value="2" ng-click="selecteverone1()">通讯录加人</option>
+                    </select>
+                </li>
+                <li class="page7-last-li" style="position: absolute;margin-top: 5px">
+                    <h2>打招呼用语:</h2>
+                    <select class="page7-select-type clickSelect" style="float: left;margin-left: 50px">
+                        <option value="1" ng-click="selectone()">统一话术用语</option>
+                        <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                    </select>
+                </li>
+                <li>
+                    <h3 style="display: none;margin-top: 60px;margin-left: 2px" class="clickAddText"><input type="file"
+                                                                                                            accept=".XLS,.xlsx"
+                                                                                                            upload-file
+                                                                                                            ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div contenteditable="true" id="FontAndEmjoy6" class="FontAndEmjoy6  flag1 page9-say-hello" style="margin-top: -30px"></div>
+                </li>
+            </ul>
+            <div class="emjoyDiv-page6">
+                <span class="emjoyOpen-page6"></span>
+                <div class="emjoyList-page6" style="display: none;margin-top: 3px" id="emjoyList-page6">
+                    <ul>
+                        <li><img class="gg" src="images/100.gif" alt="[微笑]"></li>
+                        <li><img class="gg" src="images/101.gif" alt="[撇嘴]"></li>
+                        <li><img class="gg" src="images/102.gif" alt="[色]"></li>
+                        <li><img class="gg" src="images/103.gif" alt="[发呆]"></li>
+                        <li><img class="gg" src="images/104.gif" alt="[得意]"></li>
+                        <li><img class="gg" src="images/105.gif" alt="[流泪]"></li>
+                        <li><img class="gg" src="images/106.gif" alt="[害羞]"></li>
+                        <li><img class="gg" src="images/107.gif" alt="[闭嘴]"></li>
+                        <li><img class="gg" src="images/108.gif" alt="[睡]"></li>
+                        <li><img class="gg" src="images/109.gif" alt="[大哭]'("></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/110.gif" alt="[尴尬]"></li>
+                        <li><img class="gg" src="images/111.gif" alt="[发怒]"></li>
+                        <li><img class="gg" src="images/112.gif" alt="[调皮]"></li>
+                        <li><img class="gg" src="images/113.gif" alt="[呲牙]"></li>
+                        <li><img class="gg" src="images/114.gif" alt="[惊讶]"></li>
+                        <li><img class="gg" src="images/115.gif" alt="[难过]"></li>
+                        <li><img class="gg" src="images/116.gif" alt="[酷]"></li>
+                        <li><img class="gg" src="images/117.gif" alt="[冷汗]"></li>
+                        <li><img class="gg" src="images/118.gif" alt="[抓狂]"></li>
+                        <li><img class="gg" src="images/119.gif" alt="[吐]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/120.gif" alt="[偷笑]"></li>
+                        <li><img class="gg" src="images/121.gif" alt="[愉快]"></li>
+                        <li><img class="gg" src="images/122.gif" alt="[白眼]"></li>
+                        <li><img class="gg" src="images/123.gif" alt="[傲慢]"></li>
+                        <li><img class="gg" src="images/124.gif" alt="[饥饿]"></li>
+                        <li><img class="gg" src="images/125.gif" alt="[困]"></li>
+                        <li><img class="gg" src="images/126.gif" alt="[惊恐]"></li>
+                        <li><img class="gg" src="images/127.gif" alt="[流汗]"></li>
+                        <li><img class="gg" src="images/128.gif" alt="[憨笑]"></li>
+                        <li><img class="gg" src="images/129.gif" alt="[悠闲]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/130.gif" alt="[奋斗]"></li>
+                        <li><img class="gg" src="images/131.gif" alt="[咒骂]"></li>
+                        <li><img class="gg" src="images/132.gif" alt="[疑问]"></li>
+                        <li><img class="gg" src="images/133.gif" alt="[嘘]"></li>
+                        <li><img class="gg" src="images/134.gif" alt="[晕]"></li>
+                        <li><img class="gg" src="images/135.gif" alt="[疯了]"></li>
+                        <li><img class="gg" src="images/136.gif" alt="[衰]"></li>
+                        <li><img class="gg" src="images/137.gif" alt="[骷髅]"></li>
+                        <li><img class="gg" src="images/138.gif" alt="[敲打]"></li>
+                        <li><img class="gg" src="images/139.gif" alt="[再见]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/140.gif" alt="[擦汗]"></li>
+                        <li><img class="gg" src="images/141.gif" alt="[抠鼻]"></li>
+                        <li><img class="gg" src="images/142.gif" alt="[鼓掌]"></li>
+                        <li><img class="gg" src="images/143.gif" alt="[糗大了]"></li>
+                        <li><img class="gg" src="images/144.gif" alt="[坏笑]"></li>
+                        <li><img class="gg" src="images/145.gif" alt="[左哼哼]"></li>
+                        <li><img class="gg" src="images/146.gif" alt="[右哼哼]"></li>
+                        <li><img class="gg" src="images/147.gif" alt="[哈欠]"></li>
+                        <li><img class="gg" src="images/148.gif" alt="[鄙视]"></li>
+                        <li><img class="gg" src="images/149.gif" alt="[委屈]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/150.gif" alt="[快哭了]"></li>
+                        <li><img class="gg" src="images/151.gif" alt="[阴险]"></li>
+                        <li><img class="gg" src="images/152.gif" alt="[亲亲]"></li>
+                        <li><img class="gg" src="images/153.gif" alt="[吓]"></li>
+                        <li><img class="gg" src="images/154.gif" alt="[可怜]"></li>
+                        <li><img class="gg" src="images/155.gif" alt="[菜刀]"></li>
+                        <li><img class="gg" src="images/156.gif" alt="[西瓜]"></li>
+                        <li><img class="gg" src="images/157.gif" alt="[啤酒]"></li>
+                        <li><img class="gg" src="images/158.gif" alt="[篮球]"></li>
+                        <li><img class="gg" src="images/159.gif" alt="[乒乓]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/160.gif" alt="[咖啡]"></li>
+                        <li><img class="gg" src="images/161.gif" alt="[饭]"></li>
+                        <li><img class="gg" src="images/162.gif" alt="[猪头]"></li>
+                        <li><img class="gg" src="images/163.gif" alt="[玫瑰]"></li>
+                        <li><img class="gg" src="images/166.gif" alt="[爱心]"></li>
+                        <li><img class="gg" src="images/167.gif" alt="[心碎]"></li>
+                        <li><img class="gg" src="images/168.gif" alt="[蛋糕]"></li>
+                        <li><img class="gg" src="images/169.gif" alt="[闪电]"></li>
+                        <li><img class="gg" src="images/203.gif" alt="[左太极]"></li>
+                        <li><img class="gg" src="images/204.gif" alt="[右太极]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/170.gif" alt="[炸弹]"></li>
+                        <li><img class="gg" src="images/171.gif" alt="[刀]"></li>
+                        <li><img class="gg" src="images/172.gif" alt="[足球]"></li>
+                        <li><img class="gg" src="images/173.gif" alt="[瓢虫]"></li>
+                        <li><img class="gg" src="images/174.gif" alt="[便便]"></li>
+                        <li><img class="gg" src="images/175.gif" alt="[月亮]"></li>
+                        <li><img class="gg" src="images/176.gif" alt="[太阳]"></li>
+                        <li><img class="gg" src="images/177.gif" alt="[礼物]"></li>
+                        <li><img class="gg" src="images/178.gif" alt="[拥抱]"></li>
+                        <li><img class="gg" src="images/179.gif" alt="[强]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/180.gif" alt="[弱]"></li>
+                        <li><img class="gg" src="images/181.gif" alt="[握手]"></li>
+                        <li><img class="gg" src="images/182.gif" alt="[胜利]"></li>
+                        <li><img class="gg" src="images/183.gif" alt="[抱拳]"></li>
+                        <li><img class="gg" src="images/184.gif" alt="[勾引]"></li>
+                        <li><img class="gg" src="images/185.gif" alt="[拳头]"></li>
+                        <li><img class="gg" src="images/186.gif" alt="[差劲]"></li>
+                        <li><img class="gg" src="images/187.gif" alt="[爱你]"></li>
+                        <li><img class="gg" src="images/188.gif" alt="[NO]"></li>
+                        <li><img class="gg" src="images/189.gif" alt="[OK]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/190.gif" alt="[爱情]"></li>
+                        <li><img class="gg" src="images/191.gif" alt="[飞吻]"></li>
+                        <li><img class="gg" src="images/192.gif" alt="[跳跳]"></li>
+                        <li><img class="gg" src="images/193.gif" alt="[发抖]"></li>
+                        <li><img class="gg" src="images/194.gif" alt="[怄火]"></li>
+                        <li><img class="gg" src="images/195.gif" alt="[转圈]"></li>
+                        <li><img class="gg" src="images/196.gif" alt="[磕头]"></li>
+                        <li><img class="gg" src="images/197.gif" alt="[回头]"></li>
+                        <li><img class="gg" src="images/198.gif" alt="[跳绳]"></li>
+                        <li><img class="gg" src="images/199.gif" alt="[投降]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/200.gif" alt="[激动]"></li>
+                        <li><img class="gg" src="images/201.gif" alt="[乱舞]"></li>
+                        <li><img class="gg" src="images/202.gif" alt="[献吻]"></li>
+
+                    </ul>
+                </div>
+            </div>
+            <button class="page6-sure-button page29-open" ng-click="sendAll1()">点击执行</button>
+        </div>
+
+
+        <!----------------------------------------------------------------精准加人--------------------------------------------------------------------------->
+        <button class="page29-back-wx-button page29-close"
+                style="position: absolute;top: 526px;left: 50px;height:35px;background-color:#f39c12;display: none"
+                ng-click="closeServer()">关闭当前任务
+        </button>
+    </div>
+</div>

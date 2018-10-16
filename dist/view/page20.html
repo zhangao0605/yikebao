@@ -1,0 +1,124 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p>
+                            <input type="checkbox" group-check-all></p>
+                        <h4 new-list-show>{{g.name}}</h4>
+                        <h5
+                            new-list-show>{{g.count}}</h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos">
+                            <label>
+                                <p>
+                                    <input type="checkbox" group-check-one class="new-wx-equip-input20">
+                                </p>
+
+                                <h2 title="{{d.device}}">{{d.rank}}
+                                </h2>
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top20"></a>
+
+            <h2 class="page-title-high">帐号管理</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo data-service"></span>
+
+            <h2>数据服务</h2>
+        </div>
+        <div class="page20-floor-one page-s-box">
+            <ul class="page20-floor-one-list page-list">
+                <li class="page20-title-li">
+                    <ul>
+                        <li class="page20-title-s-li">任务名</li>
+                        <li class="page20-title-s-li">状态</li>
+                        <li class="page20-title-b-li">策略</li>
+                        <li class="page20-title-s-li">操作</li>
+                    </ul>
+                </li>
+                <li class="page20-floor-one-li" ng-repeat="a in assList">
+                    <ul>
+                        <li class="page20-floor-s-li">{{a.name}}</li>
+                        <li class="page20-floor-s-li">{{assState(a.state)}}</li>
+                        <li class="page20-floor-b-li">
+                            <ul class="page2-floor-b-list">
+                                <li class="page20-b-list-one" ng-show="ifShow(a.type)">
+                                    <label>
+                                        <span><input type="checkbox" group-checked
+                                                     ng-checked="assChecked(a.data)"></span>
+
+                                        <p>导入通讯录前清空手机通讯录号码</p>
+                                    </label>
+                                </li>
+                                <li class="page20-b-list-two">
+                                    打招呼用语: <input type="text" ng-value="assValue(a.data)">
+                                </li>
+                                <li class="page20-b-list-three">
+                                    选择时间间隔: <input type="number" min="0" ng-value="assInterval(a.data)"> 秒
+                                </li>
+                                <li class="page20-b-list-four">
+                                    <h2>加人策略:</h2>
+                                    <ul>
+                                        <li>
+                                            <label><input type="radio" name="add-people{{$index}}" value="1"
+                                                          ng-checked="assRadioOne(a.data)">人员名单导入所有手机</label>
+                                        </li>
+                                        <li>
+                                            <label><input type="radio" name="add-people{{$index}}" value="0"
+                                                          ng-checked="assRadioTwo(a.data)">手机平分人员名单</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="page20-b-list-three">
+                                    加人数量: <input type="number" min="1" ng-value="a.wnum"> 人
+                                </li>
+                                <li class="page20-b-list-three">
+                                    任务执行间隔: <input type="number" min="1" ng-value="a.number"> 小时
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="page20-floor-s-li">
+                            <div class="page20-floor-s-buttons">
+                                <button t_id="{{a.tid}}" start-service ng-disabled="isDisabledOne(a.state)"
+                                        ng-class="isBlandOne(a.state)">开启服务
+                                </button>
+                                <button t_id="{{a.tid}}" stop-service ng-disabled="isDisabledTwo(a.state)"
+                                        ng-class="isBlandTwo(a.state)">暂停服务
+                                </button>
+                                <button t_id="{{a.tid}}" end-service ng-disabled="isDisabledThree(a.state)"
+                                        ng-class="isBlandThree(a.state)">终止服务
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages20"></div>
+        </div>
+    </div>
+</div>

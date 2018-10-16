@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var array2= [ {
+        "USER_ID": "1111",
+    }, {
+        "USER_ID": "2222",
+    }];
+    var array1 = [
+        {
+            "USER_ID": "1111",
+        },
+        {
+            "USER_ID": "2222",
+        },
+        {
+            "USER_ID": "3333",
+        },
+        {
+            "USER_ID": "4444",
+        }
+    ];
+    var result = [];
+    for(var i = 0; i < array2.length; i++){
+        var num = array2[i].USER_ID;
+        var flag = false;
+        for(var j = 0; j < array1.length; j++){
+            var n = array1[j].USER_ID;
+            if(n == num){
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
+            array1.push({'USER_ID':num});
+        }
+    }
+    console.log(array1);
+</script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-title1">
+            已选择设备（<span>{{table2AllChecks}}</span>/<span>{{hhalk1}}</span>）
+        </div>
+        <div class="wx-group-list" id="qx">
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                </p>
+            </label>
+            <div class="wx-group-list" id="">
+                <label class="page14-qx-input">
+                    <p>
+                        <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                    </p>
+                </label>
+                <div class="new-wx-group-all-title">
+                    <h2 class="new-wx-group-all">所有设备</h2>
+
+                    <h3 class="new-wx-group-number" style="margin-top: -22px">({{hhalk1}})</h3>
+                </div>
+                <!-------点击二级三级勾选框--------->
+                <ul class="new-wx-group-list">
+                    <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                        <div  class="list_dt">
+                            <p class="page17-all-checked">
+                                <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                            </p>
+                            <h4 new-list-show ng-click="fvcMe($index)">
+                                {{g.name}}
+                            </h4>
+                            <i class="list_dt_icon"></i>
+                            <h5>
+                                {{g.count}}
+                            </h5>
+                        </div>
+                        <ul style="display: none" class="list_dd">
+                            <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four
+                                                                              class="page17-wx-input"></p>
+                                <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top4"></a>
+            <h2 class="page-title-high">微信运营</h2></a>
+            <div class="page-inside-user">
+
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <div class="page-floor-title page2-title-button1">
+            <button class="page2-title-button-but1 on" ng-click="tableSwitch(1)">群发消息</button>
+            <button class="page2-title-button-but2" ng-click="tableSwitch(2)">发朋友圈</button>
+            <button class="page2-title-button-but3" ng-click="tableSwitch(3)">朋友圈点赞</button>
+            <button class="page2-title-button-but4" ng-click="tableSwitch(4)">转发朋友圈</button>
+            <button class="page2-title-button-but5" ng-click="tableSwitch(5)">关注公众号</button>
+            <button class="page2-title-button-but6" ng-click="tableSwitch(6)">扫码进群</button>
+            <button class="page2-title-button-but7" ng-click="tableSwitch(7)">清理僵尸粉</button>
+            <button class="page2-title-button-but8" ng-click="tableSwitch(8)">好友请求管理</button>
+        </div>
+        <!--群发消息部分-->
+        <div class="page6-floor-two" style="height: 570px" ng-show="outSideBox">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">编辑发送内容</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px;position: relative;top: 280px">
+                <li class="page3-bottom-title-chose-li " style="margin-top: 30px">&nbsp;&nbsp;
+                <li class="page3-bottom-title-chose-li "
+                    style="margin-top: 30px;position: absolute;margin-left: 100px;margin-top: -40px">&nbsp;&nbsp;
+                    <div style="margin-top: -60px;margin-left: 20px" id="T_upload3"></div>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 130px">&nbsp;&nbsp;发送间隔：&#12288; <input type="number"
+                                                                                                          min="1"
+                                                                                                          max="5"
+                                                                                                          ng-model="page4Table1minTime">
+                    ~ <input type="number"
+                             min="5"
+                             max="10"
+                             ng-model="page4Table1maxTime">&#12288;秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello"
+                    style="margin-left: -7px;margin-top: -195px;position: relative;top: -200px">
+                    <span>&#12288;群发内容：</span>
+                </li>
+                <li class="page3-bottom-title-chose-li"
+                    style="margin-left: 0px;margin-top:10px;position: relative;top: -185px">
+                    <div style="margin-left: -5px;margin-top: 30px;width: 50%" class="page4-qunfa-Say">
+                        <div id="editor6" class="page4-emjoy1" contenteditable="true"
+                             style="width:400px;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -233px;margin-left: 17px" id="btn6" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <!--<div style="margin-left: 1.8%;color:#2ABF9E;margin-top: 155px;position: absolute;bottom: 15px">-->
+                <!--注：因微信规则限制，单个微信号一定时间内只能打招呼15人左右，建议单次打招呼15人-->
+            <!--</div>-->
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page4table1SendAll()">执行
+            </button>
+        </div>
+        <!--发朋友圈部分-->
+        <div class="page4-floor-one page-s-box" style="height: 4%" ng-show="outSideBox3 ">
+            <li class="page6-third-li ">
+                <ul>
+                    <li class="page3-table1-click-table2" style="margin-top: -8px;margin-left: 16px">
+                        <div class="on page3-table1-click-table2-Table3-checked"><input type="radio" name="page6-third"
+                                                                                        radio-checked-six
+                                                                                        ng-click="page3Table4Show1()"
+                                                                                        checked></div>
+                        防封号策略A
+                        <div class="page3-table1-click-table2-Table3-Nochecked" style="margin-left: 50px"><input
+                                type="radio" name="page6-third" radio-checked-six
+                                ng-click="page3Table4Show2()"></div>
+                        防封号策略B
+                    </li>
+                </ul>
+
+            </li>
+        </div>
+        <!--策略A-->
+        <div class="page6-floor-two" style="height: 670px;" ng-show="outSideBox2">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">编辑发送内容</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px;position: relative;top: 80px">
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: -15px;">
+                    <span>&#12288;发表内容：</span>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 10px;margin-top:-320px">
+                    <div style="margin-left: -30px;margin-top: 330px;width: 50%" class="page4-qunfa-Say">
+                        <div id="editor7" class="page4-emjoy2 page100-emjoy100" contenteditable="true"
+                             style="width:400px;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 20px" id="btn7" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+                <li class="page3-bottom-title-chose-li " style="margin-top: 30px">&nbsp;&nbsp;
+                    <div style="margin-top: -60px" id="T_upload"></div>
+                </li>
+                <li class="page6-first-li page3-table1-click-table2" style="margin-top: 20px;margin-bottom: 20px">
+                    <div><input type="checkbox" group-checked ng-click="clear($event)" class="asjd"></div>
+                    &nbsp; 打乱图片顺序发表朋友圈
+                </li>
+
+
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: -15px;margin-top: 20px">
+                    <span>&#12288;填写评论：</span>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 10px;margin-top:-320px">
+                    <div style="margin-left: -30px;margin-top: 330px;width: 50%" class="page4-qunfa-Say">
+                        <div id="editor8" class="page4-emjoy3" contenteditable="true"
+                             style="width:400px;margin-left: 125px;border-radius: 3px;height:58px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -110px;margin-left: 20px" id="btn8" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page4table2SendAll()">执行
+            </button>
+        </div>
+        <!--策略B-->
+        <div class="page6-floor-two" style="height:670px" ng-show="outSideBox4">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">编辑发送内容</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px;position: absolute;margin-top: -85px">
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: -15px;margin-top: 0px">
+                    <span>&#12288;发表内容：</span>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 10px;margin-top:-320px">
+                    <div style="margin-left: -30px;margin-top: 330px;width: 50%" class="page4-qunfa-Say">
+                        <div id="editor71" class="page4-emjoy24 page100-emjoy100" contenteditable="true"
+                             style="width:400px;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 20px" id="btn71" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+                <li class="page3-bottom-title-chose-li " style="margin-top: 30px">&nbsp;&nbsp;
+                    <div style="margin-top: -60px" id="T_upload1"></div>
+                </li>
+                <li class="page6-first-li page3-table1-click-table2" style="margin-top: 20px;margin-bottom: 20px">
+                    <div><input type="checkbox" group-checked can-user class="canuserq1"></div>
+                    &nbsp; 启用防封策略B
+                </li>
+
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: -15px;margin-top: -20px">
+                    <span>&#12288;填写评论：</span>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 10px;margin-top:-320px">
+                    <div style="margin-left: -30px;margin-top: 330px;width: 50%" class="page4-qunfa-Say">
+                        <div id="editor81" class="page4-emjoy31" contenteditable="true"
+                             style="width:400px;margin-left: 125px;border-radius: 3px;height:58px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -110px;margin-left: 20px" id="btn81" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: -15px;margin-top: -20px">
+                    <div class="a-operate">
+                        <p>&#12288;必选图片：</p>
+                        <button class="page4CelueB" ng-click="getPicBox()">选择图片</button>
+                    </div>
+                    <ul class="a-pic-box page-list">
+                        <li ng-repeat="m in mustChoose"><p>图{{m}}</p></li>
+                    </ul>
+                    <div class="a-operate a-operate1 a-operate2">
+                        <p>随机图片：</p>
+                        <!--<button ng-click="get">选择图片</button>-->
+                    </div>
+                    <ul class="a-pic-box page-list a-operate1">
+                        <li ng-repeat="u in unMChoose"><p>图{{u}}</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page4table2SendAll1()">执行
+            </button>
+        </div>
+        <!--朋友圈点赞部分-->
+        <div class="page6-floor-two" style="height: 300px" ng-show="outSideBox5 ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">朋友圈点赞</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="position: absolute;margin-top: 0px">
+                <li class="page3-bottom-title-chose-li">输入点赞数量：<input type="number" class="third-number" min="1"
+                                                                      ng-model="WriteNums"> 个
+                </li>
+                <li class="page3-bottom-title-chose-li">选择加人间隔：<input type="number" min="1" max="5"
+                                                                      ng-model="page4Table4minTime">
+                    ~ <input type="number" min="6" max="10" ng-model="page4Table4maxTime"> 秒
+                </li>
+
+            </ul>
+            <button class="page3-bottom-title-chose-send" ng-click="page4Table4SendAll1()">执行</button>
+        </div>
+        <!--转发朋友圈部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%" ng-show="outSideBox6 ">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">选择朋友圈所属设备</span>
+                <select class="page2-floor-first-select1 selectQuan" ng-model="resetNumber">
+                    <option value="['{{w1.device}}']" ng-repeat="w1 in allPhon">{{w1.rank}}</option>
+
+                </select>
+                <button class="page4-back-button" ng-show="assMoveTo" ng-click="resetButton()">切换</button>
+                <button class="page4-back-button" ng-click="getAssBack()" ng-show="assBack">返回</button>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list1">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width: 25%">选择朋友圈所属好友</li>
+                            <li class="title-li" style="width: 25%">昵称</li>
+                            <li class="title-li" style="width: 25%">标签</li>
+                            <li class="title-li" style="width: 25%">微信号</li>
+                        </ul>
+                    </li>
+                    <div class="kojdisd">
+                        <li class="way-to-li " ng-repeat="w in WxListbiubiu" ng-class="isEven($index)">
+                            <ul class="mdfuc">
+                                <li style="width: 25%" class="page11-s-li">
+                                    <div class="page11-div-checkbox" group_id="{{w.id}}" club_name="{{w.nickname||'-'}}">
+                                        <input class="mdfuc1"
+                                               value="{{w.id}}" value1="{{w.nickname}}" type="checkbox" group-checked-ss1></div>
+                                </li>
+                                <li style="width: 25%">{{w.nickname}}</li>
+                                <li style="width: 25%">{{w.tags||'-'}}</li>
+                                <li style="width: 25%">{{w.alias||'-'}}</li>
+                            </ul>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+            <div style="margin-left: 1.8%;color:#2ABF9E;margin-top: 20px">注：左侧设备组中的设备作为发送的目标设备，最多发送五台</div>
+            <div class="M-box1 page2-table1-page"></div>
+        </div>
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox6 ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose">
+                <li class="page3-bottom-title-chose-li">&#12288;每次转发间隔：<input type="number" min="1" max="5`"
+                                                                              ng-model=" minTimeQuan">
+                    ~ <input type="number" min="6" max="10" ng-model="maxTimeQuan"> 秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello">
+                    <span>转发朋友圈方式：</span><select class="page7-select-type clickSelectQuan">
+                    <option value="0">输入目标关键字</option>
+                    <option value="1">输入目标位置</option>
+                </select>
+                    <input ng-model="mainName" class="page7-select-type page33-select-input"
+                           style="border:0.5px solid #AAAAAA;height:31px;left:128px;width: 190px;position:absolute;top:104px"
+                           type="text"
+                           placeholder="请输入关键字">
+                </li>
+                <li class="page3-bottom-title-chose-li Quanquan" style="display: none">
+                    &#12288;转发朋友圈第：<input type="number" min="1" ng-model="mainNumber"> 条
+
+                </li>
+
+            </ul>
+            <button class="page3-bottom-title-chose-send" ng-click="page3TableSendAll1()">执行</button>
+        </div>
+        <!--关注公众号部分-->
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox7">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">输入公众号名称</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+                <li class="page3-bottom-title-chose-li" style="margin-left: 10px;margin-top:-320px">
+                    <div style="margin-left: -30px;margin-top: 350px;width: 50%" class="page4-qunfa-Say">
+                        <textarea ng-model="page4table7sayName" class="page4-emjoygongzhonghao"
+                                  placeholder="例：公众号一，公众号二，公众号三"
+                                  style="width:400px;margin-left: 62px;border-radius: 3px;height:118px;border: 1px solid gray;overflow: auto;padding: 5px;resize: none;margin-top: 10px">
+                        </textarea>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div style="margin-left: 1.8%;color:#2ABF9E;margin-top: 175px">注：每个公众号之间以，隔开！如若格式有误则可能导致关注失败
+            </div>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page4table7SendAll()">执行
+            </button>
+        </div>
+        <!--扫码进群部分-->
+        <div class="page6-floor-two" style="height: 300px" ng-show=" outSideBox10">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">选择进群二维码</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+
+                <li class="page3-bottom-title-chose-li " style="margin-top: 30px">&nbsp;&nbsp;
+                    <div style="margin-top: -60px" id="T_upload2"></div>
+                </li>
+            </ul>
+            <button class="page3-bottom-title-chose-send" ng-click="page4Table12SendAll1()">执行</button>
+        </div>
+        <!--清理僵尸粉部分-->
+        <div class="page6-floor-two" style="height: 440px" ng-show="outSideBox8 ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">清理僵尸粉</span>
+            </div>
+            <ul class="page3-bottom-title-chose">
+                <li class="page3-bottom-title-chose-li">每次清理间隔：<input type="number" min="1" max="5"
+                                                                      ng-model="page4table10minTime">
+                    ~ <input type="number" min="6" max="10" ng-model="page4table10maxTime"> 秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type clickSelect10">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText clickAddText10">
+                        <input type="file"
+                               accept=".XLS,.xlsx"
+                               class="upfiler5"
+                               upload-file5
+                               ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: 0;margin-top: 10px;width: 50%" class="page3-qingli-Say">
+                        &#12288;打招呼用语：
+                        <div id="editor10" class="page4-emjoy10 page100-emjoy100" contenteditable="true"
+                             style="width:400px;margin-left: 122px;border-radius: 3px;height:108px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -290px;margin-left: 490px" id="btn10" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div class="upText5">
+                <span class="deleteText5" ng-click="deleteContent5()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg5">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra5">无文件</li>
+                            <li class="exselTextGray5">0kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" ng-click="page4Table10SendAll1()">执行</button>
+        </div>
+        <!--好友请求管理部分-->
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox9 ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">好友请求管理</span>
+            </div>
+            <ul class="page3-bottom-title-chose">
+                <li class="page3-bottom-title-chose-li" style="position: absolute;margin-top: 15px">最小时间间隔：<input
+                        type="number" min="1" max="5" ng-model="page4table11minTime">&#12288;秒
+                </li>
+                <li class="page3-bottom-title-chose-li" style="position: absolute;margin-top: 75px">最大时间间隔：<input
+                        type="number" min="6" max="10"
+                        ng-model="page4table11maxTime">&#12288;秒
+                </li>
+            </ul>
+            <button class="page3-bottom-title-chose-send" ng-click="page4Table11SendAll1()">执行</button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="page1-inner-box-one page-inner-box" ng-show="picNumberBox">
+    <h2 class="page-inner-title">图片筛选</h2>
+    <div class="page-inner-content page-inner-content1 ">
+        <div>
+            选择图片：
+        </div>
+        <ul>
+            <li ng-repeat="i in picArr3 track by $index" class="page4-mmp">
+            <span>
+                  <input type="checkbox" group-checked ng-checked="isChecked($index+1)"
+                         ng-click="checkOne($event,$index+1)"></span>
+                &#12288;{{i+1}}
+            </li>
+        </ul>
+    </div>
+    <button class="page1-inner-box-button" ng-click="getSureButton()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelPicBox()">取消</button>
+</div>

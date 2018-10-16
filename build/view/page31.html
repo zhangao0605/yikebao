@@ -1,0 +1,57 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all>
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all ></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one class="new-wx-equip-input13"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top13"></a>
+            <h2 class="page-title">微信扫码进群</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo pencil"></span>
+            <h2>选择进群二维码图片</h2>
+        </div>
+
+        <div class="page13-floor-one">
+
+            <ul class="pic-up-list" style="margin-top: 80px">
+                <li><p>1</p><input type="file" upload-image-only1 ></li>
+                <!--<li style="display: none"><p>2</p><input type="file" upload-image2 ></li>-->
+                <!--<li style="display: none"><p>3</p><input type="file" upload-image3 ></li>-->
+                <!--<li style="display: none"><p>4</p><input type="file" upload-image4 ></li>-->
+                <!--<li style="display: none"><p>5</p><input type="file" upload-image5 ></li>-->
+                <!--<li style="display: none"><p>6</p><input type="file" upload-image6 ></li>-->
+                <!--<li style="display: none"><p>7</p><input type="file" upload-image7 ></li>-->
+                <!--<li style="display: none"><p>8</p><input type="file" upload-image8 ></li>-->
+                <!--<li style="display: none"><p>9</p><input type="file" upload-image9 ></li>-->
+            </ul>
+            <a class="page31-send-all" ng-show="mmp" ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,260 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all>
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all ></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one class="new-wx-equip-input13"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top13"></a>
+            <a ng-click="getNav()" class="get-back-logo"></a>
+            <h2 class="page-title">发朋友圈</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+             </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo pencil"></span>
+            <h2>编辑发送内容</h2>
+        </div>
+        <div class="page13-floor-one">
+            <div class="emjoyDiv-page13">
+                <span class="emjoyOpen-page13"></span>
+                <div class="emjoyList-page13" style="display: none" id="emjoyList-page13" >
+                    <ul>
+                        <li><img class="gg" src="images/100.gif" alt="[微笑]"></li>
+                        <li><img class="gg" src="images/101.gif" alt="[撇嘴]"></li>
+                        <li><img class="gg" src="images/102.gif" alt="[色]"></li>
+                        <li><img class="gg" src="images/103.gif" alt="[发呆]"></li>
+                        <li><img class="gg" src="images/104.gif" alt="[得意]"></li>
+                        <li><img class="gg" src="images/105.gif" alt="[流泪]"></li>
+                        <li><img class="gg" src="images/106.gif" alt="[害羞]"></li>
+                        <li><img class="gg" src="images/107.gif" alt="[闭嘴]"></li>
+                        <li><img class="gg" src="images/108.gif" alt="[睡]"></li>
+                        <li><img class="gg" src="images/109.gif" alt="[大哭]'("></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/110.gif" alt="[尴尬]"></li>
+                        <li><img class="gg" src="images/111.gif" alt="[发怒]"></li>
+                        <li><img class="gg" src="images/112.gif" alt="[调皮]"></li>
+                        <li><img class="gg" src="images/113.gif" alt="[呲牙]"></li>
+                        <li><img class="gg" src="images/114.gif" alt="[惊讶]"></li>
+                        <li><img class="gg" src="images/115.gif" alt="[难过]"></li>
+                        <li><img class="gg" src="images/116.gif" alt="[酷]"></li>
+                        <li><img class="gg" src="images/117.gif" alt="[冷汗]"></li>
+                        <li><img class="gg" src="images/118.gif" alt="[抓狂]"></li>
+                        <li><img class="gg" src="images/119.gif" alt="[吐]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/120.gif" alt="[偷笑]"></li>
+                        <li><img class="gg" src="images/121.gif" alt="[愉快]"></li>
+                        <li><img class="gg" src="images/122.gif" alt="[白眼]"></li>
+                        <li><img class="gg" src="images/123.gif" alt="[傲慢]"></li>
+                        <li><img class="gg" src="images/124.gif" alt="[饥饿]"></li>
+                        <li><img class="gg" src="images/125.gif" alt="[困]"></li>
+                        <li><img class="gg" src="images/126.gif" alt="[惊恐]"></li>
+                        <li><img class="gg" src="images/127.gif" alt="[流汗]"></li>
+                        <li><img class="gg" src="images/128.gif" alt="[憨笑]"></li>
+                        <li><img class="gg" src="images/129.gif" alt="[悠闲]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/130.gif" alt="[奋斗]"></li>
+                        <li><img class="gg" src="images/131.gif" alt="[咒骂]"></li>
+                        <li><img class="gg" src="images/132.gif" alt="[疑问]"></li>
+                        <li><img class="gg" src="images/133.gif" alt="[嘘]"></li>
+                        <li><img class="gg" src="images/134.gif" alt="[晕]"></li>
+                        <li><img class="gg" src="images/135.gif" alt="[疯了]"></li>
+                        <li><img class="gg" src="images/136.gif" alt="[衰]"></li>
+                        <li><img class="gg" src="images/137.gif" alt="[骷髅]"></li>
+                        <li><img class="gg" src="images/138.gif" alt="[敲打]"></li>
+                        <li><img class="gg" src="images/139.gif" alt="[再见]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/140.gif" alt="[擦汗]"></li>
+                        <li><img class="gg" src="images/141.gif" alt="[抠鼻]"></li>
+                        <li><img class="gg" src="images/142.gif" alt="[鼓掌]"></li>
+                        <li><img class="gg" src="images/143.gif" alt="[糗大了]"></li>
+                        <li><img class="gg" src="images/144.gif" alt="[坏笑]"></li>
+                        <li><img class="gg" src="images/145.gif" alt="[左哼哼]"></li>
+                        <li><img class="gg" src="images/146.gif" alt="[右哼哼]"></li>
+                        <li><img class="gg" src="images/147.gif" alt="[哈欠]"></li>
+                        <li><img class="gg" src="images/148.gif" alt="[鄙视]"></li>
+                        <li><img class="gg" src="images/149.gif" alt="[委屈]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/150.gif" alt="[快哭了]"></li>
+                        <li><img class="gg" src="images/151.gif" alt="[阴险]"></li>
+                        <li><img class="gg" src="images/152.gif" alt="[亲亲]"></li>
+                        <li><img class="gg" src="images/153.gif" alt="[吓]"></li>
+                        <li><img class="gg" src="images/154.gif" alt="[可怜]"></li>
+                        <li><img class="gg" src="images/155.gif" alt="[菜刀]"></li>
+                        <li><img class="gg" src="images/156.gif" alt="[西瓜]"></li>
+                        <li><img class="gg" src="images/157.gif" alt="[啤酒]"></li>
+                        <li><img class="gg" src="images/158.gif" alt="[篮球]"></li>
+                        <li><img class="gg" src="images/159.gif" alt="[乒乓]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/160.gif" alt="[咖啡]"></li>
+                        <li><img class="gg" src="images/161.gif" alt="[饭]"></li>
+                        <li><img class="gg" src="images/162.gif" alt="[猪头]"></li>
+                        <li><img class="gg" src="images/163.gif" alt="[玫瑰]"></li>
+                        <li><img class="gg" src="images/166.gif" alt="[爱心]"></li>
+                        <li><img class="gg" src="images/167.gif" alt="[心碎]"></li>
+                        <li><img class="gg" src="images/168.gif" alt="[蛋糕]"></li>
+                        <li><img class="gg" src="images/169.gif" alt="[闪电]"></li>
+                        <li><img class="gg" src="images/203.gif" alt="[左太极]"></li>
+                        <li><img class="gg" src="images/204.gif" alt="[右太极]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/170.gif" alt="[炸弹]"></li>
+                        <li><img class="gg" src="images/171.gif" alt="[刀]"></li>
+                        <li><img class="gg" src="images/172.gif" alt="[足球]"></li>
+                        <li><img class="gg" src="images/173.gif" alt="[瓢虫]"></li>
+                        <li><img class="gg" src="images/174.gif" alt="[便便]"></li>
+                        <li><img class="gg" src="images/175.gif" alt="[月亮]"></li>
+                        <li><img class="gg" src="images/176.gif" alt="[太阳]"></li>
+                        <li><img class="gg" src="images/177.gif" alt="[礼物]"></li>
+                        <li><img class="gg" src="images/178.gif" alt="[拥抱]"></li>
+                        <li><img class="gg" src="images/179.gif" alt="[强]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/180.gif" alt="[弱]"></li>
+                        <li><img class="gg" src="images/181.gif" alt="[握手]"></li>
+                        <li><img class="gg" src="images/182.gif" alt="[胜利]"></li>
+                        <li><img class="gg" src="images/183.gif" alt="[抱拳]"></li>
+                        <li><img class="gg" src="images/184.gif" alt="[勾引]"></li>
+                        <li><img class="gg" src="images/185.gif" alt="[拳头]"></li>
+                        <li><img class="gg" src="images/186.gif" alt="[差劲]"></li>
+                        <li><img class="gg" src="images/187.gif" alt="[爱你]"></li>
+                        <li><img class="gg" src="images/188.gif" alt="[NO]"></li>
+                        <li><img class="gg" src="images/189.gif" alt="[OK]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/190.gif" alt="[爱情]"></li>
+                        <li><img class="gg" src="images/191.gif" alt="[飞吻]"></li>
+                        <li><img class="gg" src="images/192.gif" alt="[跳跳]"></li>
+                        <li><img class="gg" src="images/193.gif" alt="[发抖]"></li>
+                        <li><img class="gg" src="images/194.gif" alt="[怄火]"></li>
+                        <li><img class="gg" src="images/195.gif" alt="[转圈]"></li>
+                        <li><img class="gg" src="images/196.gif" alt="[磕头]"></li>
+                        <li><img class="gg" src="images/197.gif" alt="[回头]"></li>
+                        <li><img class="gg" src="images/198.gif" alt="[跳绳]"></li>
+                        <li><img class="gg" src="images/199.gif" alt="[投降]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/200.gif" alt="[激动]"></li>
+                        <li><img class="gg" src="images/201.gif" alt="[乱舞]"></li>
+                        <li><img class="gg" src="images/202.gif" alt="[献吻]"></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div contenteditable="true" id="FontAndEmjoy13"
+                 class="FontAndEmjoy13 img-and-font-div flag"></div>
+            <ul class="pic-up-list" style="margin-top: 80px">
+                <li><p>1</p><input type="file" upload-image1 ></li>
+                <li style="display: none"><p>2</p><input type="file" upload-image2 ></li>
+                <li style="display: none"><p>3</p><input type="file" upload-image3 ></li>
+                <li style="display: none"><p>4</p><input type="file" upload-image4 ></li>
+                <li style="display: none"><p>5</p><input type="file" upload-image5 ></li>
+                <li style="display: none"><p>6</p><input type="file" upload-image6 ></li>
+                <li style="display: none"><p>7</p><input type="file" upload-image7 ></li>
+                <li style="display: none"><p>8</p><input type="file" upload-image8 ></li>
+                <li style="display: none"><p>9</p><input type="file" upload-image9 ></li>
+            </ul>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+        <div class="page13-floor-two">
+            <ul class="strategy-box">
+                <li class="strategy-a-box">
+                    <div class="a-checked"><label><span><input type="checkbox" group-checked can-user></span><p>防封号策略A</p></label></div>
+                    <div class="a-operate">
+                        <p>对图片进行伪原创操作</p>
+                        <button ng-click="getPicBox2()">选择图片</button>
+                    </div>
+                    <ul class="a-pic-box page-list">
+                        <li ng-repeat="p in operate"><p>图{{p}}</p></li>
+                    </ul>
+                    <div class="a-tag">
+                        <p>标签:</p>
+                        <input type="text" ng-model="aTag">
+                    </div>
+                    <div class="a-content">
+                        <p>评论内容:</p>
+                        <input type="text" ng-model="aMsg">
+                    </div>
+                </li>
+                <li class="strategy-b-box">
+                    <div class="b-checked"><label><span><input type="checkbox" group-checked can-user></span><p>防封号策略B</p></label></div>
+                    <div class="a-operate">
+                        <p>必选图片</p>
+                        <button ng-click="getPicBox()">选择图片</button>
+                    </div>
+                    <ul class="a-pic-box page-list">
+                        <li ng-repeat="m in mustChoose"><p>图{{m}}</p></li>
+                    </ul>
+                    <div class="a-operate">
+                        <p>随机图片</p>
+                        <!--<button ng-click="get">选择图片</button>-->
+                    </div>
+                    <ul class="a-pic-box page-list">
+                        <li ng-repeat="u in unMChoose"><p>图{{u}}</p></li>
+                    </ul>
+                </li>
+                <!--<li class="strategy-c-box">-->
+                    <!--<div class="b-checked"><label><span><input type="checkbox" group-checked can-user></span><p>防封号策略C</p></label></div>-->
+                    <!--<h2>发送朋友圈时间间隔 <input type="number" ng-model="timeInterval" min="1"> 秒</h2>-->
+                <!--</li>-->
+            </ul>
+            <a class="page13-send-all" ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>
+<div class="pic-number-box" ng-show="picNumberBox">
+    <div class="number-box">
+        <h2>图片筛选</h2>
+        <ul>
+            <li ng-repeat="i in picArr"><div><input type="checkbox" group-checked ng-checked="isChecked($index+1)" ng-click="checkOne($event,$index+1)" ></div><p>{{$index+1}}</p></li>
+        </ul>
+        <div class="buttons-box">
+            <button ng-click="cancelPicBox()">取消</button>
+            <button ng-click="getSureButton()">确认</button>
+        </div>
+    </div>
+</div>
+<div class="pic-number-box" ng-show="picNumberBox1">
+    <div class="number-box">
+        <h2>图片筛选</h2>
+        <ul>
+            <li ng-repeat="i in picArr"><div><input type="checkbox" group-checked ng-checked="isChecked2($index+1)" ng-click="checkOne2($event,$index+1)" ></div><p>{{$index+1}}</p></li>
+        </ul>
+        <div class="buttons-box">
+            <button ng-click="cancelPicBox2()">取消</button>
+            <button ng-click="getSureButton2()">确认</button>
+        </div>
+    </div>
+</div>

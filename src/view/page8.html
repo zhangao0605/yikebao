@@ -1,0 +1,121 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all>
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all></p><h4 new-list-show>{{g.name}}</h4><h5
+                            new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one
+                                                                          class="new-wx-equip-input8"></p>
+                            <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="algorithm-install">-->
+        <!--<h2>算法配置</h2>-->
+        <!--<ul>-->
+        <!--<li>粒子布局算法:-->
+        <!--<select ng-model="mapRang">-->
+        <!--<option>2000米</option>-->
+        <!--<option>5000米</option>-->
+        <!--</select>-->
+        <!--</li>-->
+        <!--<li>时间间隔: <input type="number" min="1" ng-model="timeInterval"> 秒</li>-->
+        <!--<li>加入数量: <input type="number" min="1" disabled></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="page8-say-hello">-->
+        <!--<h2>打招呼用语</h2>-->
+        <!--<input type="text" ng-model="sayHello">-->
+        <!--</div>-->
+        <!--<a class="page8-left-button" ng-click="sendAll()">点击执行</a>-->
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top8"></a>
+            <h2 class="page-title">微信附近的人</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page8-floor-one" id="page8-map"></div>
+        <div id="r-result8">请输入:<input type="text" id="suggestId" size="20" value="百度" ng-model="mapLocation"/></div>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo count"></span>
+            <h2>算法配置</h2>
+        </div>
+        <div class="page8-floor-count page-s-box">
+            <ul>
+                <li>
+                    粒子布局算法:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select ng-model="mapRang" style="text-indent: 10px">
+                        <option>2000米</option>
+                        <option>5000米</option>
+                    </select>
+                </li>
+                <li> 选择最大时间间隔:<input type="number" min="5" max="10" ng-model="maxTime"
+                                     class="page8-number-input-s" style="width:120px"> 秒
+                </li>
+                <li>
+                    打招呼用语:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select class="page7-select-type clickSelect" style="margin-left: -4px">
+                        <option value="1" ng-click="selectone()">统一话术用语</option>
+                        <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                    </select>
+                    <input type="text"
+                           class="page9-say-hello"
+                           ng-model="sayHello" style="width: 180px">
+                </li>
+                <li>
+                    <h3 style="display: none" class="clickAddText"><input type="file" accept=".XLS,.xlsx" upload-file
+                                                                          ng-click="clickAddText()">导入话术文件</h3>
+                    <!--<select  class="page7-select" name="选取话术..." style="display: none">-->
+                        <!--<option value="1">请选择相关话术</option>-->
+                        <!--<option value="2">晚上好</option>-->
+                        <!--<option value="3">下班了</option>-->
+                        <!--<option value="6">周六去吗</option>-->
+                        <!--<option value="3">恩恩好的</option>-->
+                    <!--</select>-->
+                </li>
+            </ul>
+            <ul class="page8-ass-list">
+                <li>加人数量:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number"
+                                                                                                         class="add-people-number"
+                                                                                                         ng-model="addPeopleNumber"style="width:120px">
+                </li>
+                <li> 选择最小时间间隔:<input type="number" min="1" max="5" ng-model="minTime"
+                                     class="page8-number-input-s" style="margin-left: 3px;width: 120px" > 秒
+                </li>
+                <li>
+                    性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select class="page8-ass-select"
+                            style="width:120px; margin-left: -1px;text-indent: 40px ;font-weight: 500; text-align: center"
+                            ng-model="addSex">
+                        <option>全部</option>
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                </li>
+
+            </ul>
+            <a class="page8-left-button" ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>

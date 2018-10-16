@@ -1,0 +1,191 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all-el  mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p>
+                            <input type="checkbox" group-check-all-el   mess_id="{{g.id}}">
+                        </p>
+                        <h4 new-list-show>
+                            {{g.name}}
+                        </h4>
+                        <h5 new-list-show>
+                            {{g.count}}
+                        </h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos">
+                            <label>
+                                <p>
+                                    <input type="checkbox" group-check-one-el class="new-wx-equip-input11">
+                                </p>
+                                <h2 title="{{d.device}}">
+                                    {{d.rank}}
+                                </h2>
+                            </label></li></ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top11"></a>
+            <a ng-click="getNav()" class="get-back-logo"></a>
+            <h2 class="page-title">微信好友管理</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page11-outside-box" ng-show="outSideBox">
+            <div class="page-floor-title">
+                <span class="page-floor-title-logo phone"></span>
+                <h2>微信帐号列表</h2>
+                <button class="right-wx-button" ng-click="getNewMore()">实时刷新好友列表</button>
+                <!--<button class="get-new-list" ng-click="getNewList()">刷新</button>-->
+            </div>
+            <div class="page11-floor-one">
+                <ul class="page11-floor-one-list">
+                    <li class="page11-floor-one-li first-li">
+                        <ul>
+                            <li style="width: 10.6%" class="page11-title-one">编号</li>
+                            <li style="width: 16.6%"  class="page11-title-one">微信名称</li>
+                            <li  style="width: 16.6%" class="page11-title-one">微信号</li>
+                            <li style="width: 16.6%"  class="page11-title-one">添加时间</li>
+                            <li  style="width: 22.6%" class="page11-title-one">手机编号</li>
+                            <li  style="width: 16.6%" class="page11-title-one">操作</li>
+                        </ul>
+                    </li>
+                    <li class="page11-floor-one-li hover-one"  ng-repeat="m in MemberList11" ng-class="isEven($index)">
+                        <ul>
+                            <li style="width: 10.6%">{{m.rank}}</li>
+                            <li style="width: 16.6%">{{m.wechatVo.nickname||'-'}}</li>
+                            <li style="width: 16.6%">{{m.wechatVo.number||'-'}}</li>
+                            <li style="width: 16.6%">{{m.wechatVo.time}}</li>
+                            <li style="width: 22.6%">{{m.device}}</li>
+                            <li style="width: 16.6%"><button ng-click="getInsideBox(m.wechatVo.id,m.wechatVo.number,m.device)">查看好友列表</button></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="fucking-pages" id="pages11"></div>
+            </div>
+        </div>
+        <div class="page11-outside-box" ng-show="inSideBox">
+            <div class="page-floor-title">
+                <span class="page-floor-title-logo phone"></span>
+                <h2>微信好友列表</h2>
+                <button class="back-wx-button" ng-click="getBack()">返回微信帐号列表</button>
+                <button class="right-wx-button " ng-click="ThumbsUp()">朋友圈点赞</button>
+                <button class="right-wx-button" ng-click="getMessageSendBox()">发送消息</button>
+                <button class="right-wx-button right-wx-button-hide" ng-click="getNew(MemberId)">实时刷新好友列表</button>
+            </div>
+            <div class="page11-floor-two">
+                <ul class="page11-floor-two-list">
+                    <li class="page11-floor-two-li first-li">
+                        <ul>
+                            <li class="page11-s-li">
+                                <div class="page11-checkAll-div" id="zheMoren"><input type="checkbox" group-all-checked-el ></div>
+                            </li>
+                            <li class="page11-title-one">昵称</li>
+                            <li class="page11-title-one">性别</li>
+                            <li class="page11-title-one">微信号</li>
+                            <li class="page11-title-one">操作</li>
+                        </ul>
+                    </li>
+                    <li class="page11-floor-two-li" ng-repeat="w in WxList" ng-class="isEven($index)">
+                        <ul>
+                            <li class="page11-s-li">
+                                <div class="page11-div-checkbox" group_id="{{w.id}}" club_name="{{w.nickname}}"><input
+                                        type="checkbox" group-checked-tw></div>
+                            </li>
+                            <li>{{w.nickname}}</li>
+                            <li>{{SexNew(w.sex)}}</li>
+                            <li>{{w.alias==''?w.username:w.alias}}</li>
+                            <li>
+                                <button ng-click="getEditBoxOne(w.id)">编辑</button>
+                                <button ng-click="getEditBoxTwo(w.id)">标签</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page11-edit-one" ng-show="editBoxOne">
+    <div class="edit-box">
+        <h2>更改昵称</h2>
+        <div class="edit-input">
+            昵称: <input type="text" placeholder="请输入昵称！" ng-model="newName">
+        </div>
+        <div class="edit-button">
+            <button ng-click="cancelButton()">取消</button>
+            <button ng-click="SureButtonOne(editId)">确认</button>
+        </div>
+    </div>
+</div>
+<div class="page11-edit-one" ng-show="editBoxTwo">
+    <div class="edit-box">
+        <h2>添加标签</h2>
+        <div class="edit-input">
+            标签: <input type="text" placeholder="请输入添加字段！" ng-model="newTag">
+        </div>
+        <div class="edit-button">
+            <button ng-click="cancelButton()">取消</button>
+            <button ng-click="SureButtonTwo(editId)">确认</button>
+        </div>
+    </div>
+</div>
+
+<div class="page12-message-send-box" ng-show="sendMsgFri">
+    <div class="message-send-box">
+        <h2 class="message-send-box-title">
+            发送好友信息
+            <!--<span ng-show="sendPhoto" ng-click="getPhotoSendList()"></span>-->
+            <!--<span ng-show="sendWords" ng-click="getMessageSend()"></span>-->
+        </h2>
+        <textarea placeholder="说点什么.." ng-model="saySomething"></textarea>
+        <!--<ul class="message-send-pic-list" ng-show="photoSendList">-->
+        <!--<li><p>1</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>2</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>3</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>4</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>5</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>6</p><input type="file" send-image></li>-->
+        <!--<li style="display: none"><p>7</p><input type="file" send-image></li>-->
+        <!--</ul>-->
+        <div class="send-message-button">
+            <button ng-click="NoMessageSendBox()">取消</button>
+            <button ng-click="sureMessageSendBox()">确定</button>
+        </div>
+    </div>
+</div>
+
+<div class="page12-message-send-box" ng-show="ThumbsUpTurn">
+    <div class="message-send-box">
+        <h2 class="message-send-box-title">
+            输入点赞数量
+            <!--<span ng-show="sendPhoto" ng-click="getPhotoSendList()"></span>-->
+            <!--<span ng-show="sendWords" ng-click="getMessageSend()"></span>-->
+        </h2>
+        <input type="number" max="30" min="1" class="page11-ThumbsUp" ng-blur="lastFound()" ng-model="ThumbsUpNums">
+        <div class="send-message-button">
+            <button ng-click="NoThumbsUpTurn()">取消</button>
+            <button ng-click="sureThumbsUpTurn()">确定</button>
+        </div>
+    </div>
+</div>

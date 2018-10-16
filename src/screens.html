@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>蚁客宝营销系统</title>
+    <link rel="shortcut icon" href="images/headeLogo.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="vendor/jquery-1.11.3.min.js"></script>
+    <script src="vendor/angular.js"></script>
+    <!--<script src="js/screen.js"></script>-->
+    <script src="screen/screen.js"></script>
+</head>
+<body>
+
+<div class="screen-box" ng-controller="screenCtrl">
+    <div class="screen-operation">
+        <div class="group-title">
+            <h2>操作选择</h2>
+
+        </div>
+        <div class="screen-operation-group">
+            <div  ng-click="checkAllDevice()"><span class="screen-operation-span1"></span><span class="screen-operation-span11">全选设备</span></div>
+            <div  ng-click="reload()"><span class="screen-operation-span2"></span><span class="screen-operation-span11">刷新同屏</span></div>
+            <div  ng-click="showOperationList()"><span class="screen-operation-span3"></span><span class="screen-operation-span11">批量操作</span></div>
+            <div  ng-click="showWriteBox()"><span class="screen-operation-span4"></span><span class="screen-operation-span11">输入框</span></div>
+        </div>
+    </div>
+    <div class="group-box">
+        <div class="group-title">
+            <h2>设备选择</h2>
+        </div>
+        <div class="screen-group-title">
+            已选择设备（<span>{{ShowSomeDevices}}</span>/<span class="ShowAllDevices"></span>）
+        </div>
+        <ul class="group-list">
+            <li class="group-list-li" ng-repeat="g in groupList">
+                <div ng-click="showList(g.id)" class="canShow1212">
+                    <label>
+                        <span class="screen-isCheck-span-all"><input type="checkbox" group-check-all></span>
+                        <h2>{{g.name}}</h2>
+                        <h3>({{g.count}})</h3>
+                    </label>
+                </div>
+                <ul ng-class="canShowList(g.id)">
+                    <li ng-repeat="a in g.deviceVos">
+                        <label>
+                            <span class="screen-isCheck-span"><input type="checkbox" class="screen-isCheck" group-check-one device="{{a.device}}"></span>
+                            <h6>{{a.rank}}</h6>
+                        </label>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="screens">
+        <a id="top-side"></a>
+        <ul class="screens-list" screen-watcher>
+            <!--<li>-->
+            <!--<h2>01</h2>-->
+            <!--<span class="get-new"></span>-->
+            <!--<canvas></canvas>-->
+            <!--<div class="screens-operation">-->
+            <!--<span class="get-back"></span>-->
+
+            <!--<span class="get-home"></span>-->
+            <!--<span class="get-check">-->
+            <!--<input type="checkbox">-->
+            <!--</span>-->
+            <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="screen-curtain">
+        <h2>请选择设备！</h2>
+    </div>
+    <!--<div class="buttons-list">-->
+        <!--<span class="reload" ng-click="reload()">刷新</span>-->
+        <!--<span class="check-all" ng-click="checkAllDevice()">全选</span>-->
+        <!--<span class="operations" ng-click="showOperationList()">批量操作</span>-->
+        <!--<span class="write-in" ng-click="showWriteBox()">输入框</span>-->
+        <!--<span class="reset" ng-click="resetPhone()">重启</span>-->
+    <!--</div>-->
+    <!--<div class="right-line"></div>-->
+    <div class="operation-list" ng-show="operationList">
+        <div class="operation-list-close" ng-click="operationClose()">X</div>
+        <ul>
+            <li>
+                <span class="page1-dropdown2-span1"></span>
+                <p>&#12288;蓝牙</p>
+                <button class="close-buttons" ng-click="closeAll(3)">关</button>
+                <button class="open-buttons" ng-click="openAll(3)">开</button>
+            </li>
+
+            <li>
+                <span class="page1-dropdown2-span2"></span>
+                <p>&#12288;飞行</p>
+                <button class="close-buttons" ng-click="closeAll(4)">关</button>
+                <button class="open-buttons" ng-click="openAll(4)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span3"></span>
+                <p>&#12288;WIFI</p>
+                <button class="close-buttons" ng-click="closeAll(2)">关</button>
+                <button class="open-buttons" ng-click="openAll(2)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span4"></span>
+                <p>&#12288;GPS</p>
+                <button class="close-buttons" ng-click="closeAll(1)">关</button>
+                <button class="open-buttons" ng-click="openAll(1)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span5"></span>
+                <p>&#12288;数据</p>
+                <button class="close-buttons" ng-click="closeAll(5)">关</button>
+                <button class="open-buttons" ng-click="openAll(5)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span6"></span>
+                <p>&#12288;手机屏幕</p>
+                <button class="close-buttons" ng-click="closeAll(6)">关</button>
+                <button class="open-buttons" ng-click="openAll(6)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span7"></span>
+                <p>&#12288;微信</p>
+                <button class="close-buttons" ng-click="closeAll(7)">关</button>
+                <button class="open-buttons" ng-click="openAll(7)">开</button>
+            </li>
+            <li>
+                <span class="page1-dropdown2-span8"></span>
+                <p>&#12288;Home</p>
+                <button class="back-home" ng-click="backHome()">返回桌面</button>
+            </li>
+        </ul>
+    </div>
+    <div class="write-in-box" ng-show="writeInBox1">
+
+        <textarea placeholder="请输入内容..." ng-model="writeSomething"></textarea>
+        <button class="write-in-cancel" ng-click="writeCancel()">取消</button>
+        <button class="write-in-sure" ng-click="writeSure()">确认</button>
+    </div>
+    <div class=" screen-tsak " style="background-color: #ffffff;z-index: 220;top: -10%;position: fixed" ng-class="taskSize">
+        <div class="top-block"></div>
+        <div class="screen-task-show-button" ng-click="changeSize()" ng-hide="taskButtonHide">
+            <span class="task-left"></span>
+            <img src="images/task-word-logo.png" alt="" class="task-word-logo">
+            <!--<div><h2>任务日志</h2></div>-->
+            <span class="new-bell" ng-show="newBell"></span>
+        </div>
+        <div class="task-hide-button"style="margin-top: 25px" ng-show="taskHideButton">
+            <span class="task-hide-logo"></span>
+            <h3>任务栏</h3>
+            <span class="task-right" ng-click="getHide()"></span>
+        </div>
+        <div class="task-list-box" ng-show="taskHideButton">
+            <ul class="task-classify">
+                <li ng-class="isActive1(taskAll)" style="height: 45px" ng-click="getTaskAll()">全部</li>
+                <li ng-class="isActive1(taskDoing)"style="height: 45px"  ng-click="getTaskDoing()">正在执行</li>
+                <li ng-class="isActive1(taskWait)"style="height: 45px"  ng-click="getTaskWait()">等待执行</li>
+                <li ng-class="isActive1(taskDown)"style="height: 45px"  ng-click="getTaskDown()">执行完成</li>
+            </ul>
+            <ul class="task-list-title">
+                <li class="task-b-li">任务名</li>
+                <!--<li class="task-s-li">群组</li>-->
+                <li class="task-s-li">状态</li>
+                <li class="task-d-li">操作</li>
+                <li class="task-b-li">时间</li>
+            </ul>
+            <ul class="task-list">
+                <li class="task-list-li" ng-repeat="t in taskList track by $index">
+                    <ul class="task-list-all">
+                        <li class="task-b-li "ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)"
+                            ng-mouseleave="getLineDown($event)">{{t.scriptChName}}
+                        </li>
+                        <!--<li class="task-s-li" ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{t.groupName}}</li>-->
+                        <li class="task-s-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">
+                            {{getStatus(t.status)}}
+                        </li>
+                        <li class="task-d-li" ng-show="del">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltask($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="delone">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltaskone($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="deltwo">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltasktwo($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="delsree">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltasksree($index)">删除
+                            </button>
+                        </li>
+                        <li class="task-b-li" ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)"
+                            ng-mouseleave="getLineDown($event)">{{t.addTime}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="alert alert-success page1-alert-success" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="success-img"></span>
+        <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+        <span class="page1-alert-success-con"></span>
+    </div>
+    <div class="alert alert-warning page1-alert-waring" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="waring-img"></span>
+        <strong> &nbsp;&nbsp;已添加！ </strong><br>
+        <span class="page1-alert-waring-con"></span>
+    </div>
+    <div class="alert alert-danger page1-alert-danger" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="danger-img"></span>
+        <strong> &nbsp;&nbsp;添加失败！</strong><br>
+        <span class="page1-alert-danger-con"></span>
+    </div>
+    <div class="alert alert-warning page1-alert-small-warning" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="page1-alert-small-warning-con"></span>
+    </div>
+    <div class="alert alert-danger page1-alert-small-danger" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="page1-alert-small-danger-con">阿大声道撒大所大所</span>
+    </div>
+    <div class="alert alert-success page1-alert-small-success" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="page1-alert-small-success-con"></span>
+    </div>
+    <div class="alert alert-success page1-alert-success1" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="success-img"></span>
+        <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+        <span class="page1-alert-success-con"></span>
+    </div>
+    <div class="alert alert-warning page1-alert-waring1" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="waring-img"></span>
+        <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+        <span class="page1-alert-waring-con"></span>
+    </div>
+    <div class="alert alert-danger page1-alert-danger1" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <span class="danger-img"></span>
+        <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+        <span class="page1-alert-danger-con"></span>
+    </div>
+</div>
+</body>
+</html>

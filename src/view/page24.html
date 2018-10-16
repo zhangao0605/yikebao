@@ -1,0 +1,91 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all24 mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all24  mess_id="{{g.id}}"></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one24 class="new-wx-equip-input9"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top24"></a>
+            <h2 class="page-title-high">陌陌入群加好友</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>陌陌帐号列表</h2>
+        </div>
+        <div class="page9-floor-one">
+            <ul class="page9-one-list">
+                <li class="page9-one-li first-li">
+                    <ul>
+                        <!--<li class="page9-s-li"><div class="page9-checked-all"><input type="checkbox" group-all-checked-nine></div></li>-->
+                        <li class="page9-b-li page9-title-li">陌陌名称</li>
+                        <li class="page9-b-li page9-title-li">陌陌号</li>
+                        <li class="page9-b-li page9-title-li">添加时间</li>
+                    </ul>
+                </li>
+                <li class="page9-one-li" ng-repeat="m in MemberList9" ng-class="isEven($index)">
+                    <ul>
+                        <!--<li class="page9-s-li"><div class="page9-checked"><input type="checkbox" group-checked-nine wx_number="{{m.number}}" class="page9-list-input-check"></div></li>-->
+                        <li class="page9-b-li">{{m.nickname||'-'}}</li>
+                        <li class="page9-b-li">{{m.number||'-'}}</li>
+                        <li class="page9-b-li">{{m.time}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages9"></div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+        <div class="page10-floor-two">
+            <ul class="page10-one-list">
+                <li>选择添加数量: <input type="number" min="1" class="page10-one-number" ng-model="countNumber">个</li>
+                <li>
+                    选择时间间隔 <input type="number" min="1" class="page9-interval" ng-model="timeInterval"> 秒
+                </li>
+                <!--<li>-->
+                    <!--&lt;!&ndash;选择防封号策略:&ndash;&gt;-->
+                    <!--&lt;!&ndash;<select class="page-select page9-select" disabled>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option>测试1</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option>测试2</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option>测试3</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+
+                    <!--打招呼用语:-->
+                    <!--<input type="text" class="page9-say-hello" ng-model="sayHello">-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<h2>加人策略:</h2>-->
+                <!--<div class="page10-checkbox"><input type="checkbox" group-checked disabled></div>-->
+                <!--<h2>对添加人员进行记录，下次忽略</h2>-->
+                <!--</li>-->
+            </ul>
+            <a ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>

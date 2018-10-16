@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>蚁客宝营销系统</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minmum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="shortcut icon" href="images/headeLogo.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/pagination.css">
+    <link rel="stylesheet" href="vendor/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="vendor/jquery.emoji.css">
+    <link rel="stylesheet" href="vendor/railscasts.css">
+    <link rel="stylesheet" href="vendor/emjoyMyself.css">
+    <link rel="stylesheet" href="vendor/upload.css">
+    <link rel="stylesheet" href="vendor/upload1.css">
+    <link rel="stylesheet" href="vendor/upload2.css">
+    <link rel="stylesheet" href="vendor/upload3.css">
+
+
+</head>
+<body>
+<div class="main-body1" ng-controller="mainC">
+    <div class="side-bar1">
+        <div class="nav-title1">
+            <span class="nav-logo"></span>
+            <h2>蚁客宝</h2>
+        </div>
+        <ul class="nav-list-all">
+            <li class="nav-list-li">
+                <div class="nav-list-floor" nav-click ng-click="getTop(34,'page34')" ng-class="isActive(navPartOne)">
+                    <span class="n-logo-one"></span>
+                    <h2>设备</h2>
+                </div>
+                <ul class="nav-floor-ul" ng-show="navPartOne">
+                    <!--<a ng-click="getTop(2,'page2')">-->
+                        <!--<li ng-class="isActive(activeTwo)">设备管理</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(17,'page17')">-->
+                        <!--<li ng-class="isActive(activeSeventeen)">群组管理</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(3,'page3')">-->
+                        <!--<li ng-class="isActive(activeThree)">批量操作</li>-->
+                    <!--</a>-->
+                    <a ng-click="getTop(34,'page34')">
+                        <li ng-class="isActive(activemmp)">设备管理</li>
+                    </a>
+                    <a ng-click="goScreen()">
+
+                        <li  ng-class="isActive(activeEightteen)">同屏管理</li>
+                    </a>
+                </ul>
+            </li>
+            <!--<li class="nav-list-li">-->
+            <!--<div class="nav-list-floor" nav-click ng-click="getTop(4,'page4')" ng-class="isActive(navPartTwo)">-->
+            <!--<span class="n-logo-two"></span>-->
+            <!--<h2>设备/帐号</h2>-->
+            <!--</div>-->
+            <!--<ul class="nav-floor-ul" ng-show="navPartTwo">-->
+            <!--<a ng-click="getTop(4,'page4')"><li ng-class="isActive(activeFour)">微信设备/帐号管理</li></a>-->
+            <!--<a ng-click="getTop(26,'page26')"><li ng-class="isActive(activeTwentySix)">陌陌设备/帐号管理</li></a>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <li class="nav-list-li">
+                <div class="nav-list-floor" nav-click ng-click="getTop(35,'page35')" ng-class="isActive(navPartThree)">
+                    <span class="n-logo-three"></span>
+                    <h2>微信</h2>
+                </div>
+                <!--<ul class="nav-floor-ul" ng-show="navPartThree">-->
+                    <!--<a ng-click="getTop(4,'page4')">-->
+                        <!--<li ng-class="isActive(activeFour)">微信设备帐号管理</li>-->
+                    <!--</a>-->
+                <!--</ul>-->
+                <ul class="nav-floor-ul" ng-show="navPartThree">
+                    <a ng-click="getTop(35,'page35')">
+                        <li ng-class="isActive(activeThirtyFive)">微信管理</li>
+                    </a>
+                </ul>
+                <ul class="nav-floor-ul" ng-show="navPartThree">
+                    <a ng-click="getTop(36,'page36')">
+                        <li ng-class="isActive(activeThirtySix)">微信加人</li>
+                    </a>
+                </ul>
+                <ul class="nav-floor-ul" ng-show="navPartThree">
+                    <a ng-click="getTop(37,'page37')">
+                        <li ng-class="isActive(activeThirtySeven)">微信运营</li>
+                    </a>
+                </ul>
+
+                <!--<p class="line" ng-show="navPartThree"></p>-->
+                <!--<ul class="nav-floor-ul" ng-show="navPartThree">-->
+                    <!--<a ng-click="getTop(27,'page27')">-->
+                        <!--<li ng-class="isActive(activeTwentySeven)">微信通讯录上传</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(6,'page6')">-->
+                        <!--<li ng-class="isActive(activeSix)">微信通讯录加人</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(7,'page7')">-->
+                        <!--<li ng-class="isActive(activeSeven)">微信精准加人</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(8,'page8')">-->
+                        <!--<li ng-class="isActive(activeEight)">微信附近的人</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(9,'page9')">-->
+                        <!--<li ng-class="isActive(activeNine)">微信入群加好友</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(10,'page10')">-->
+                        <!--<li ng-class="isActive(activeTen)">微信接受好友请求</li>-->
+                    <!--</a>-->
+                <!--</ul>-->
+                <!--<p class="line" ng-show="navPartThree"></p>-->
+                <!--<ul class="nav-floor-ul" ng-show="navPartThree">-->
+                    <!--<a ng-click="getTop(11,'page11')">-->
+                        <!--<li ng-class="isActive(activeEleven)">微信好友管理</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(12,'page12')">-->
+                        <!--<li ng-class="isActive(activeTwelve)">微信群管理</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(31,'page31')">-->
+                        <!--<li ng-class="isActive(activeThirtyOne)">微信扫码进群</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(13,'page13')">-->
+                        <!--<li ng-class="isActive(activeThirdteen)">发朋友圈</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(28,'page28')">-->
+                        <!--<li ng-class="isActive(activeTwentyEight)">朋友圈点赞</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(33,'page33')">-->
+                        <!--<li ng-class="isActive(activeThirtySree)">转发朋友圈</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(14,'page14')">-->
+                        <!--<li ng-class="isActive(activeFourteen)">位置穿越</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(15,'page15')">-->
+                        <!--<li ng-class="isActive(activeFifteen)">清理僵尸粉</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(16,'page16')">-->
+                        <!--<li ng-class="isActive(activeSixteen)">群发消息</li>-->
+                    <!--</a>-->
+                    <!--<a ng-click="getTop(32,'page32')">-->
+                        <!--<li ng-class="isActive(activeThirtyTwo)">微信关注公众号</li>-->
+                    <!--</a>-->
+                <!--</ul>-->
+            </li>
+
+            <!----------------------momo导航栏------------------------>
+            <!--<li class="nav-list-li">-->
+            <!--<div class="nav-list-floor" nav-click ng-click="getTop(26,'page26')" ng-class="isActive(navPartFour)">-->
+            <!--<span class="n-logo-four"></span>-->
+            <!--<h2>陌陌</h2>-->
+            <!--</div>-->
+            <!--<ul class="nav-floor-ul" ng-show="navPartFour">-->
+            <!--<a ng-click="getTop(26,'page26')"><li ng-class="isActive(activeTwentySix)">陌陌设备/帐号管理</li></a>-->
+            <!--</ul>-->
+            <!--<p class="line" ng-show="navPartFour"></p>-->
+            <!--<ul class="nav-floor-ul" ng-show="navPartFour">-->
+            <!--<a ng-click="getTop(21,'page21')"><li ng-class="isActive(activeTwentyone)">陌陌通讯录加人</li></a>-->
+            <!--<a ng-click="getTop(22,'page22')"><li ng-class="isActive(activeTwentytwo)">陌陌精准加人</li></a>-->
+            <!--<a ng-click="getTop(23,'page23')"><li ng-class="isActive(activeTwentythree)">陌陌附近的人</li></a>-->
+            <!--<a ng-click="getTop(24,'page24')"><li ng-class="isActive(activeTwentyfour)">陌陌入群加好友</li></a>-->
+            <!--<a ng-click="getTop(25,'page25')"><li ng-class="isActive(activeTwentyfive)">陌陌接受好友请求</li></a>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--<li class="nav-list-li">-->
+            <!--<div class="nav-list-floor" nav-click ng-click="getTop(11,'page11')" ng-class="isActive(navPartFive)">-->
+            <!--<span class="n-logo-five"></span>-->
+            <!--<h2>运营</h2>-->
+            <!--</div>-->
+            <!--<ul class="nav-floor-ul" ng-show="navPartFive">-->
+            <!--<a ng-click="getTop(11,'page11')"><li ng-class="isActive(activeEleven)">微信好友管理</li></a>-->
+            <!--<a ng-click="getTop(12,'page12')"><li ng-class="isActive(activeTwelve)">微信群管理</li></a>-->
+            <!--<a ng-click="getTop(13,'page13')"><li ng-class="isActive(activeThirdteen)">发朋友圈</li></a>-->
+            <!--<a ng-click="getTop(14,'page14')"><li ng-class="isActive(activeFourteen)">位置穿越</li></a>-->
+            <!--<a ng-click="getTop(15,'page15')"><li ng-class="isActive(activeFifteen)">清理僵尸粉</li></a>-->
+            <!--<a ng-click="getTop(16,'page16')"><li ng-class="isActive(activeSixteen)">群发消息</li></a>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <li class="nav-list-li">
+                <div class="nav-list-floor" nav-click ng-click="getTop(38,'page38')" ng-class="isActive(navPartSix)">
+                    <span class="n-logo-six"></span>
+                    <h2>任务</h2>
+                </div>
+                <ul class="nav-floor-ul" ng-show="navPartThree">
+                    <a ng-click="getTop(38,'page38')">
+                        <li ng-class="isActive(activeThirtyEight)">任务列表</li>
+                    </a>
+                </ul>
+                <ul class="nav-floor-ul" ng-show="navPartThree">
+                    <a ng-click="getTop(39,'page39')">
+                        <li ng-class="isActive(activeThirtyNine)">远程任务</li>
+                    </a>
+                </ul>
+                <!--<ul class="nav-floor-ul" ng-show="navPartSix">-->
+                    <!--<a ng-click="getTop(19,'page19')">-->
+                        <!--<li ng-class="isActive(activeNineteen)">任务列表</li>-->
+                    <!--</a>-->
+                <!--</ul>-->
+            </li>
+
+
+            <!--<li class="nav-list-li">-->
+                <!--<div class="nav-list-floor" nav-click ng-click="getTop(29,'page29')" ng-class="isActive(navPartSeven)">-->
+                    <!--<span class="n-logo-seven"></span>-->
+                    <!--<h2>远程任务</h2>-->
+                <!--</div>-->
+                <!--<ul class="nav-floor-ul" ng-show="navPartSeven">-->
+                    <!--<a ng-click="getTop(29,'page29')">-->
+                        <!--<li ng-class="isActive(activeTwentyNine)">远程任务</li>-->
+                    <!--</a>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;数据统计-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+            <!--<li class="nav-list-li">-->
+            <!--<div class="nav-list-floor" nav-click ng-click="getTop(30,'page30')" ng-class="isActive(navPartEight)">-->
+            <!--<span class="n-logo-eight"></span>-->
+            <!--<h2>数据统计</h2>-->
+            <!--</div>-->
+            <!--<ul class="nav-floor-ul" ng-show="navPartEight">-->
+            <!--<a ng-click="getTop(30,'page30')"><li ng-class="isActive(navPartEight)">数据统计</li></a>-->
+            <!--</ul>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+
+    <div class="view-box" ng-class="viewSize" ng-view></div>
+    <div class="task-box" ng-class="taskSize">
+        <div class="top-block"></div>
+        <div class="task-show-button" ng-click="changeSize()" ng-hide="taskButtonHide">
+            <span class="task-left"></span>
+            <img src="images/task-word-logo.png" alt="" class="task-word-logo">
+            <!--<div><h2>任务日志</h2></div>-->
+            <span class="new-bell" ng-show="newBell"></span>
+        </div>
+        <div class="task-hide-button" ng-show="taskHideButton">
+            <span class="task-hide-logo"></span>
+            <h3>任务栏</h3>
+            <span class="task-right" ng-click="getHide()"></span>
+        </div>
+        <div class="task-list-box" ng-show="taskHideButton">
+            <ul class="task-classify">
+                <li ng-class="isActive1(taskAll)" ng-click="getTaskAll()">全部</li>
+                <li ng-class="isActive1(taskDoing)" ng-click="getTaskDoing()">正在执行</li>
+                <li ng-class="isActive1(taskWait)" ng-click="getTaskWait()">等待执行</li>
+                <li ng-class="isActive1(taskDown)" ng-click="getTaskDown()">执行完成</li>
+            </ul>
+            <ul class="task-list-title">
+                <li class="task-b-li">任务名</li>
+                <!--<li class="task-s-li">群组</li>-->
+                <li class="task-s-li">状态</li>
+                <li class="task-d-li">操作</li>
+                <li class="task-b-li">时间</li>
+            </ul>
+            <ul class="task-list">
+                <li class="task-list-li" ng-repeat="t in taskList track by $index">
+                    <ul class="task-list-all">
+                        <li class="task-b-li" ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)"
+                            ng-mouseleave="getLineDown($event)">{{t.scriptChName}}
+                        </li>
+                        <!--<li class="task-s-li" ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{t.groupName}}</li>-->
+                        <li class="task-s-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">
+                            {{getStatus(t.status)}}
+                        </li>
+                        <li class="task-d-li" ng-show="del">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltask($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="delone">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltaskone($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="deltwo">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltasktwo($index)">删除
+                            </button>
+                        </li>
+
+                        <li class="task-d-li" ng-show="delsree">
+                            <button class="task-d-li-button" ng-class="changeColor(t.status)"
+                                    ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)"
+                                    ng-click="deltasksree($index)">删除
+                            </button>
+                        </li>
+                        <li class="task-b-li" ng-class="changeColor(t.status)" ng-mouseenter="getLineHigh($event)"
+                            ng-mouseleave="getLineDown($event)">{{t.addTime}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;已完成！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<script src="vendor/jquery-2.2.1.min.js"></script>
+<script src="vendor/jquery.pagination.js"></script>
+<!--<script src="vendor/jquery.table2excel.js"></script>-->
+<script src="vendor/jquery.table2excel.js"></script>
+<!--<script src="vendor/jquery.page.js"></script>-->
+<script src="vendor/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="vendor/jquery.dataTables.min.js"></script>
+<script src="vendor/dataTables.bootstrap.min.js"></script>
+<script src="vendor/angular.js"></script>
+<script src="vendor/angular-route.js"></script>
+<script src="vendor/echarts.min.js"></script>
+<script src="vendor/highlight.pack.js"></script>
+<script src="vendor/jquery.mousewheel-3.0.6.min.js"></script>
+<script src="vendor/jquery.mCustomScrollbar.min.js"></script>
+<script src="vendor/jquery.emoji.min.js"></script>
+<script src="vendor/T_upload.js"></script>
+<script src="vendor/T_upload1.js"></script>
+<script src="vendor/T_upload2.js"></script>
+<script src="vendor/T_upload3.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=8p2TtUMeTYCKCsB31jIoi6npifxVQRFG"></script>
+<script src="js/index.js"></script>
+<!--<link rel="stylesheet" href="vendor/bootstrap.min.css">-->
+</body>
+</html>

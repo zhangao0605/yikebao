@@ -1,0 +1,751 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-title1">
+            已选择设备（<span>{{table2AllChecks}}</span>/<span>{{hhalk1}}</span>）
+        </div>
+        <div class="wx-group-list" id="qx">
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-four1 mess_id="{{g.id}}">
+                </p>
+            </label>
+            <div class="wx-group-list" id="">
+                <label class="page14-qx-input">
+                    <p>
+                        <input type="checkbox" group-check-all-four1 mess_id="{{g.id}}">
+                    </p>
+                </label>
+                <div class="new-wx-group-all-title">
+                    <h2 class="new-wx-group-all">所有设备</h2>
+
+                    <h3 class="new-wx-group-number" style="margin-top: -22px">({{hhalk1}})</h3>
+                </div>
+                <!-------点击二级三级勾选框--------->
+                <ul class="new-wx-group-list">
+                    <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                        <div class="list_dt">
+                            <p class="page17-all-checked">
+                                <input type="checkbox" group-check-all-four1 mess_id="{{g.id}}">
+                            </p>
+                            <h4 new-list-show ng-click="fvcMe($index)">
+                                {{g.name}}
+                            </h4>
+                            <i class="list_dt_icon"></i>
+                            <h5>
+                                {{g.count}}
+                            </h5>
+                        </div>
+                        <ul style="display: none" class="list_dd">
+                            <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four1
+                                                                              class="page17-wx-input"></p>
+                                <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top4"></a>
+            <h2 class="page-title-high">微信加人</h2></a>
+            <div class="page-inside-user">
+
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <div class="page-floor-title page2-title-button">
+            <button class="page2-title-button-but1" style="width: 25%" ng-click="tableSwitch(1)">通讯录加人</button>
+            <button class="page2-title-button-but2" style="width: 25%" ng-click="tableSwitch(2)">精准加人</button>
+            <button class="page2-title-button-but3" style="width: 25%" ng-click="tableSwitch(3)">加附近的人</button>
+            <button class="page2-title-button-but4" style="width: 23%" ng-click="tableSwitch(4)">微信群加人</button>
+        </div>
+        <!--通讯录加人部分-->
+        <!--<div class="page4-floor-one page-s-box" style="height: 40%"  ng-show=" outSideBox">-->
+        <!--<div class="page2-floor-first">-->
+        <!--<span style="font-weight: 600">通讯录列表</span>-->
+        <!--<button class="page4-back-button" style="width: 104px;float: right"-->
+        <!--ng-click="page3UpTelephone()">导入通讯录-->
+        <!--</button>-->
+        <!--</div>-->
+        <!--<div class="way-to-box page3-table-up-telephone">-->
+        <!--<ul class="way-to-list">-->
+        <!--<li class="way-to-li first-li">-->
+        <!--<ul>-->
+        <!--<li class="title-li" style="width: 20%;">序号</li>-->
+        <!--<li class="title-li" style="width: 20%">设备编号</li>-->
+        <!--<li class="title-li" style="width: 20%">微信昵称</li>-->
+        <!--<li class="title-li" style="width: 20%">微信好友数量</li>-->
+        <!--<li class="title-li" style="width: 20%">通讯录条数</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="way-to-li" ng-repeat="w in WxMemberList" ng-class="isEven($index)">-->
+        <!--<ul>-->
+        <!--<li style="width: 15%;">-->
+        <!--{{e.rank}}-->
+        <!--</li>-->
+        <!--<li style="width:15%" class="page2-b-td">{{e.imei||'-'}}</li>-->
+        <!--<li style="width:15%">-->
+        <!--{{Status(e.status)}}-->
+        <!--</li>-->
+        <!--<li style="width: 15%;">-->
+        <!--{{Status(e.wechatVo.status)}}-->
+        <!--</li>-->
+        <!--<li style="width:25%" class="page2-table-td-last">-->
+        <!--{{Status(e.wechatVo.status)}}-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+                <button class="page4-back-button" style="width: 104px;float: right"
+                        ng-click="page3UpTelephone()">导入通讯录
+                </button>
+            </div>
+            <ul class="page3-bottom-title-chose" style="position: relative;top: 95px">
+                <li class="page3-bottom-title-chose-li">选择加人数量：<input type="number" class="third-number" min="1"
+                                                                      ng-model="addPeopleCount"> 人<span
+                        style="color: #2ABF9E;font-size: 14px">（推荐<=15人）</span>
+                    <!--<br><span style="font-size: 14px;color: red;position:relative;top: 6px">建议单次添加好友数量不大于15人，多余15人有几率导致失败</span>-->
+                </li>
+                <li class="page3-bottom-title-chose-li">选择加人间隔：<input type="number" min="1" max="5" ng-model="minTime">
+                    ~ <input type="number" min="6" max="10" ng-model="maxTime"> 秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello"
+                    style="position: relative;left: 40%;margin-top: -104px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type clickSelect">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li">
+                    <h3 style="margin-top: 20px;margin-left:49.5%;display: none" class="clickAddText clickAddTextno"><input type="file" class="upfiler"
+                                                                                                             accept=".XLS,.xlsx"
+                                                                                                             upload-file
+                                                                                                             ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="left:40%;margin-top: 10px;width: 50%;position: relative" class="page3-Addpeople-Say">
+                        <div id="editor1" class="page2-emjoy1 page100-emjoy100" contenteditable="true"
+                             style="width:60%;margin-left: 122px;border-radius: 3px;height:108px;border: 1px solid gray;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -210px;position: relative;left: 3%" id="btn1"
+                                class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <div class="upText">
+                <span class="deleteText" ng-click="deleteContent()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra">无文件</li>
+                            <li class="exselTextGray">0kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" ng-click="page3TableSendAll1()">执行</button>
+            <div style="margin-left: 1.8%;color:#2ABF9E;top:280px;position: absolute">
+                注：因微信规则限制，单个微信号一定时间内只能主动打招呼15人，建议您每次添加至多15人，<br><br>&#12288;&#12288;<span
+                    style="position: relative;top: -15px">添加完成后等候半小时后在进行操作</span></div>
+        </div>
+        <!--导入通讯录部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%" ng-show="uptel ">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">上传通讯录</span>
+
+                <button class="page4-back-button" style="width: 104px;float: right;"
+                        ng-click="resetBackAddTel()">返回
+                </button>
+
+                <button class="page4-back-button in-button-box "
+                        style="width: 104px;float: right;position: relative;margin-right: 30px"
+                        ng-click="resetButton()">
+                    <input type="file" id="ass-input6" get-ass-six accept=".XLS,.xlsx">
+                    <span class="jijijiji">选择文件</span>
+                </button>
+                <button class="page4-back-button1"
+                        style="width: 104px;float: right;position: relative;margin-right: 30px;outline: none"
+                        ng-click="resetButton()"><span class="glyphicon glyphicon-download-alt"></span>
+                    <a href="http://www.digvita.com/通讯录加人模板.xlsx">下载模板</a>
+                </button>
+                <button class="page4-back-button" ng-click="getAssBack()" ng-show="assBack">返回</button>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li">编号</li>
+                            <li class="title-li">名称</li>
+                            <li class="title-li">手机号</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in WxMemberList" ng-class="isEven($index)">
+                        <ul>
+                            <li>{{$index+1}}</li>
+                            <li>{{w.name}}</li>
+                            <li>{{w.number}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page6-floor-two" style="height: 340px" ng-show="uptel">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">导入策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+
+                <li class="page6-third-li ">
+                    <ul>
+                        <li class="page3-table1-click-table2">
+                            <div class="on"><input type="radio" name="page6-third" radio-checked-six
+                                                   ng-click="getAssHide()"
+                                                   checked></div>
+                            通讯录名单全部导入所有设备
+                        </li>
+                        <li class="page3-table1-click-table2">
+                            <div><input type="radio" name="page6-third" radio-checked-six ng-click="getAssShow()"></div>
+                            通讯录名单平分到所有设备
+                        </li>
+                        <li ng-show="assRadioChoose" class="page3-table1-click-table2">&#12288;&nbsp; 每台设备最多添加 <input
+                                type="number" class="third-number" min="1"
+                                ng-model="page3table1table2addPeopleCount"> 条号码
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="page6-first-li page3-table1-click-table2" style="margin-left: 5px;margin-top: 30px">
+                    <div><input type="checkbox" group-checked ng-click="clear($event)"></div>
+                    &nbsp; 导入通讯录前清空手机通讯录号码
+                </li>
+
+            </ul>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page3table1table2SendAll()">执行
+            </button>
+        </div>
+        <!--精准加人部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%" ng-show="outSideBox1 ">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">人员名单列表</span>
+                <button class="page4-back-button in-button-box"
+                        style="width: 104px;float: right;position: relative;margin-right: 30px"
+                        ng-click="resetButton()">
+                    <input type="file" id="ass-input7" accept=".XLS,.xlsx" get-ass-seven>导入文件
+                </button>
+                <button class="page4-back-button1"
+                        style="width: 104px;float: right;position: relative;margin-right: 30px;outline: none"
+                        ng-click="resetButton()"><span class="glyphicon glyphicon-download-alt"></span>
+                    <a href="http://www.digvita.com/精准加人模板.xlsx">下载模板</a>
+                </button>
+                <button class="page4-back-button" ng-click="getAssBack()" ng-show="assBack">返回</button>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width: 25%">编号</li>
+                            <li class="title-li" style="width: 25%">名称</li>
+                            <li class="title-li" style="width: 25%">微信号/手机号/QQ/邮箱</li>
+                            <li class="title-li" style="width: 25%">精准话术</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in WxMemberList1" ng-class="isEven($index)">
+                        <ul>
+                            <li style="width: 25%">{{$index+1}}</li>
+                            <li style="width: 25%">{{w.name}}</li>
+                            <li style="width: 25%">{{w.number}}</li>
+                            <li style="width: 25%">{{w.msg}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-left: 1.8%;color:#2ABF9E;margin-top: 20px">注：建议您每次导入数据条数为：选择的设备个数*15条</div>
+            <!--<div class="M-box1 page2-table1-page"></div>-->
+        </div>
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox1">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">导入策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+
+                <li class="page6-third-li ">
+                    <ul>
+                        <li class="page3-table1-click-table2">
+                            <div class="on"><input type="radio" name="page6-third" radio-checked-six
+                                                   ng-click="page2Table1SomeNum()"
+                                                   checked></div>
+
+                            所选设备平均分配数据添加好友
+
+                        </li>
+                        <li class="page3-table1-click-table2">
+                            <div><input type="radio" name="page6-third" radio-checked-six
+                                        ng-click="page2Table1AllNum()"></div>
+                            所选设备对全部数据添加好友
+                        </li>
+                        <li ng-show="assRadioChoose1" class="page3-table1-click-table2">&#12288;&nbsp; 每台设备最多添加 <input
+                                style="text-align: center" type="number" class="third-number" min="1" max="15"
+                                ng-model="page3table21tabl2eaddPeopleCount"> 条数据
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;选择加人间隔：<input type="number"
+                                                                                                           min="1"
+                                                                                                           max="5"
+                                                                                                           ng-model=" page3table21tabl2minTime">
+                    ~ <input type="number" min="6" max="10" ng-model="page3table21tabl2maxTime"> 秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: 400px;margin-top: -185px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type  clickSelect1">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 405px;margin-top: -5px">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText clickAddText1">
+                        <input type="file"
+                               accept=".XLS,.xlsx"
+                               class="upfiler1"
+                               upload-file1
+                               ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: -5px;margin-top: 30px;width: 50%" class="page3-jingzhun-Say">
+                        <div id="editor2" class="page3-emjoy1 page100-emjoy100" contenteditable="true"
+                             style="width:100%;margin-left: 122px;border-radius: 3px;height:108px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 17px" id="btn2" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div class="upText1">
+                <span class="deleteText1" ng-click="deleteContent1()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg1">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra1">哈哈哈</li>
+                            <li class="exselTextGray1">800kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page3table2table2SendAll()">执行
+            </button>
+            <!--<div class="lastTishiOut">微信已提示频繁，请稍后再试</div>-->
+        </div>
+        <!--附近的人部分-->
+        <div class="page4-floor-one page-s-box" style="height: 4%" ng-show="outSideBox3 ">
+            <li class="page6-third-li ">
+                <ul>
+                    <li class="page3-table1-click-table2" style="margin-top: -8px;margin-left: 16px">
+                        <div class="on page3-table1-click-table2-Table3-checked"><input type="radio" name="page6-third"
+                                                                                        radio-checked-six
+                                                                                        ng-click="page3Table4Show1()"
+                                                                                        checked></div>
+                        当前位置
+                        <div class="page3-table1-click-table2-Table3-Nochecked" style="margin-left: 50px"><input
+                                type="radio" name="page6-third" radio-checked-six
+                                ng-click="page3Table4Show2()"></div>
+                        位置穿越<span style="color: red">（公测中）</span>
+                    </li>
+                </ul>
+
+            </li>
+        </div>
+        <div class="page6-floor-two" style="height: 370px" ng-show="outSideBox2">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+                <li class="page3-bottom-title-chose-li">&nbsp;&nbsp;性&#12288;&#12288;别：<select ng-model="addSex"
+                                                                                               style="width: 57px;height: 30px;text-align: center;border-radius: 3px;margin-left: 10px;font-size: 14px">
+                    <option>全部</option>
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人范围：<select
+                        ng-model="mapRang"
+                        style="width: 57px;height: 30px;text-align: center;border-radius: 3px;margin-left: 10px;font-size: 14px">
+                    <option>2000</option>
+                    <option>5000</option>
+                </select>&#12288;米
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人数量：<input type="number"
+                                                                                                         min="1"
+                                                                                                         ng-model="addPeopleNumber">&#12288;人
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人间隔：<input type="number"
+                                                                                                         min="1"
+                                                                                                         max="5"
+                                                                                                         ng-model="page3table41tabl1minTime">
+                    ~ <input type="number"
+                             min="5"
+                             max="10"
+                             ng-model="page3table41tabl1maxTime">&#12288;秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: 400px;margin-top: -235px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type  clickSelect2">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 405px;margin-top:10px">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText clickAddText2">
+                        <input type="file"
+                               class="upfiler2"
+                               accept=".XLS,.xlsx"
+                               upload-file2
+                               ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: -5px;margin-top: 30px;width: 50%" class="page3-fujin-Say">
+                        <div id="editor3" class="page3-emjoy2 page100-emjoy100" contenteditable="true"
+                             style="width:100%;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 17px" id="btn3" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div style="margin-left: 1.8%;color:#2ABF9E;top: 330px;position: absolute">
+                注：因微信规则限制，单个微信号一定时间内只能打招呼15人左右，建议单次打招呼15人
+            </div>
+            <div class="upText2">
+                <span class="deleteText2" ng-click="deleteContent2()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg2">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra2">哈哈哈</li>
+                            <li class="exselTextGray2">800kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page3table4table1SendAll()">执行
+            </button>
+        </div>
+        <!--位置穿越部分-->
+        <div class="page6-floor-two" style="height: 400px" ng-show="outSideBox4">
+            <div class="page14-floor-two page-s-box"
+                 style="height: 380px;width: 96.8%;position: absolute;margin-left: 1.6%;margin-top: 10px"
+                 id="page14-map"></div>
+            <div id="r-result">请输入:<input type="text" id="suggestId" size="20" value="百度" ng-model="mapLocation"/></div>
+            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+        </div>
+        <div class="page6-floor-two" style="height: 370px" ng-show="outSideBox4">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+                <li class="page3-bottom-title-chose-li">&nbsp;&nbsp;性&#12288;&#12288;别：<select ng-model="addSex1"
+                                                                                               style="width: 57px;height: 30px;text-align: center;border-radius: 3px;margin-left: 10px;font-size: 14px">
+                    <option>全部</option>
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人范围：<select
+                        ng-model="mapRang1"
+                        style="width: 57px;height: 30px;text-align: center;border-radius: 3px;margin-left: 10px;font-size: 14px">
+                    <option>2000</option>
+                    <option>5000</option>
+                </select>&#12288;米
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人数量：<input type="number"
+                                                                                                         min="1"
+                                                                                                         ng-model="addPeopleNumber1">&#12288;人
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;加人间隔：<input type="number"
+                                                                                                         min="1"
+                                                                                                         max="5"
+                                                                                                         ng-model="page3table41tabl1minTime1">
+                    ~ <input type="number"
+                             min="5"
+                             max="10"
+                             ng-model="page3table41tabl1maxTime1">&#12288;秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: 400px;margin-top: -235px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type  clickSelect3">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 405px;margin-top:10px">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText clickAddText3">
+                        <input type="file"
+                               accept=".XLS,.xlsx"
+                               class="upfiler3"
+                               upload-file3
+                               ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: -5px;margin-top: 30px;width: 50%" class="page3-fujin-Say12">
+                        <div id="editor4" class="page3-emjoy3 page100-emjoy100" contenteditable="true"
+                             style="width:100%;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 17px" id="btn4" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div style="margin-left: 1.8%;color:#2ABF9E;top: 325px;position: absolute">
+                注：因微信规则限制，单个微信号一定时间内只能打招呼15人左右，建议单次打招呼15人
+            </div>
+
+            <div class="upText3">
+                <span class="deleteText3" ng-click="deleteContent3()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg3">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra3">哈哈哈</li>
+                            <li class="exselTextGray3">800kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page3table4table1SendAll1()">执行
+            </button>
+        </div>
+        <!--微信群加人部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%" ng-show=" outSideBox5">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">所选设备</span>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width: 25%">序号</li>
+                            <li class="title-li" style="width: 25%">设备编号</li>
+                            <li class="title-li" style="width: 25%">微信昵称</li>
+                            <li class="title-li" style="width: 25%">微信号</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="m in page3Data4AllData" ng-class="isEven($index)">
+                        <ul>
+                            <li style="width: 25%">
+                                {{$index+1}}
+                            </li>
+                            <li style="width: 25%" class="page2-b-td">{{m.rank||'-'}}</li>
+                            <li style="width: 25%;">
+                                {{m.nickname||'-'}}
+                            </li>
+                            <li style="width: 25%">
+                                {{m.wechatNumber||'-'}}
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page6-floor-two" style="height: 340px" ng-show="outSideBox5">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="margin-left: 20px">
+                <li class="page3-bottom-title-chose-li" style="margin-top: 30px">&nbsp;&nbsp;单个群添加数量：<input
+                        type="number"
+                        min="1"
+                        ng-model="addPeopleNumber2">&#12288;人
+                </li>
+                <li class="page3-bottom-title-chose-li">&nbsp;&nbsp;&#12288;&#12288;加好友方式：<select
+                        style="width: 137px;height: 30px;text-align: center;border-radius: 3px;margin-left: 10px;font-size: 14px"
+                        class="come-type">
+                    <option value="0">请选择途径</option>
+                    <option value="1">所有群加好友</option>
+                    <option value="2">置顶群加好友</option>
+                    <option value="4">非置顶群加好友</option>
+                    <option value="3">输入进群数量</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-top: 10px">&nbsp;&nbsp;&#12288;加人时间间隔：<input
+                        type="number"
+                        min="1"
+                        max="5"
+                        ng-model=" page3table51tabl1minTime">
+                    ~ <input type="number"
+                             min="5"
+                             max="10"
+                             ng-model="page3table51tabl1maxTime">&#12288;秒
+                </li>
+                <li class="page3-bottom-title-chose-li writeNum"
+                    style="position: absolute;margin-top: 0px;display: none">&nbsp;&nbsp;&#12288;输入进群数量：<input
+                        type="number"
+                        min="1"
+                        ng-model="groupNum">&#12288;个
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="margin-left: 400px;margin-top: -150px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type  clickSelect4">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="margin-left: 405px;margin-top:0px">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText clickAddText3 clickAddText3-3">
+                        <input type="file"
+                               accept=".XLS,.xlsx"
+                               class="upfiler4"
+                               upload-file4
+                               ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: -5px;margin-top: 30px;width: 50%" class="page3-qunzu-Say page3-qunzu-Say-3">
+                        <div id="editor5" class="page3-emjoy5 page100-emjoy100" contenteditable="true"
+                             style="width:100%;margin-left: 122px;border-radius: 3px;height:118px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -220px;margin-left: 17px" id="btn5" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 20px">
+                注：因微信规则限制，单个微信号一定时间内只能打招呼15人左右，建议单次打招呼15人
+            </div>
+            <div class="upText4">
+                <span class="deleteText4" ng-click="deleteContent4()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg4">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra4">哈哈哈</li>
+                            <li class="exselTextGray4">800kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send" style="margin-top: 35px"
+                    ng-click="page3table5table1SendAll()">执行
+            </button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>

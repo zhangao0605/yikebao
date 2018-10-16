@@ -1,0 +1,57 @@
+<div class="page-box">
+    <div class="page2-header">
+        <a id="page-top19"></a>
+        <h2>任务列表</h2>
+        <div class="page-inside-user">
+            <span></span>
+            <p>USER</p>
+        </div>
+    </div>
+    <div class="page2-title-box">
+        <span class="page-floor-title-logo bag"></span>
+        <h2>任务列表</h2>
+    </div>
+    <div class="page19-floor-one page-s-box">
+        <ul class="page19-floor-one-list">
+            <li class="page19-floor-one-li first-li">
+                <ul>
+                    <li class="page19-b-li title-li">任务名</li>
+                    <li class="page19-b-li title-li">状态</li>
+                    <li class="page19-b-li title-li">添加时间</li>
+                    <li class="page19-b-li title-li">完成时间</li>
+                    <li class="page19-s-li title-li"></li>
+                </ul>
+            </li>
+            <li class="page19-floor-one-li" ng-repeat=" t in TaskAllList">
+                <ul>
+                    <li class="page19-b-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{t.scriptChName}}</li>
+                    <li class="page19-b-li" ng-class="changeColor(t.status)">{{getStatus(t.status)}}</li>
+                    <li class="page19-b-li">{{t.addTime||'-'}}</li>
+                    <li class="page19-b-li">{{t.doneTime||'-'}}</li>
+                    <li class="page19-s-li"><button ng-show="isShow(t.status)" ng-click="checkWrong(t.id)">查看</button></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="fucking-pages" id="pages19"></div>
+    </div>
+</div>
+<div class="task-out" ng-show="taskOut">
+    <div class="task-out-box">
+        <h2 class="task-out-title">异常设备</h2>
+        <ul class="task-wrong-list page-list">
+            <li class="task-wrong-li">
+                <ul>
+                    <li class="page-task-s-li title-li">设备编号</li>
+                    <li class="page-task-b-li title-li">设备序列号</li>
+                </ul>
+            </li>
+            <li class="task-wrong-li" ng-repeat="t in taskList">
+                <ul>
+                    <li class="page-task-s-li">{{t.rank}}</li>
+                    <li class="page-task-b-li">{{t.device}}</li>
+                </ul>
+            </li>
+        </ul>
+        <button ng-click="getTaskBack()">返回</button>
+    </div>
+</div>

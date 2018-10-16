@@ -1,0 +1,246 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-nine mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all-nine mess_id="{{g.id}}"></p><h4 new-list-show>
+                        {{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-nine
+                                                                          class="new-wx-equip-input9"></p>
+                            <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top9"></a>
+            <h2 class="page-title-high">微信入群加好友</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>微信帐号列表</h2>
+        </div>
+        <div class="page9-floor-one">
+            <ul class="page9-one-list">
+                <li class="page9-one-li first-li">
+                    <ul>
+                        <!--<li class="page9-s-li"><div class="page9-checked-all"><input type="checkbox" group-all-checked-nine></div></li>-->
+                        <li class="page9-b-li page9-title-li">微信名称</li>
+                        <li class="page9-b-li page9-title-li">微信号</li>
+                        <li class="page9-b-li page9-title-li">添加时间</li>
+                    </ul>
+                </li>
+                <li class="page9-one-li" ng-repeat="m in MemberList9" ng-class="isEven($index)">
+                    <ul>
+                        <!--<li class="page9-s-li"><div class="page9-checked"><input type="checkbox" group-checked-nine wx_number="{{m.number}}" class="page9-list-input-check"></div></li>-->
+                        <li class="page9-b-li">{{m.nickname||'-'}}</li>
+                        <li class="page9-b-li">{{m.number||'-'}}</li>
+                        <li class="page9-b-li">{{m.time}}</li>
+                        <!--<li class="page9-b-li"><button class="pageza-b-button" ng-click="Totop($index)" >置顶群</button></li>-->
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages9"></div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+        <div class="page10-floor-two">
+            <ul class="page10-one-list">
+                <li>单个群添加数量:&nbsp;&nbsp;&nbsp; <input type="number" min="1" class="page10-one-number"
+                                                                        ng-model="countNumber" style="margin-left: 7px"> 人
+                </li>
+                </li>
+                <li>
+                    选择最大时间间隔: <input type="number" min="5" max="10" class="page9-interval" ng-model="maxTime"> 秒
+                </li>
+                <li>
+                    选择最小时间间隔: <input type="number" min="1" max="5" class="page9-interval" ng-model="minTime"> 秒
+                </li>
+                <li class="page7-last-li" style="position: absolute">
+                    <h2>打招呼用语:</h2>
+                    <select class="page7-select-type clickSelect" style="float: left;margin-left: 57px">
+                        <option value="1" ng-click="selectone()">统一话术用语</option>
+                        <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                    </select>
+                </li>
+
+                <li>
+                    <h3 style="display: none;margin-top: 60px;margin-left:0px" class="clickAddText"><input type="file" accept=".XLS,.xlsx" upload-file
+                                                                                           ng-click="clickAddText()">导入话术文件</h3>
+                    <div contenteditable="true"  id="FontAndEmjoy9"class="FontAndEmjoy9 flag1 page9-say-hello"></div>
+                </li>
+                <li>
+                    加好友方式：
+                    <select class="page7-select-type come-type" style="margin-left: 40px">
+                        <option value="0">请选择途径</option>
+                        <option value="1">所有群加好友</option>
+                        <option value="2">置顶群加好友</option>
+                        <option value="4">非置顶群加好友</option>
+                        <option value="3">输入进群数量</option>
+                    </select>
+                </li>
+                <li class="writeNum" style="display: none">输入进群数量: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" min="1" class="page10-one-number"
+                                                                        ng-model="groupNum"style="margin-left:4px"> 个
+                <!--<li>-->
+                <!--<h2>加人策略:</h2>-->
+                <!--<div class="page10-checkbox"><input type="checkbox" group-checked disabled></div>-->
+                <!--<h2>对添加人员进行记录，下次忽略</h2>-->
+                <!--</li>-->
+            </ul>
+            <div class="emjoyDiv-page9">
+                <span class="emjoyOpen-page9"></span>
+                <div class="emjoyList-page9" style="display: none"  id="emjoyList-page9">
+                    <ul>
+                        <li><img class="gg" src="images/100.gif" alt="[微笑]"></li>
+                        <li><img class="gg" src="images/101.gif" alt="[撇嘴]"></li>
+                        <li><img class="gg" src="images/102.gif" alt="[色]"></li>
+                        <li><img class="gg" src="images/103.gif" alt="[发呆]"></li>
+                        <li><img class="gg" src="images/104.gif" alt="[得意]"></li>
+                        <li><img class="gg" src="images/105.gif" alt="[流泪]"></li>
+                        <li><img class="gg" src="images/106.gif" alt="[害羞]"></li>
+                        <li><img class="gg" src="images/107.gif" alt="[闭嘴]"></li>
+                        <li><img class="gg" src="images/108.gif" alt="[睡]"></li>
+                        <li><img class="gg" src="images/109.gif" alt="[大哭]'("></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/110.gif" alt="[尴尬]"></li>
+                        <li><img class="gg" src="images/111.gif" alt="[发怒]"></li>
+                        <li><img class="gg" src="images/112.gif" alt="[调皮]"></li>
+                        <li><img class="gg" src="images/113.gif" alt="[呲牙]"></li>
+                        <li><img class="gg" src="images/114.gif" alt="[惊讶]"></li>
+                        <li><img class="gg" src="images/115.gif" alt="[难过]"></li>
+                        <li><img class="gg" src="images/116.gif" alt="[酷]"></li>
+                        <li><img class="gg" src="images/117.gif" alt="[冷汗]"></li>
+                        <li><img class="gg" src="images/118.gif" alt="[抓狂]"></li>
+                        <li><img class="gg" src="images/119.gif" alt="[吐]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/120.gif" alt="[偷笑]"></li>
+                        <li><img class="gg" src="images/121.gif" alt="[愉快]"></li>
+                        <li><img class="gg" src="images/122.gif" alt="[白眼]"></li>
+                        <li><img class="gg" src="images/123.gif" alt="[傲慢]"></li>
+                        <li><img class="gg" src="images/124.gif" alt="[饥饿]"></li>
+                        <li><img class="gg" src="images/125.gif" alt="[困]"></li>
+                        <li><img class="gg" src="images/126.gif" alt="[惊恐]"></li>
+                        <li><img class="gg" src="images/127.gif" alt="[流汗]"></li>
+                        <li><img class="gg" src="images/128.gif" alt="[憨笑]"></li>
+                        <li><img class="gg" src="images/129.gif" alt="[悠闲]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/130.gif" alt="[奋斗]"></li>
+                        <li><img class="gg" src="images/131.gif" alt="[咒骂]"></li>
+                        <li><img class="gg" src="images/132.gif" alt="[疑问]"></li>
+                        <li><img class="gg" src="images/133.gif" alt="[嘘]"></li>
+                        <li><img class="gg" src="images/134.gif" alt="[晕]"></li>
+                        <li><img class="gg" src="images/135.gif" alt="[疯了]"></li>
+                        <li><img class="gg" src="images/136.gif" alt="[衰]"></li>
+                        <li><img class="gg" src="images/137.gif" alt="[骷髅]"></li>
+                        <li><img class="gg" src="images/138.gif" alt="[敲打]"></li>
+                        <li><img class="gg" src="images/139.gif" alt="[再见]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/140.gif" alt="[擦汗]"></li>
+                        <li><img class="gg" src="images/141.gif" alt="[抠鼻]"></li>
+                        <li><img class="gg" src="images/142.gif" alt="[鼓掌]"></li>
+                        <li><img class="gg" src="images/143.gif" alt="[糗大了]"></li>
+                        <li><img class="gg" src="images/144.gif" alt="[坏笑]"></li>
+                        <li><img class="gg" src="images/145.gif" alt="[左哼哼]"></li>
+                        <li><img class="gg" src="images/146.gif" alt="[右哼哼]"></li>
+                        <li><img class="gg" src="images/147.gif" alt="[哈欠]"></li>
+                        <li><img class="gg" src="images/148.gif" alt="[鄙视]"></li>
+                        <li><img class="gg" src="images/149.gif" alt="[委屈]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/150.gif" alt="[快哭了]"></li>
+                        <li><img class="gg" src="images/151.gif" alt="[阴险]"></li>
+                        <li><img class="gg" src="images/152.gif" alt="[亲亲]"></li>
+                        <li><img class="gg" src="images/153.gif" alt="[吓]"></li>
+                        <li><img class="gg" src="images/154.gif" alt="[可怜]"></li>
+                        <li><img class="gg" src="images/155.gif" alt="[菜刀]"></li>
+                        <li><img class="gg" src="images/156.gif" alt="[西瓜]"></li>
+                        <li><img class="gg" src="images/157.gif" alt="[啤酒]"></li>
+                        <li><img class="gg" src="images/158.gif" alt="[篮球]"></li>
+                        <li><img class="gg" src="images/159.gif" alt="[乒乓]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/160.gif" alt="[咖啡]"></li>
+                        <li><img class="gg" src="images/161.gif" alt="[饭]"></li>
+                        <li><img class="gg" src="images/162.gif" alt="[猪头]"></li>
+                        <li><img class="gg" src="images/163.gif" alt="[玫瑰]"></li>
+                        <li><img class="gg" src="images/166.gif" alt="[爱心]"></li>
+                        <li><img class="gg" src="images/167.gif" alt="[心碎]"></li>
+                        <li><img class="gg" src="images/168.gif" alt="[蛋糕]"></li>
+                        <li><img class="gg" src="images/169.gif" alt="[闪电]"></li>
+                        <li><img class="gg" src="images/203.gif" alt="[左太极]"></li>
+                        <li><img class="gg" src="images/204.gif" alt="[右太极]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/170.gif" alt="[炸弹]"></li>
+                        <li><img class="gg" src="images/171.gif" alt="[刀]"></li>
+                        <li><img class="gg" src="images/172.gif" alt="[足球]"></li>
+                        <li><img class="gg" src="images/173.gif" alt="[瓢虫]"></li>
+                        <li><img class="gg" src="images/174.gif" alt="[便便]"></li>
+                        <li><img class="gg" src="images/175.gif" alt="[月亮]"></li>
+                        <li><img class="gg" src="images/176.gif" alt="[太阳]"></li>
+                        <li><img class="gg" src="images/177.gif" alt="[礼物]"></li>
+                        <li><img class="gg" src="images/178.gif" alt="[拥抱]"></li>
+                        <li><img class="gg" src="images/179.gif" alt="[强]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/180.gif" alt="[弱]"></li>
+                        <li><img class="gg" src="images/181.gif" alt="[握手]"></li>
+                        <li><img class="gg" src="images/182.gif" alt="[胜利]"></li>
+                        <li><img class="gg" src="images/183.gif" alt="[抱拳]"></li>
+                        <li><img class="gg" src="images/184.gif" alt="[勾引]"></li>
+                        <li><img class="gg" src="images/185.gif" alt="[拳头]"></li>
+                        <li><img class="gg" src="images/186.gif" alt="[差劲]"></li>
+                        <li><img class="gg" src="images/187.gif" alt="[爱你]"></li>
+                        <li><img class="gg" src="images/188.gif" alt="[NO]"></li>
+                        <li><img class="gg" src="images/189.gif" alt="[OK]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/190.gif" alt="[爱情]"></li>
+                        <li><img class="gg" src="images/191.gif" alt="[飞吻]"></li>
+                        <li><img class="gg" src="images/192.gif" alt="[跳跳]"></li>
+                        <li><img class="gg" src="images/193.gif" alt="[发抖]"></li>
+                        <li><img class="gg" src="images/194.gif" alt="[怄火]"></li>
+                        <li><img class="gg" src="images/195.gif" alt="[转圈]"></li>
+                        <li><img class="gg" src="images/196.gif" alt="[磕头]"></li>
+                        <li><img class="gg" src="images/197.gif" alt="[回头]"></li>
+                        <li><img class="gg" src="images/198.gif" alt="[跳绳]"></li>
+                        <li><img class="gg" src="images/199.gif" alt="[投降]"></li>
+                    </ul>
+                    <ul>
+                        <li><img class="gg" src="images/200.gif" alt="[激动]"></li>
+                        <li><img class="gg" src="images/201.gif" alt="[乱舞]"></li>
+                        <li><img class="gg" src="images/202.gif" alt="[献吻]"></li>
+
+                    </ul>
+                </div>
+            </div>
+            <a ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>

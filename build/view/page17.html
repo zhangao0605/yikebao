@@ -1,0 +1,171 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list" id="qx">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-seventeen mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p class="page17-all-checked">
+                            <input type="checkbox" group-check-all-seventeen mess_id="{{g.id}}">
+                        </p>
+                        <h4 new-list-show>
+                            {{g.name}}
+                        </h4>
+                        <h5>
+                            {{g.count}}
+                        </h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-seventeen
+                                                                          class="page17-wx-input"></p>
+                            <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="new-group-manage">
+            <h2>设备组管理</h2>
+            <ul>
+                <li>
+                    <h3>创建新群组</h3>
+                    <button ng-click="addNewGroup()">新建</button>
+                </li>
+                <li>
+                    <h3>删除群组</h3>
+                    <button ng-click="deleteButton()">删除</button>
+                </li>
+                <li>
+                    <h3>修改组名</h3>
+                    <button ng-click="changeNameButton()">修改</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top4"></a>
+
+            <h2 class="page-title-high">群组管理</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+
+            <h2>设备分组</h2>
+            <button class="page17-move-button" ng-click="groupMoveTo()">保存设备到组</button>
+        </div>
+        <div class="page17-floor-new page-s-box">
+            <ul class="page17-floor-new-list">
+                <li class="page17-floor-new-li first-li">
+                    <ul>
+                        <li class="title-li">是否选择</li>
+                        <li class="title-li">编号</li>
+                        <li class="title-li">设备IMEI</li>
+                        <li class="title-li">设备状态</li>
+                    </ul>
+                </li>
+                <li class="page17-floor-new-li" ng-repeat="f in fuckList" ng-class="isEven($index)">
+                    <ul>
+                        <li>
+                            <div><label><span><input type="checkbox" group-checked checked
+                                                     mess_id="{{f.device}}"></span><h6>选择</h6></label></div>
+                        </li>
+                        <li>{{f.rank}}</li>
+                        <li>{{f.imei||'-'}}</li>
+                        <li>{{Status(f.status)}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages17"></div>
+        </div>
+    </div>
+</div>
+<div class="page17-edie-box" ng-show="editBoxOne">
+    <div class="page17-edit-s-box" style="height:auto;padding-bottom:20px;">
+        <h2>群组名称修改</h2>
+
+        <ul>
+            <li ng-repeat="i in groupNames" ng-hide="{{i.group.id}} == 1">
+                <input type="radio" name="changeTarget" class="change_radio" value="{{i.group.id}}"
+                       ng-hide="{{i.group.id == 1}}"/>
+                <h6 class="change_radio_title">{{i.group.name}}</h6>
+            </li>
+        </ul>
+        <br/>
+
+        <h3><input type="text" ng-model="changeGroupName" placeholder="修改群名称"></h3>
+
+        <div>
+            <button ng-click="cancelChangeButton()">取消</button>
+            <button ng-click="sureChangeButton($('input:radio:checked').val())">确认</button>
+        </div>
+    </div>
+</div>
+<div class="page17-edie-box" ng-show="editBoxTwo">
+    <div class="page17-edit-m-box">
+        <h2>确认删除该群组</h2>
+        <ul>
+            <li ng-repeat="i in groupNames" ng-hide="{{i.group.id}} == 1">
+                <span>
+                    <input type="checkbox" group-checked
+                           ng-checked="isChecked(i.group.id)"
+                           ng-click="checkOne($event,i.group.id)"
+                           ng-disabled="deleteable(i.group.id)"></span>
+                <h6>{{i.group.name}}</h6></li>
+        </ul>
+        <div>
+            <button ng-click="cancelDeleteButton()">取消</button>
+            <button ng-click="sureDeleteButton()">确认</button>
+        </div>
+    </div>
+</div>
+<div class="page17-edie-box" ng-show="editBoxThree">
+    <div class="page17-edit-s-box">
+        <h2>新添加群组</h2>
+
+        <h3>名称: <input type="text" ng-model="newGroupName"></h3>
+
+        <div>
+            <button ng-click="cancelAddNewGroup()">取消</button>
+            <button ng-click="sureAddNewGroup()">确认</button>
+        </div>
+    </div>
+</div>
+<div class="move-box-four" ng-show="moveBox">
+    <div class="move-group-box">
+        <h2>移动到新群组</h2>
+        <ul>
+            <li ng-repeat="g in groupNames">
+                <label>
+                <span>
+                <input type="radio" name="group-ass-name"
+                       ng-click="moveToId(g.group.id)"
+                       ng-checked="moChecked(g.group.id)">
+                </span>
+                    {{g.group.name}}
+                </label>
+            </li>
+        </ul>
+        <div class="move-group-buttons">
+            <button ng-click="cancelMoveTo()">取消</button>
+            <button ng-click="sureMoveTo()">确认</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,341 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-title1">
+            已选择设备（<span>{{table2AllChecks}}</span>/<span>{{hhalk1}}</span>）
+        </div>
+        <div class="wx-group-list" id="qx">
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                </p>
+            </label>
+            <div class="wx-group-list" id="">
+                <label class="page14-qx-input">
+                    <p>
+                        <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                    </p>
+                </label>
+                <div class="new-wx-group-all-title">
+                    <h2 class="new-wx-group-all">所有设备</h2>
+
+                    <h3 class="new-wx-group-number" style="margin-top: -22px">({{hhalk1}})</h3>
+                </div>
+                <!-------点击二级三级勾选框--------->
+                <ul class="new-wx-group-list">
+                    <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                        <div class="list_dt">
+                            <p class="page17-all-checked">
+                                <input type="checkbox" group-check-all-four mess_id="{{g.id}}">
+                            </p>
+                            <h4 new-list-show ng-click="fvcMe($index)">
+                                {{g.name}}
+                            </h4>
+                            <i class="list_dt_icon"></i>
+                            <h5>
+                                {{g.count}}
+                            </h5>
+                        </div>
+                        <ul style="display: none" class="list_dd">
+                            <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four
+                                                                              class="page17-wx-input"></p>
+                                <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top4"></a>
+            <h2 class="page-title-high">远程任务</h2></a>
+            <div class="page-inside-user">
+
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <div class="page-floor-title page2-title-button">
+            <button class="page2-title-button-but1" ng-click="tableSwitch(1)">已就绪</button>
+            <button class="page2-title-button-but2" ng-click="tableSwitch(2)">未就绪</button>
+            <button class="page2-title-button-but3" ng-click="tableSwitch(3)">已完成</button>
+        </div>
+        <!--远程已就绪任务部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%"  ng-show="outSideBox1 ">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">已就绪</span>
+
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width:5%;">选择</li>
+                            <li class="title-li" style="width: 20%;">任务</li>
+                            <li class="title-li" style="width: 10%">状态</li>
+                            <li class="title-li" style="width: 20%">任务添加日期</li>
+                            <li class="title-li" style="width: 15%">数据总量</li>
+                            <li class="title-li" style="width: 15%">已添加数量</li>
+                            <li class="title-li" style="width: 15%">未添加数量</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in okState" ng-class="isEven($index)">
+                        <ul>
+                            <li class="page11-s-li page7-floor-two-list" style="width:5%;">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{StatusTurn1(w.type)}}"
+                                        data1="{{w.state}}" data2="{{w.wnum}}"
+                                        data3="{{w.number}}" data4="{{w.tid}}"
+                                        data5="{{w.type}}" type="checkbox"
+                                        group-checked-ss class="clickMe"></div>
+                            </li>
+                            <li style="width: 20%;">
+
+                                {{w.name}}
+                            </li>
+                            <li style="width:10%" class="page2-b-td">已就绪</li>
+                            <li style="width:20%">
+                                {{TimeSlice(w.date||'-')}}
+                            </li>
+                            <li style="width: 15%;">
+                                {{w.quantity}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.indexs}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.quantity-w.indexs}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div style="color:#2ABF9E;position: absolute;margin-top: 40px">
+                    注：一次只能执行一个任务；如若上次任务未执行完成需要将上次任务关闭后开启
+                </div>
+            </div>
+        </div>
+        <div class="page6-floor-two" style="height: 340px"  ng-show="outSideBox1 ">
+            <div class="page3-bottom-title">
+                <span style="font-weight: 600">配置策略</span>
+            </div>
+            <ul class="page3-bottom-title-chose" style="position: relative;top: 90px">
+                <li class="page3-bottom-title-chose-li">选择加人数量：<input type="number" class="third-number" min="1"
+                                                                      ng-model="addPeopleCount"> 人
+                    <br><span style="font-size: 14px;color: #2ABF9E;position: relative;top: 10px">因微信号规则限制，建议您每个微信号每次添加15人</span>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="position: relative;top: 10px">选择加人间隔：<input type="number"
+                                                                                                           min="1"
+                                                                                                           max="5"
+                                                                                                           ng-model="minTime">
+                    ~ <input type="number" min="6" max="10" ng-model="maxTime"> 秒
+                </li>
+                <li class="page3-bottom-title-chose-li-say-hello" style="position: relative;top: 10px">
+                    <span>选择加人方式：</span><select class="page7-select-type clickSelect1">
+                    <option value="1">精准加人</option>
+                    <!--<option value="2" ng-click="selecteverone()">通讯录加人</option>-->
+                </select>
+                <li class="page3-bottom-title-chose-li-say-hello"
+                    style="position: relative;margin-left: 450px;margin-top: -184px">
+                    <span>&#12288打招呼用语：</span><select class="page7-select-type clickSelect">
+                    <option value="1" ng-click="selectone()">统一话术用语</option>
+                    <option value="2" ng-click="selecteverone()">随机话术用语</option>
+                </select>
+                </li>
+                <li class="page3-bottom-title-chose-li" style="position: relative;margin-left: 450px;margin-top: -20px">
+                    <h3 style="margin-top: 20px;margin-left: 10px;display: none" class="clickAddText"><input type="file"
+                                                                                                             accept=".XLS,.xlsx"
+                                                                                                             class="upfiler"
+                                                                                                             upload-file
+                                                                                                             ng-click="clickAddText()">导入话术文件
+                    </h3>
+                    <div style="margin-left: 0;margin-top: 40px;width: 50%" class="page3-Addpeople-Say">
+                        <div id="editor1" class="page2-emjoy1 page100-emjoy100" contenteditable="true"
+                             style="width:100%;margin-left: 122px;border-radius: 3px;height:108px;border: 1px solid gray;margin-top: -20px;overflow: auto;padding: 5px">
+                        </div>
+                        <button style="margin-top: -210px;margin-left: 16px" id="btn1" class="btn btn-sm btn-default">
+                            :)
+                        </button>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div class="upText" style="left: 540px">
+                <span class="deleteText" ng-click="deleteContent()">
+                    x
+                </span>
+                <dl>
+                    <dt>
+                    <div class="exselImg">
+
+                    </div>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="exselTextGra">哈哈哈</li>
+                            <li class="exselTextGray">800kb</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <button class="page3-bottom-title-chose-send page4-back-button"
+                    style="font-size: 16px;background-color: #FF7806;margin-right:160px;display: none"
+                    ng-click="closeServer()">关闭远程任务
+            </button>
+
+            <button class="page3-bottom-title-chose-send page29-open" ng-click="sendAll1()">执行</button>
+        </div>
+        <!--远程未就绪任务部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%"  ng-show="outSideBox2">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">未就绪</span>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width: 25%;">任务</li>
+                            <li class="title-li" style="width: 10%">状态</li>
+                            <li class="title-li" style="width: 25%">任务添加日期</li>
+                            <li class="title-li" style="width: 10%">数据总量</li>
+                            <li class="title-li" style="width: 15%">已添加数量</li>
+                            <li class="title-li" style="width: 15%">未添加数量</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in noState" ng-class="isEven($index)">
+                        <ul>
+                            <li style="width: 25%;">
+                                {{w.name}}
+                            </li>
+                            <li style="width:10%" class="page2-b-td">未就绪</li>
+                            <li style="width:25%">
+                                {{TimeSlice(w.date||'-')}}
+                            </li>
+                            <li style="width: 10%;">
+                                {{w.quantity}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.indexs}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.quantity}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--远程已完成任务部分-->
+        <div class="page4-floor-one page-s-box" style="height: 40%"  ng-show="outSideBox3">
+            <div class="page2-floor-first">
+                <span style="font-weight: 600">已完成</span>
+            </div>
+            <div class="way-to-box page3-table-up-telephone">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li" style="width: 25%;">任务</li>
+                            <li class="title-li" style="width: 10%">状态</li>
+                            <li class="title-li" style="width: 25%">任务添加日期</li>
+                            <li class="title-li" style="width: 10%">数据总量</li>
+                            <li class="title-li" style="width: 15%">已添加数量</li>
+                            <li class="title-li" style="width: 15%">未添加数量</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in okOne2" ng-class="isEven($index)">
+                        <ul>
+                            <li style="width: 25%;">
+                                {{w.name}}
+                            </li>
+                            <li style="width:10%" class="page2-b-td">已完成</li>
+                            <li style="width:25%">
+                                {{TimeSlice(w.date||'-')}}
+                            </li>
+                            <li style="width: 10%;">
+                                {{w.quantity}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.indexs}}
+                            </li>
+                            <li style="width:15%" class="page2-table-td-last">
+                                {{w.quantity}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>

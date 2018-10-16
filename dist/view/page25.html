@@ -1,0 +1,88 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all >
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one class="new-wx-equip-input10"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top25"></a>
+            <h2 class="page-title-high">陌陌接受好友请求</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>自动接受新朋友添加请求</h2>
+        </div>
+        <div class="page10-floor-one">
+            <ul class="page10-one-list">
+                <li>选择时间间隔: <input type="number" min="1" class="page10-one-number" ng-model="timeInterval">秒</li>
+                <!--<li>-->
+                <!--选择防封号策略:-->
+                <!--<select class="page-select" disabled>-->
+                <!--<option>测试1</option>-->
+                <!--<option>测试2</option>-->
+                <!--<option>测试3</option>-->
+                <!--</select>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<div>-->
+                        <!--<div class="page10-one-radio"><input type="radio" name="page10-radio" radio-checked-ten disabled></div>-->
+                        <!--<h2>从最近好友请求开始添加</h2>-->
+                    <!--</div>-->
+                    <!--<div style="margin-left: 30px">-->
+                        <!--<div class="page10-one-radio"><input type="radio" name="page10-radio" radio-checked-ten disabled></div>-->
+                        <!--<h2>从最初好友请求开始添加</h2>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+            <a ng-click="sendAll()">点击执行</a>
+        </div>
+        <!--<div class="page-floor-title">-->
+        <!--<span class="page-floor-title-logo install"></span>-->
+        <!--<h2>自动同意附近的人添加请求</h2>-->
+        <!--</div>-->
+        <!--<div class="page10-floor-two">-->
+        <!--<ul class="page10-one-list">-->
+        <!--<li>选择时间间隔: <input type="number" min="1" class="page10-one-number" disabled>秒</li>-->
+        <!--<li>-->
+        <!--选择防封号策略:-->
+        <!--<select class="page-select" disabled>-->
+        <!--<option>测试1</option>-->
+        <!--<option>测试2</option>-->
+        <!--<option>测试3</option>-->
+        <!--</select>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<h2>加人策略:</h2>-->
+        <!--<div class="page10-checkbox"><input type="checkbox" group-checked disabled></div>-->
+        <!--<h2>对添加人员进行记录，下次忽略</h2>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--&lt;!&ndash;<a>点击执行</a>&ndash;&gt;-->
+        <!--</div>-->
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+</head>
+
+<body>
+<div ID="demo" contenteditable onpaste="setpaste(this)">
+
+</div>
+
+</body>
+<style>
+    #demo{
+        height: 400px;
+        border:1px solid black;
+    }
+</style>
+<script type="text/javascript">
+    function setpaste(item){
+        window.setTimeout("change("+item.id+")",10);
+    }
+
+    function change(item){
+
+        var new_content = item.innerHTML;
+        var new_content = new_content.replace(/class="[^"]+"/ig, '');
+
+        new_content = new_content.replace(/class\="[^"]+"/gi, '');
+
+        new_content = new_content.replace(/<h1.*?>(.*?)<\/h1>/ig,"$1");
+
+        new_content = new_content.replace(/<h2.*?>(.*?)<\/h2>/ig,"$1");
+
+        new_content = new_content.replace(/<h3.*?>(.*?)<\/h3>/ig,"$1");
+
+        new_content = new_content.replace(/<h4.*?>(.*?)<\/h4>/ig,"$1");
+
+        new_content = new_content.replace(/<h5.*?>(.*?)<\/h5>/ig,"$1");
+
+        new_content = new_content.replace(/<h6.*?>(.*?)<\/h6>/ig,"$1");
+
+        new_content = new_content.replace(/style\="[^"]+"/gi, '');
+
+        new_content = new_content.replace(/<\/?strong>/gi,'');
+//        new_content=new_content.replace(/<(?<HtmlTag>[\w]+)[^>]*?>((?<Nested><\k<HtmlTag>[^>]*>)|</\k<HtmlTag>>(?<-Nested>)|.*?)*</\k<HtmlTag>>/gi,'!')
+        item.innerHTML=new_content;
+    }
+</script>
+</html>

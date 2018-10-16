@@ -1,0 +1,502 @@
+<div class="page-box">
+    <!------------------设备组选择----------------->
+    <!--<div class="wx-group-box">-->
+    <!--<div class="wx-group-title">-->
+    <!--&lt;!&ndash;<span class="wx-logo"></span>&ndash;&gt;-->
+    <!--<h2>设备组选择</h2>-->
+    <!--</div>-->
+    <!--<div class="wx-group-title1">-->
+    <!--已选择设备（<span>2</span>/<span>10</span>）-->
+    <!--</div>-->
+    <!--<div class="wx-group-list" id="qx">-->
+    <!--<label class="page14-qx-input">-->
+    <!--<p>-->
+    <!--<input type="checkbox" group-check-all-seventeen mess_id="{{g.id}}">-->
+    <!--</p>-->
+    <!--</label>-->
+    <!--<div class="new-wx-group-all-title">-->
+    <!--<h2 class="new-wx-group-all">所有设备</h2>-->
+
+    <!--<h3 class="new-wx-group-number" style="margin-top: -22px">({{groupNumbers}})</h3>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<ul class="new-wx-group-list">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="new-wx-group-list-li">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p class="page17-all-checked">&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" group-check-all-seventeen mess_id="{{g.id}}">&ndash;&gt;-->
+    <!--&lt;!&ndash;</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h4 new-list-show>&ndash;&gt;-->
+    <!--&lt;!&ndash;{{g.name}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h5>&ndash;&gt;-->
+    <!--&lt;!&ndash;{{g.count}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</h5>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<ul style="display: none">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-seventeen&ndash;&gt;-->
+    <!--&lt;!&ndash;class="page17-wx-input"></p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h2 title="{{d.device}}">{{d.rank}}</h2></label></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;-&#45;&#45;&#45;&#45;点击二级三级勾选框-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--<ul class="new-wx-group-list">-->
+    <!--<li class="new-wx-group-list-li">-->
+    <!--<div>-->
+    <!--<p class="page17-all-checked">-->
+    <!--<input type="checkbox" group-check-all-seventeen mess_id="{{g.id}}">-->
+    <!--</p>-->
+    <!--<h4 new-list-show>-->
+    <!--123-->
+    <!--</h4>-->
+    <!--<h5>-->
+    <!--(121)-->
+    <!--</h5>-->
+    <!--</div>-->
+    <!--<ul style="display: none">-->
+    <!--<li><label><p><input type="checkbox" group-check-one-seventeen-->
+    <!--class="page17-wx-input"></p>-->
+    <!--<h2 title="{{d.device}}">235</h2></label></li>-->
+    <!--<li><label><p><input type="checkbox" group-check-one-seventeen-->
+    <!--class="page17-wx-input"></p>-->
+    <!--<h2 title="{{d.device}}">235</h2></label></li>-->
+    <!--<li><label><p><input type="checkbox" group-check-one-seventeen-->
+    <!--class="page17-wx-input"></p>-->
+    <!--<h2 title="{{d.device}}">235</h2></label></li>-->
+    <!--<li><label><p><input type="checkbox" group-check-one-seventeen-->
+    <!--class="page17-wx-input"></p>-->
+    <!--<h2 title="{{d.device}}">235</h2></label></li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;设备组选择-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="new-group-manage">&ndash;&gt;-->
+    <!--&lt;!&ndash;<h2>设备组管理</h2>&ndash;&gt;-->
+    <!--&lt;!&ndash;<ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3>创建新群组</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;<button ng-click="addNewGroup()">新建</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3>删除群组</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;<button ng-click="deleteButton()">删除</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3>修改组名</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;<button ng-click="changeNameButton()">修改</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+    <div class="page-inside-box page-inside-box1">
+        <div class="page-inside-title page-inside-title1">
+            <a id="page-top4"></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <!----------头部分组同屏等---------->
+        <div class="page-floor-title ">
+            <div class="dropdown page1-dropdown1">
+                <button id="dLabel" class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    设备分组
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu page1-dropdown1-menu" aria-labelledby="dLabel" style="width: 110px">
+                    <li ng-click="groupMoveTo()">加入分组</li>
+                    <li ng-click="addNewGroup()">新建分组</li>
+                    <li ng-click="changeNameButton()">修改分组</li>
+                    <li ng-click="deleteButton()">删除分组</li>
+                </ul>
+            </div>
+            <!--------同屏------->
+
+            <button class="btn page1-floor-title-button1" style="position: absolute" ng-show="choseClick"
+                    ng-click="isShowAllScreen()">
+                同屏操作
+            </button>
+
+            <!--------查找------->
+            <button class="btn page1-floor-title-button2" style="position: absolute;"
+                    ng-show="choseClick" ng-click="showMyEquip1()">
+                查找
+            </button>
+            <!--------设备开关------->
+            <div class="dropdown page1-dropdown2" ng-show="choseClick">
+                <button id="dLabe2" class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    设备开关
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu page1-dropdown1-menu page1-dropdown1-menu-two" aria-labelledby="dLabel"
+                    style="width: 110px">
+                    <li><span class="page1-dropdown2-span1"></span><span class="page1-dropdown2-title">蓝牙</span><span
+                            class="page1-dropdown2-open" ng-click="openAll(3)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(3)">关</span></li>
+                    <li><span class="page1-dropdown2-span2"></span><span class="page1-dropdown2-title">飞行</span><span
+                            class="page1-dropdown2-open" ng-click="openAll(4)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(4)">关</span></li>
+                    <li><span class="page1-dropdown2-span3"></span><span class="page1-dropdown2-title">WIFI</span><span
+                            class="page1-dropdown2-open" style="margin-left: 14px" ng-click="openAll(2)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(2)">关</span></li>
+                    <li><span class="page1-dropdown2-span4"></span><span class="page1-dropdown2-title">GPS</span><span
+                            class="page1-dropdown2-open" style="margin-left: 12px" ng-click="openAll(1)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(1)">关</span></li>
+                    <li><span class="page1-dropdown2-span5"></span><span class="page1-dropdown2-title">数据</span><span
+                            class="page1-dropdown2-open" ng-click="openAll(5)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(5)">关</span></li>
+                    <li><span class="page1-dropdown2-span6"></span><span class="page1-dropdown2-title">屏幕</span><span
+                            class="page1-dropdown2-open" ng-click="openAll(6)">开</span><span
+                            class="page1-dropdown2-close" ng-click="closeAll(6)">关</span></li>
+                    <li><span class="page1-dropdown2-span7"></span><span class="page1-dropdown2-title">微信</span><span
+                            class="page1-dropdown2-open" ng-click="openAll(7)">打开微信</span></li>
+                    <li><span class="page1-dropdown2-span8"></span><span class="page1-dropdown2-title">Home</span><span
+                            class="page1-dropdown2-open" style="margin-left:2px" ng-click="backHome()">返回桌面</span></li>
+                </ul>
+                <button class="btn page1-floor-title-button3" style="position: absolute" ng-click="deleteEquip1()">
+                    删除
+                </button>
+            </div>
+            <!--<button class="page17-move-button" ng-click="groupMoveTo()">保存设备到组</button>-->
+
+        </div>
+        <button class="page1-init" ng-click="getSweepBox()"><span class="init-times"></span>扫描设备</button>
+        <span class="paage1-quesion" ng-mouseenter="page1PopoverShow()" ng-mouseleave="page1PopoverHide()"
+              ng-show="aqAll"></span>
+        <div class="popover page1-popover  left">
+            <div class="arrow"></div>
+            <!--页面操作提醒-->
+            <div class="popover-content">
+                <p><span>查找设备</span>：勾选设备，设备界面会全屏变红，方便您查找设备</p>
+                <p><span>扫描设备</span>：识别您连接的所有设备</p>
+                <p><span>同屏操作</span>：勾选设备界面同步到网页，在网页上面进行可视化操作</p>
+                <p><span>设备开关</span>：可以同时对多个设备进行蓝牙、GPS、飞行模式等的开关操作</p>
+                <p><span>设备分组</span>：对设备进行分组，方便管理</p>
+                <p><span>设备编号</span>：对设备编号，根据编号会从小到大排序，方便对照设备</p>
+                <p><span>微信版本</span>：目前支持微信版本有6.5.13、6.5.16、6.5.19、6.5.22，如果您是高版本请在
+                    设备上删除微信后重新扫描</p>
+            </div>
+        </div>
+        <!------------设备在线基本情况---------->
+        <div class="page17-floor-new page-s-box" style="height: 880px;">
+            <div class="page1-title-new">
+                <span class="span1">设备列表</span>
+                <span class="span2">已选中<span>{{page1CheckNums}}</span></span>
+                <span class="span3">在线<span>{{online}}</span></span>
+                <span class="span4">离线<span>{{offline}}</span></span>
+            </div>
+            <table id="example2" class="page1-table-on table table-bordered table-striped page3-fucking-list">
+                <thead>
+                <tr>
+                    <th>
+                        <li class="page3-ss-li">
+                            <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                   class="page3-div-checkbox1"
+                                                                   ng-model="checkAll" ng-change="selectAll()"
+                                                                   ass-all-three></div>
+                        </li>
+                    </th>
+                    <th style="text-align: center;font-size: 15px">序号</th>
+                    <th style="text-align: center;font-size: 15px">设备名称</th>
+                    <th style="text-align: center;font-size: 15px">设备分组</th>
+                    <th style="text-align: center;font-size: 15px">微信昵称</th>
+                    <th style="text-align: center;font-size: 15px">微信版本</th>
+                    <th style="text-align: center;font-size: 15px">设备状态</th>
+                    <th style="text-align: center;font-size: 15px">操作</th>
+                </tr>
+                </thead>
+                <tbody class="mailbox-messages ">
+                <tr ng-repeat="i in DataList" style="height: 20px">
+                    <td style="width:5%;">
+                        <li class="page3-ss-li">
+                            <div class="page3-div-checkbox" device_id="{{i.device}}"><input data="{{i.device}}"
+                                                                                            data1="{{i.status}}"
+                                                                                            type="checkbox"
+                                                                                            ng-click="page1onChecked()"
+                                                                                            ng-model="i.checked"
+                                                                                            class="page1-onChecked"
+                                                                                            ng-change="selectOne()"
+                                                                                            ng-disabled="getDisabled(i.status)"
+                                                                                            ass-one-three></div>
+                        </li>
+                    </td>
+                    <td style="width: 8%;">
+                        {{$index+1}}
+                    </td>
+                    <td style="width:10%" class="page2-b-td"><input type="text" ng-value="rankAss(i.rank)"
+                                                                    ng-class="couldChange(i.rank)"
+                                                                    ng-readonly="couldRead(i.rank)"></td>
+                    <td style="width:10%">
+                        {{i.groupVo.name||'-'}}
+                    </td>
+                    <td style="width: 14%;"> {{showWhichName1(i.wechatVo.nickname||'-')}}</td>
+                    <td style="width: 14%;">
+                        <span class="page1UpJi1"> {{i.apps.wechatVersion||'-'}}</span> <span class="page1UpJi"
+                                                                                             ng-click="page1UpHJi(i.device)"
+                                                                                             ng-class="UpWechatBanben(i.apps.wechatVersion,i.status)">升级</span>
+                    </td>
+                    <td style="width: 10%;" ng-class="statusHigh(i.status)">
+                        {{Status(i.status)}}
+                    </td>
+                    <td style="width:28%" class="mailbox-messages-td-last">
+                        <span table-save mess_device="{{i.device}}"
+                              ng-class="couldSave(i.rank)">保存</span>
+                        <span table-edit ng-class="couldEdit(i.rank)">编辑</span>
+                        <span ng-show="isShow(i.status)" ng-click="isShowScreen(i.device)">同屏</span>
+                        <span ng-click="deleteEquip(i.device)">删除</span>
+                        <span ng-click="showMyEquip(i.device)" ng-show="isShow(i.status)">查找</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="margin-left: 1.8%;color:#2ABF9E;margin-top: 5px;position: absolute">注：离线设备只支持删除操作，不支持添加任务</div>
+            <div class="M-box1 page1-table-page"></div>
+        </div>
+        <!-------------------------------------------------------------扫描设备一些提示框---------->
+        <div class="page-outside-box" ng-show="sweepBox">
+            <!--------点击扫描开始----->
+            <div class="page1-inner-box-one page-inner-box" ng-show="sweepBoxOne">
+
+                <h2 class="page-inner-title">扫描设备</h2>
+
+                <div class="page-inner-content">
+                    <p>感谢您使用蚁客宝营销平台，如果您是第一次扫描，时间将</p>
+                    <p style="margin-top: -9px">会持续大约2分钟，请耐心等待，点击确定开始扫描。
+                    </p>
+                </div>
+
+                <button class="page1-inner-box-button" ng-click="getSweepTwo()">确定</button>
+                <button class="page1-inner-box-button2" ng-click="getSweepTwo1()">取消</button>
+            </div>
+            <!--------扫描进度---->
+            <div class="sweep-box-one sweep-box-one-2" ng-show="sweepBoxTwo">
+                <h2>扫描设备进度</h2>
+                <div class="sweep-box-one-2-div"><p class="sweep-box-one-block" ng-class="sweepAssBlock"></p></div>
+            </div>
+            <!--------扫描完成----->
+            <div class="sweep-box-one sweep-box-one-3" ng-show="sweepBoxThree">
+                <h2>扫描完成</h2>
+                <p>
+                    在线设备<span>{{sweepEquipNumber}}</span>台，
+                    离线设备<span>{{sweepOffLineNumber}}</span>台，
+                    耗时<span>{{sweepShowTime}}</span>秒。
+                </p>
+                <button ng-click="getDataList(response)">确定</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="page1-inner-box-one page-inner-box"  ng-show="sweepBoxOneTwo1">
+
+    <h2 class="page-inner-title">请选择是否继续</h2>
+
+    <div class="page-inner-content">
+        <p style="text-align: center">您将要进行扫描设备操作，将会清除等待执行与正在</p>
+        <p style="margin-top: 9px;text-align: center">执行的任务请选择是否继续操作？
+        </p>
+    </div>
+
+    <button class="page1-inner-box-button" ng-click="sweepBoxOneTwo2()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="sweepBoxOneTwo3()">取消</button>
+</div>
+<div class="page1-inner-box-one page-inner-box" ng-show="sweepBoxOneTwo22">
+
+    <h2 class="page-inner-title">系统任务初始化中</h2>
+
+    <div class="page-inner-content">
+        <p style="text-align: center">{{lpld}}个任务执行完成后即可体验蚁客宝系统了！</p>
+        <p style="margin-top: 9px;text-align: center">
+        </p>
+    </div>
+</div>
+
+<!-------------最新分组操作--------->
+<!--加入群组-->
+<div class="page1-inner-box-one page-inner-box" ng-show="moveBox">
+
+    <h2 class="page-inner-title">加入到设备分组</h2>
+
+    <div class="page-inner-content page-inner-content1">
+        <div>
+            选择分组：
+        </div>
+        <ul>
+            <li ng-repeat="g in groupNames">
+                <label>
+                    <input type="radio" name="group-ass-name"
+                           ng-click="moveToId(g.group.id)"
+                           ng-checked="moChecked(g.group.id)">
+                    &nbsp;{{g.group.name}}
+                </label>
+            </li>
+        </ul>
+        <!--<ul>-->
+        <!--<li ng-repeat="g in groupNames">-->
+        <!--<label>-->
+        <!--<span>-->
+        <!--<input type="radio" name="group-ass-name"-->
+        <!--ng-click="moveToId(g.group.id)"-->
+        <!--ng-checked="moChecked(g.group.id)">-->
+        <!--</span>-->
+        <!--{{g.group.name}}-->
+        <!--</label>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<div class="move-group-buttons">-->
+        <!--<button ng-click="cancelMoveTo()">取消</button>-->
+        <!--<button ng-click="sureMoveTo()">确认</button>-->
+        <!--</div>-->
+    </div>
+    <button class="page1-save-button1" ng-click="addNewGroup()">新建分组</button>
+    <button class="page1-inner-box-button" ng-click="sureMoveTo()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelMoveTo()">取消</button>
+</div>
+<!--删除群组-->
+<div class="page1-inner-box-one page-inner-box" ng-show="editBoxTwo">
+    <h2 class="page-inner-title">删除分组</h2>
+    <div class="page-inner-content page-inner-content1 ">
+        <div>
+            选择分组：
+        </div>
+        <ul>
+            <li ng-repeat="i in groupNames" ng-hide="{{i.group.id}} == 1">
+            <span>
+                    <input type="checkbox" group-checked
+                           ng-checked="isChecked(i.group.id)"
+                           ng-click="checkOne($event,i.group.id)"
+                           ng-disabled="deleteable(i.group.id)"></span>
+                &nbsp;{{i.group.name}}
+            </li>
+        </ul>
+        <!--<ul>-->
+        <!--<li ng-repeat="g in groupNames">-->
+        <!--<label>-->
+        <!--<span>-->
+        <!--<input type="radio" name="group-ass-name"-->
+        <!--ng-click="moveToId(g.group.id)"-->
+        <!--ng-checked="moChecked(g.group.id)">-->
+        <!--</span>-->
+        <!--{{g.group.name}}-->
+        <!--</label>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<div class="move-group-buttons">-->
+        <!--<button ng-click="cancelMoveTo()">取消</button>-->
+        <!--<button ng-click="sureMoveTo()">确认</button>-->
+        <!--</div>-->
+    </div>
+    <button class="page1-inner-box-button" ng-click="sureDeleteButton()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelDeleteButton()">取消</button>
+</div>
+<!--修改群组-->
+<div class="page1-inner-box-one page-inner-box" ng-show="editBoxOne">
+    <h2 class="page-inner-title">修改分组名称</h2>
+    <div class="page-inner-content page-inner-content1 ">
+        <div>
+            选择分组：
+        </div>
+        <ul class="page-inner-content1-edit" style="height: 60%">
+            <li ng-repeat="i in groupNames" ng-hide="{{i.group.id}} == 1">
+                <label>
+                    <input class="page1-change-name-new" type="radio" name="changeTarget" value="{{i.group.id}}"
+                           ng-hide="{{i.group.id == 1}}">
+                    &nbsp;{{i.group.name}}
+                </label>
+            </li>
+            <li>
+        </ul>
+        <div class="page1-edit-group-name">
+            分组名称：<input type="text" ng-model="changeGroupName" placeholder=" &nbsp;&nbsp;&nbsp;请输入分组名称">
+        </div>
+    </div>
+
+    <button class="page1-inner-box-button" ng-click="sureChangeButton()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelChangeButton()">取消</button>
+</div>
+<!--新建群组-->
+<div class="page1-inner-box-one page-inner-box" ng-show="editBoxThree">
+
+    <h2 class="page-inner-title">新建分组</h2>
+
+    <div class="page-inner-content page-inner-content1 ">
+        <div class="page1-new-group-name  page1-edit-group-name">
+            分组名称：<input type="text" ng-model="newGroupName" placeholder=" &nbsp;&nbsp;&nbsp;请输入分组名称">
+        </div>
+    </div>
+
+    <button class="page1-inner-box-button" ng-click="sureAddNewGroup()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="cancelAddNewGroup()">取消</button>
+</div>
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>

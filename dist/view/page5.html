@@ -1,0 +1,88 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <span class="wx-logo"></span>
+            <h2>微信组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <ul class="page5-wx-group-ul">
+                <li>
+                    <h2>所有群组</h2>
+                    <h3>({{groupNumbers}})</h3>
+                </li>
+                <li ng-repeat="g in groupNames">
+                    <label><p><input type="checkbox" group-checked-five checked ng-checked="isChecked(g.group.id)" ng-click="checkOne($event,g.group.id)"></p><h4>{{g.group.name}}</h4><h5>{{g.count}}</h5></label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top5"></a>
+            <h2 class="page-title">帐号登录</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo pencil"></span>
+            <h2>微信帐号列表</h2>
+            <button class="page5-top-button page-button"  ng-click="numberLogout()">注销</button>
+            <button class="page5-top-button2 page-button" ng-click="numberLogin()">登录</button>
+            <button class="page5-top-button2 page-button" ng-click="numberSwitch()">切换</button>
+        </div>
+        <div class="page5-floor-one page-s-box">
+            <ul class="page5-floor-one-list page-list">
+                <li class="page5-floor-one-li first-li">
+                    <ul>
+                        <li class="page5-s-li"><div class="page5-checkAll-div"><input type="checkbox" group-all-checked-five checked></div></li>
+                        <li class="page5-b-li title-li">微信名称</li>
+                        <li class="page5-b-li title-li">微信号</li>
+                        <li class="page5-b-li title-li">状态</li>
+                    </ul>
+                </li>
+                <li class="page5-floor-one-li" ng-repeat="m in MemberList" ng-class="isEven($index)">
+                    <ul>
+                        <li class="page5-s-li"><div class="page5-div-checkbox" member_id="{{m.device}}"><input type="checkbox" group-checked-five checked></div></li>
+                        <li class="page5-b-li">{{m.nickname||'-'}}</li>
+                        <li class="page5-b-li">{{m.number||'-'}}</li>
+                        <li class="page5-b-li">{{isOnline(m.status)}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages5"></div>
+        </div>
+    </div>
+</div>
+<div class="switch-box" ng-show="switchBox">
+    <div class="switch-box-inner">
+        <h2>微信序号</h2>
+        <ul class="switch-list">
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="1"></span>1</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="2"></span>2</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="3"></span>3</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="4"></span>4</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="5"></span>5</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="6"></span>6</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="7"></span>7</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="8"></span>8</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="9"></span>9</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="10"></span>10</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="11"></span>11</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="12"></span>12</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="13"></span>13</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="14"></span>14</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="15"></span>15</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="16"></span>16</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="17"></span>17</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="18"></span>18</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="19"></span>19</li>
+            <li><span><input type="radio" name="switch-number" radio-checked-five ass_rank="20"></span>20</li>
+        </ul>
+        <div class="switch-buttons">
+            <button ng-click="switchCancel()">取消</button>
+            <button ng-click="switchSure()">确认</button>
+        </div>
+    </div>
+</div>

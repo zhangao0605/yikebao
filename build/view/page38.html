@@ -1,0 +1,615 @@
+<div class="page-box">
+    <!--<div class="wx-group-box">-->
+    <!--<div class="wx-group-title">-->
+    <!--&lt;!&ndash;<span class="wx-logo"></span>&ndash;&gt;-->
+    <!--<h2>设备组选择</h2>-->
+    <!--</div>-->
+    <!--<div class="wx-group-title1">-->
+    <!--已选择设备（<span>{{table2AllChecks}}</span>/<span>{{moArraylength}}</span>）-->
+    <!--</div>-->
+    <!--<div class="wx-group-list" id="qx">-->
+    <!--<label class="page14-qx-input">-->
+    <!--<p>-->
+    <!--<input type="checkbox" group-check-all-four mess_id="{{g.id}}">-->
+    <!--</p>-->
+    <!--</label>-->
+    <!--<div class="wx-group-list" id="">-->
+    <!--<label class="page14-qx-input">-->
+    <!--<p>-->
+    <!--<input type="checkbox" group-check-all-four mess_id="{{g.id}}">-->
+    <!--</p>-->
+    <!--</label>-->
+    <!--<div class="new-wx-group-all-title">-->
+    <!--<h2 class="new-wx-group-all">所有设备</h2>-->
+
+    <!--<h3 class="new-wx-group-number" style="margin-top: -22px">({{groupNumbers}})</h3>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;-&#45;&#45;&#45;&#45;点击二级三级勾选框-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+    <!--<ul class="new-wx-group-list">-->
+    <!--<li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">-->
+    <!--<div>-->
+    <!--<p class="page17-all-checked">-->
+    <!--<input type="checkbox" group-check-all-four mess_id="{{g.id}}">-->
+    <!--</p>-->
+    <!--<h4 new-list-show>-->
+    <!--{{g.name}}-->
+    <!--</h4>-->
+    <!--<h5>-->
+    <!--{{g.count}}-->
+    <!--</h5>-->
+    <!--</div>-->
+    <!--<ul style="display: none">-->
+    <!--<li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four-->
+    <!--class="page17-wx-input"></p>-->
+    <!--<h2 title="{{d.device}}">{{d.rank}}</h2></label></li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="page-inside-box page-inside-box1">
+        <div class="page-inside-title page-inside-title1">
+            <a id="page-top4"></a>
+            <!--<h2 class="page-title-high">帐号管理</h2></a>-->
+            <div class="page-inside-user">
+
+                <span></span>
+                <p style="color: #5ABC9F;font-weight: 500">{{UserName}} </p>
+                <p ng-click="logout()" style="  font-size: 16px;
+  color:#989898 ;cursor: pointer">&nbsp;&nbsp;注销</p>
+            </div>
+        </div>
+        <div class="page-floor-title page2-title-button">
+            <button class="page2-title-button-but1" style="width: 20%" ng-click="tableSwitch(1)">
+                全部任务（{{page1InitDataLength}}）
+            </button>
+            <button class="page2-title-button-but2" style="width: 20%" ng-click="tableSwitch(2)">正在执行（{{zhixing1}}）
+            </button>
+            <button class="page2-title-button-but3" style="width: 20%" ng-click="tableSwitch(3)">等待执行（{{dengdai1}}）
+            </button>
+            <button class="page2-title-button-but4" style="width: 20%" ng-click="tableSwitch(4)">执行完成（{{wancheng1}}）
+            </button>
+            <button class="page2-title-button-but5" style="width: 18%" ng-click="tableSwitch(5)">执行失败（{{shibai1}}）
+            </button>
+        </div>
+        <!--全部任务部分-->
+        <div class="page11-outside-box" ng-show="renwu1">
+            <div class="page11-floor-two" style="height: 800px">
+                <div class="page2-floor-first-two">
+                    <span>任务列表</span>&#12288;
+                    <!--<span class="span2" style="font-weight: normal;font-size: 14px;color: gray">已选中<span style="font-weight: normal;font-size: 14px;color: gray">1</span></span>-->
+                    <button class="right-wx-button page2-2-back-wx-button" style="margin-right: 0"
+                            ng-click="removeAllTask(1)">删除任务
+                    </button>
+                </div>
+
+                <table id="example4"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox1"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th width="5%">任务序号</th>
+                        <th width="16%">任务名称</th>
+                        <th width="16%">任务状态</th>
+                        <th width="16%">添加时间</th>
+                        <th width="16%">完成时间</th>
+                        <th width="21%">操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="t in TaskAllList" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{t .device}}"
+                                        title="{{t .id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page1-onChecked1"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(t .status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 10%;">{{t.id}}
+                        </td>
+                        <td style="width:16%" class="page2-b-td">{{nameSlice(t.scriptChName)}}</td>
+                        <td style="width:16%" ng-class="changeColor(t.status)">{{getStatus(t.status)}}
+                        </td>
+                        <td style="width: 16%;">{{TimeSlice(t.addTime||'-')}}</td>
+                        <td style="width: 16%;">
+                            {{TimeSlice(t.doneTime||'-')}}
+                        </td>
+                        <td style="width:21%" class="page2-table-td-last">
+                            <button class="renwuClass" mess_device="{{t.device}}"
+                                    ng-class="couldSave(t.scriptChName,t.status)" ng-click="seeDatas(t.id)"
+                                    ng-disabled="couldSavev1(t.scriptChName,t.status)">查看
+                            </button>
+                            <button class="renwuClass" mess_device="{{t.device}}"
+                                    ng-class="couldSave1(t.scriptChName,t.status)"
+                                    ng-disabled="couldSave1v2(t.scriptChName,t.status)"
+                                    ng-click="tongjiSsow(t.scriptChName,t.id)">统计
+                            </button>
+                            <button class="renwuClass" ng-click="removeTask(t.id,1)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="M-box1 page1-table-page" style="left: 60%"></div>
+                <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 135px">
+                    注：当任务长时间未完成时，建议您删除正在执行的任务或者再次启动服务
+                </div>
+            </div>
+        </div>
+        <!--正在执行任务部分-->
+        <div class="page11-outside-box" ng-show="renwu2">
+            <div class="page11-floor-two" style="height: 800px">
+                <div class="page2-floor-first-two">
+                    <span>正在执行</span>&#12288;
+                    <!--<span class="span2" style="font-weight: normal;font-size: 14px;color: gray">已选中<span style="font-weight: normal;font-size: 14px;color: gray">1</span></span>-->
+                    <button class="right-wx-button page2-2-back-wx-button" style="margin-right: 0"
+                            ng-click="removeAllTask(2)">删除任务
+                    </button>
+                </div>
+
+                <table id="example5"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox2"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th width="10%">任务序号</th>
+                        <th width="17%">任务名称</th>
+                        <th width="17%">任务状态</th>
+                        <th width="17%">添加时间</th>
+                        <th width="17%">完成时间</th>
+                        <th width="17%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="t in zhixing" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{t .device}}"
+                                        title="{{t .id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page1-onChecked2"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(t .status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 10%;">{{t.id}}
+                        </td>
+                        <td style="width:17%" class="page2-b-td">{{nameSlice(t.scriptChName)}}</td>
+                        <td style="width:17%" ng-class="changeColor(t.status)">{{getStatus(t.status)}}
+                        </td>
+                        <td style="width: 17%;">{{TimeSlice(t.addTime||'-')}}</td>
+                        <td style="width: 17%;">
+                            {{TimeSlice(t.doneTime||'-')}}
+                        </td>
+                        <td style="width:17%" class="page2-table-td-last">
+                            <button class="renwuClass" ng-click="removeTask(t.id,2)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="M-box1 page1-table-page1" style="left: 60%;"></div>
+                <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 135px">
+                    注：当任务长时间未完成时，建议您删除正在执行的任务或者再次启动服务
+                </div>
+            </div>
+        </div>
+        <!--等待执行任务部分-->
+        <div class="page11-outside-box" ng-show="renwu3">
+            <div class="page11-floor-two" style="height: 800px">
+                <div class="page2-floor-first-two">
+                    <span>等待执行</span>&#12288;
+                    <!--<span class="span2" style="font-weight: normal;font-size: 14px;color: gray">已选中<span style="font-weight: normal;font-size: 14px;color: gray">1</span></span>-->
+                    <button class="right-wx-button page2-2-back-wx-button" style="margin-right: 0"
+                            ng-click="removeAllTask(3)">删除任务
+                    </button>
+                </div>
+
+                <table id="example6"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox3"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th width="10%">任务序号</th>
+                        <th width="17%">任务名称</th>
+                        <th width="17%">任务状态</th>
+                        <th width="17%">添加时间</th>
+                        <th width="17%">完成时间</th>
+                        <th width="17%">操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="t in dengdai" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{t .device}}"
+                                        title="{{t .id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page1-onChecked3"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(t .status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 10%;">{{t.id}}
+                        </td>
+                        <td style="width:17%" class="page2-b-td">{{nameSlice(t.scriptChName)}}</td>
+                        <td style="width:17%" ng-class="changeColor(t.status)">{{getStatus(t.status)}}
+                        </td>
+                        <td style="width: 17%;">{{TimeSlice(t.addTime||'-')}}</td>
+                        <td style="width: 17%;">
+                            {{TimeSlice(t.doneTime||'-')}}
+                        </td>
+                        <td style="width:17%" class="page2-table-td-last">
+                            <button class="renwuClass" ng-click="removeTask(t.id,3)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="M-box1 page1-table-page2" style="left:60%;"></div>
+                <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 135px">
+                    注：当任务长时间未完成时，建议您删除正在执行的任务或者再次启动服务
+                </div>
+            </div>
+        </div>
+        <!--执行完成任务部分-->
+        <div class="page11-outside-box" ng-show="renwu4">
+            <div class="page11-floor-two" style="height: 800px">
+                <div class="page2-floor-first-two">
+                    <span>执行完成</span>&#12288;
+                    <!--<span class="span2" style="font-weight: normal;font-size: 14px;color: gray">已选中<span style="font-weight: normal;font-size: 14px;color: gray">1</span></span>-->
+                    <button class="right-wx-button page2-2-back-wx-button" style="margin-right: 0"
+                            ng-click="removeAllTask1(4)">删除任务
+                    </button>
+                </div>
+
+                <table id="example7"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox4"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th width="10%">任务序号</th>
+                        <th width="17%">任务名称</th>
+                        <th width="17%">任务状态</th>
+                        <th width="17%">添加时间</th>
+                        <th width="17%">完成时间</th>
+                        <th width="17%">操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="t in wancheng" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{t .device}}"
+                                        title="{{t .id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page1-onChecked4"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(t .status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 10%;">{{t.id}}
+                        </td>
+                        <td style="width:17%" class="page2-b-td">{{nameSlice(t.scriptChName)}}</td>
+                        <td style="width:17%" ng-class="changeColor(t.status)">{{getStatus(t.status)}}
+                        </td>
+                        <td style="width: 17%;">{{TimeSlice(t.addTime||'-')}}</td>
+                        <td style="width: 17%;">
+                            {{TimeSlice(t.doneTime||'-')}}
+                        </td>
+                        <td style="width:17%" class="page2-table-td-last">
+                            <button class="renwuClass" ng-click="removeTask(t.id,4)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="M-box1 page1-table-page3" style="left: 60%"></div>
+                <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 135px">
+                    注：当任务长时间未完成时，建议您删除正在执行的任务或者再次启动服务
+                </div>
+            </div>
+        </div>
+        <!--执行失败任务部分-->
+        <div class="page11-outside-box" ng-show="renwu5">
+            <div class="page11-floor-two" style="height: 800px">
+                <div class="page2-floor-first-two">
+                    <span>执行失败</span>&#12288;
+                    <!--<span class="span2" style="font-weight: normal;font-size: 14px;color: gray">已选中<span style="font-weight: normal;font-size: 14px;color: gray">1</span></span>-->
+                    <button class="right-wx-button page2-2-back-wx-button" style="margin-right: 0"
+                            ng-click="removeAllTask1(5)">删除任务
+                    </button>
+                </div>
+
+                <table id="example8"
+                       class="page1-table-on table table-bordered table-striped page3-fucking-list page2-table-second">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <li class="page3-ss-li">
+                                <div class="page3-div-checkbox"><input type="checkbox" ng-click="page1AllChecked()"
+                                                                       class="page3-div-checkbox5"
+                                                                       ng-model="checkAll" ng-change="selectAll()"
+                                                                       ass-all-three></div>
+                            </li>
+                        </th>
+                        <th width="10%">任务序号</th>
+                        <th width="17%">任务名称</th>
+                        <th width="17%">任务状态</th>
+                        <th width="17%">添加时间</th>
+                        <th width="17%">完成时间</th>
+                        <th width="17%">操作</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="mailbox-messages ">
+                    <tr ng-repeat="t in shibai" ng-class="isEven($index)">
+                        <td style="width: 5%;">
+                            <li class="page11-s-li">
+                                <div class="page3-div-checkbox page2-table3-group" device_id="{{t .device}}"><input
+                                        data="{{t .device}}"
+                                        title="{{t .id}}"
+                                        type="checkbox"
+                                        ng-click="page1onChecked()"
+                                        ng-model="i.checked"
+                                        class="page1-onChecked page1-onChecked5"
+                                        ng-change="selectOne()"
+                                        ng-disabled="getDisabled(t .status)"
+                                        ass-one-three></div>
+                            </li>
+                        </td>
+                        <td style="width: 10%;">{{t.id}}
+                        </td>
+                        <td style="width:17%" class="page2-b-td">{{nameSlice(t.scriptChName)}}</td>
+                        <td style="width:17%" ng-class="changeColor(t.status)">{{getStatus(t.status)}}
+                        </td>
+                        <td style="width: 17%;">{{TimeSlice(t.addTime||'-')}}</td>
+                        <td style="width: 17%;">
+                            {{TimeSlice(t.doneTime||'-')}}
+                        </td>
+                        <td style="width:17%" class="page2-table-td-last">
+                            <button class="renwuClass" mess_device="{{t.device}}" ng-click="seeDatas(t.id)"
+                                    ng-disabled="couldSave1v3(t.status)" ng-class="couldSave1v4(t.status)">查看
+                            </button>
+                            <button class="renwuClass" ng-click="removeTask(t.id,5)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="M-box1 page1-table-page4" style="left: 60%"></div>
+                <div style="margin-left: 1.8%;color:#2ABF9E;position: absolute;bottom: 135px">
+                    注：当任务长时间未完成时，建议您删除正在执行的任务或者再次启动服务
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--不是精准加人的统计-->
+<div class="page5-data-alert" ng-show="ShowDatasza1">
+    <div class="page5-data-alert-title">
+        {{page5mmp}}
+    </div>
+    <div class="page5-data-alert-title-close" ng-click="page5Close()">
+        x
+    </div>
+    <div class="way-to-box page3-table-up-telephone" style="height: 400px">
+        <ul class="way-to-list" style="height: 400px">
+            <li class="way-to-li first-li">
+                <ul>
+                    <li class="title-li " style="width: 10%;  color:#333333!important">序号</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">设备编号</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">微信昵称</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">打招呼数量</li>
+                </ul>
+            </li>
+            <li class="way-to-li" ng-repeat="e in moreError" ng-class="isEven($index)">
+                <ul>
+                    <li style="width: 10%;">
+                        {{$index+1}}
+                    </li>
+                    <li style="width:30%">
+                        {{e.serial||'-'}}
+                    </li>
+                    <li style="width: 30%;">
+                        {{e.nickname||'-'}}
+                    </li>
+                    <li style="width:30%;color:#2ABF9E " class="page2-table-td-last">
+                        {{e.count}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--精准加人的统计-->
+<div class="page5-data-alert" ng-show="ShowDatasza2">
+    <div class="page5-data-alert-title">
+        精准加人
+    </div>
+    <div class="page5-data-alert-title-close" ng-click="page5Close2()">
+        x
+    </div>
+    <div class="way-to-box page3-table-up-telephone" style="height: 400px">
+        <ul class="way-to-list" style="height: 400px">
+            <li class="way-to-li first-li">
+                <ul>
+                    <li class="title-li " style="width: 10%;  color:#333333!important">序号</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">微信号/手机号/QQ/邮箱</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">微信昵称</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">添加结果</li>
+                </ul>
+            </li>
+            <li class="way-to-li" ng-repeat="e in moreError" ng-class="isEven($index)">
+                <ul>
+                    <li style="width: 10%;">
+                        {{$index+1}}
+                    </li>
+                    <li style="width:30%">
+                        {{e.number||'-'}}
+                    </li>
+                    <li style="width: 30%;">
+                        {{e.nickname||'-'}}
+                    </li>
+                    <li style="width:30%;color:#2ABF9E " class="page2-table-td-last">
+                        {{e.result||'-'}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--查看异常失败原因-->
+<div class="page5-data-alert1" ng-show="ShowDatasza3">
+    <div class="page5-data-alert-title1">
+        查看原因
+    </div>
+    <div class="page5-data-alert-title-close1" ng-click="page5Close3()" style="float: right">
+        x
+    </div>
+    <div class="way-to-box page3-table-up-telephone" style="height: 300px">
+        <ul class="way-to-list" style="height: 300px">
+            <li class="way-to-li first-li">
+                <ul>
+                    <li class="title-li " style="width: 20%;  color:#333333!important">设备编号</li>
+                    <li class="title-li " style="width: 30%;  color:#333333!important">微信昵称</li>
+                    <li class="title-li " style="width: 50%;  color:#333333!important">原因</li>
+                </ul>
+            </li>
+            <li class="way-to-li" ng-repeat="e in TaskAllList3" ng-class="isEven($index)">
+                <ul>
+                    <li style="width: 20%;">
+                        {{$index+1}}
+                    </li>
+                    <li style="width:30%" class="page2-b-td">{{e.device||'-'}}</li>
+                    <li style="width:50%">
+                        请检查设备在线状态
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="alert alert-success page1-alert-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;已添加！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;添加失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-small-warning" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-warning-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-small-danger" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-danger-con"></span>
+</div>
+<div class="alert alert-success page1-alert-small-success" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="page1-alert-small-success-con"></span>
+</div>
+<div class="alert alert-success page1-alert-success1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="success-img"></span>
+    <strong> &nbsp;&nbsp;任务执行成功！</strong><br>
+    <span class="page1-alert-success-con"></span>
+</div>
+<div class="alert alert-warning page1-alert-waring1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="waring-img"></span>
+    <strong> &nbsp;&nbsp;任务执行异常！ </strong><br>
+    <span class="page1-alert-waring-con"></span>
+</div>
+<div class="alert alert-danger page1-alert-danger1" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <span class="danger-img"></span>
+    <strong> &nbsp;&nbsp;任务执行失败！</strong><br>
+    <span class="page1-alert-danger-con"></span>
+</div>
+<div class="page1-inner-box-one page-inner-box" ng-show="sweepBoxOneTwo1">
+    <h2 class="page-inner-title">请选择是否继续</h2>
+    <div class="page-inner-content">
+        <p style="text-align: center">您将要进行批量删除任务操作，系统检测到有正在执行</p>
+        <p style="margin-top: 9px;text-align: center">或等待执行的任务请选择是否继续操作？
+        </p>
+    </div>
+    <button class="page1-inner-box-button" ng-click="sweepBoxOneTwo2()">确定</button>
+    <button class="page1-inner-box-button2" ng-click="sweepBoxOneTwo3()">取消</button>
+</div>

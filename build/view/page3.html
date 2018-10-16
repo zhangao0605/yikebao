@@ -1,0 +1,115 @@
+<div class="page-box">
+    <div class="page2-header">
+        <a id="page-top3"></a>
+        <h2>批量操作</h2>
+        <div class="page-inside-user">
+            <span></span>
+            <p>USER</p>
+        </div>
+    </div>
+    <div class="page2-title-box">
+        <span class="page-floor-title-logo phone"></span>
+        <h2>设备列表</h2>
+        <!--<div class="page3-search-box">-->
+            <!--<input type="text">-->
+            <!--<span></span>-->
+        <!--</div>-->
+    </div>
+    <div class="page3-floor-box">
+        <div class="page3-floor-left">
+            <ul class="page1-floor-one-list page-list page3-fucking-list">
+                <li class="page3-floor-li first-li">
+                    <ul>
+                        <li class="page3-ss-li"><div class="page3-div-checkbox"><input type="checkbox" ng-model="checkAll" ng-change="selectAll()" ass-all-three></div></li>
+                        <li class="page3-s-li title-li">编号</li>
+                        <li class="page3-b-li title-li">IMEI</li>
+                        <!--<li class="page3-b-li title-li">序列号</li>-->
+                        <li class="page3-b-li title-li">手机号</li>
+                        <li class="page3-s-li title-li">微信</li>
+                        <li class="page3-s-li title-li">输入法</li>
+                        <li class="page3-s-li title-li">GPS</li>
+                        <li class="page3-s-li title-li">状态</li>
+                    </ul>
+                </li>
+                <li class="page3-floor-li" ng-repeat="i in DataList" ng-class="isEven($index)">
+                    <ul>
+                        <li class="page3-ss-li"><div class="page3-div-checkbox" device_id="{{i.device}}"><input type="checkbox" ng-model="i.checked" ng-change="selectOne()" ng-disabled="getDisabled(i.status)" ass-one-three></div></li>
+                        <li class="page3-s-li">{{i.rank}}</li>
+                        <li class="page3-b-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{i.imei || '-'}}</li>
+                        <!--<li class="page3-b-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{i.device||'-'}}</li>-->
+                        <li class="page3-b-li" ng-mouseenter="getLineHigh($event)" ng-mouseleave="getLineDown($event)">{{i.number||'-'}}</li>
+                        <li class="page3-s-li">{{getLoad(i.apps.wechat)}}</li>
+                        <li class="page3-s-li">{{getLoad(i.apps.input)}}</li>
+                        <li class="page3-s-li">{{getLoad(i.apps.gps)}}</li>
+                        <li class="page3-s-li">{{Status(i.status)}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages3"></div>
+        </div>
+        <div class="page3-floor-right">
+            <ul class="page3-floor-right-list">
+                <li>
+                    <button ng-click="openAll(1)">开启GPS</button>
+                    <button ng-click="closeAll(1)">关闭GPS</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(2)">开启WIFI</button>
+                    <button ng-click="closeAll(2)">关闭WIFI</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(3)">开启蓝牙</button>
+                    <button ng-click="closeAll(3)">关闭蓝牙</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(4)">开启飞行模式</button>
+                    <button ng-click="closeAll(4)">关闭飞行模式</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(5)">开启数据流量</button>
+                    <button ng-click="closeAll(5)">关闭数据流量</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(6)">解锁手机屏幕</button>
+                    <button ng-click="closeAll(6)">关闭手机屏幕</button>
+                </li>
+                <li>
+                    <button ng-click="openAll(7)">打开微信</button>
+                    <button ng-click="closeAll(7)">关闭微信</button>
+                </li>
+                <li>
+                    <!--<button ng-click="changePhone()">改变手机型号</button>-->
+                    <button ng-click="backHome()">手机home键</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="task-out" ng-show="changeModel">
+    <div class="task-out-box">
+        <h2 class="task-out-title">改变手机型号</h2>
+        <ul class="task-wrong-list page-list">
+            <li class="task-wrong-li">
+                <ul>
+                    <li class="page-task-za-li title-li">手机品牌</li>
+                    <li class="page-task-za-li title-li">品牌型号</li>
+                </ul>
+            </li>
+            <!--<li class="task-wrong-li" ng-repeat="t in taskList">-->
+                <!--<ul>-->
+                    <!--<li class="page-task-s-li">{{t.rank}}</li>-->
+                    <!--<li class="page-task-b-li">{{t.device}}</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <select id="nonon" class="select1 myHellp"style="width: 40%;margin-left: 5%" ng-change="changeOne()" ng-model="oneData">
+                <option  ng-repeat="item in phoneBrand">{{item}}</option>
+            </select>
+
+            <select class="select2 myHellp" id="non" style="width: 40%;margin-left: 10%" ng-change="changeTwo()" ng-model="twoData">
+                <option ng-repeat="item in SecondBrand" value="{{item.id}}">{{item.models}}</option>
+            </select>
+        </ul>
+        <button style="width: 20%;float: left;margin-left: 20%" ng-click="notChange()">返回</button>
+        <button ng-click="upChange()"style="width: 20%;float: right;margin-right: 20%" ng-click="notChange()">确定</button>
+    </div>
+</div>

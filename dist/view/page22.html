@@ -1,0 +1,91 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all>
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one class="new-wx-equip-input7"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top22"></a>
+            <h2 class="page-title-high">陌陌精准加人</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>人员名单列表</h2>
+            <h3 class="in-button-box"><input type="file" id="ass-input7" accept=".XLS,.xlsx" get-ass-seven>导入本地文件</h3>
+        </div>
+        <div class="page6-floor-one">
+            <div class="way-to-box">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li">编号</li>
+                            <li class="title-li">名称</li>
+                            <li class="title-li">陌陌号/手机号/QQ/邮箱</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in WxMemberList" ng-class="isEven($index)">
+                        <ul>
+                            <li>{{$index+1}}</li>
+                            <li>{{w.name}}</li>
+                            <li>{{w.number}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+        <div class="page6-floor-two">
+            <ul class="page6-floor-left">
+                <li class="page6-second-li" style="margin-top: 44px">选择时间间隔:<input type="number" min="1" ng-model="timeInterval"> 秒</li>
+                <!--<li class="page7-fuck-li">-->
+                <!--选择防封号策略:-->
+                <!--<select disabled>-->
+                <!--<option>策略1</option>-->
+                <!--<option>策略2</option>-->
+                <!--<option>策略3</option>-->
+                <!--</select>-->
+                <!--</li>-->
+                <li class="page6-third-li">
+                    <h2>加人策略:</h2>
+                    <ul>
+                        <li><div><input type="radio" name="page6-third" radio-checked-six checked ng-click="addPeopleOne()"></div>人员名单导入所有手机</li>
+                        <li><div><input type="radio" name="page6-third" radio-checked-six ng-click="addPeopleTwo()"></div>手机平分人员名单</li>
+                        <li ng-show="assRadioChoose">每个手机最多导入 <input type="number" class="third-number" min="1" ng-model="addPeopleCount"> 个号码</li>
+                    </ul>
+                </li>
+                <!--<li class="page7-last-li">-->
+                    <!--<h2>打招呼用语:</h2><input type="text" ng-model="sayHello">-->
+                <!--</li>-->
+            </ul>
+            <a class="page6-sure-button" ng-show="sendAllButton" ng-click="sendAll()">点击执行</a>
+        </div>
+    </div>
+</div>

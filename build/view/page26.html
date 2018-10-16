@@ -1,0 +1,122 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all-four  mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all-four  mess_id="{{g.id}}"></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-four class="new-wx-equip-input4"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top26"></a>
+            <h2 class="page-title-high">陌陌帐号管理</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo"></span>
+            <h2>帐号选择</h2>
+            <select class="page4-select" ng-show="resetSelect" ng-model="resetNumber">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+            </select>
+            <button class="page4-back-button" ng-show="assMoveTo" ng-click="resetButton()">切换</button>
+            <button class="page4-back-button" ng-click="getAssBack()" ng-show="assBack">返回</button>
+        </div>
+        <div class="page4-floor-one page-s-box" ng-show="outSideBox">
+            <ul class="page4-floor-one-list page-list">
+                <li class="page4-floor-one-li first-li">
+                    <ul>
+                        <li class="page4-s-li title-li" >编号</li>
+                        <li class="page4-xb-li title-li">设备IMEI</li>
+                        <li class="page4-b-li title-li">设备状态</li>
+                        <li class="page4-b-li title-li">当前登录陌陌号</li>
+                        <li class="page4-b-li title-li">陌陌状态</li>
+                        <li class="page4-b-li title-li">操作</li>
+                    </ul>
+                </li>
+                <li class="page4-floor-one-li" ng-repeat="e in equipList4" ng-class="isEven($index)">
+                    <ul>
+                        <li class="page4-s-li">{{e.rank}}</li>
+                        <li class="page4-xb-li">{{e.imei||'-'}}</li>
+                        <li class="page4-b-li">{{Status(e.status)}}</li>
+                        <li class="page4-b-li">{{e.momoVo.number||'-'}}</li>
+                        <li class="page4-b-li">{{Status(e.momoVo.status)}}</li>
+                        <li class="page4-b-li"><button ng-click="getInside(e.device)">陌陌帐号管理</button></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="fucking-pages" id="pages4"></div>
+        </div>
+        <div class="page4-floor-two page-s-box" ng-show="insideBox">
+            <ul class="page4-floor-two-list page-list">
+                <li class="page4-floor-two-li first-li">
+                    <ul>
+                        <li class="page4-ss-li title-li">手机序号</li>
+                        <li class="page4-bb-li title-li">帐号</li>
+                        <li class="page4-bb-li title-li">密码</li>
+                        <li class="page4-bb-li title-li">昵称</li>
+                        <li class="page4-bb-li title-li">标签</li>
+                        <li class="page4-bb-li title-li">位置操作</li>
+                        <li class="page4-ss-li title-li">按钮操作</li>
+                    </ul>
+                </li>
+                <li class="page4-floor-two-li" ng-repeat="a in assList">
+                    <ul>
+                        <li class="page4-ss-li">{{a.rank}}</li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.number" class="page4-wx-number"></li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.password" class="page4-wx-password"></li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.nickname" class="page4-wx-nickname"></li>
+                        <li class="page4-bb-li"><input type="text" ng-value="a.tag" class="page4-wx-tag"></li>
+                        <li class="page4-bb-li">
+                            <button ng-click="moveUp(a.rank)" ng-class="isRankOne(a.rank)" ng-disabled="rankDisabled(a.rank)">上移</button>
+                            <button ng-click="moveDown(a.rank)" ng-class="isRankLast(a.rank)"  ng-disabled="rankDisabledLast(a.rank)">下移</button>
+                        </li>
+                        <li class="page4-ss-li">
+                            <button class="save-page4-button" get-save2 mess_id="{{a.id}}" wn="{{a.wechatNumber}}">保存</button>
+                            <button class="edit-page4-button" get-edit2>编辑</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

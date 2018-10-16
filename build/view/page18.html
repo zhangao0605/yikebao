@@ -1,0 +1,93 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+
+                <div><p>sadasdasd<input type="checkbox" group-check-all-four m-checked mess_id="{{g.id}}">
+
+                    <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+                </div>
+                <ul class="new-wx-group-list">
+                    <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                        <div><p><input type="checkbox" group-check-all-eightteen></p><h4 new-list-show>{{g.name}}</h4>
+                            <h5 new-list-show>{{g.count}}</h5></div>
+                        <ul style="display: none">
+                            <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one-eightteen
+                                                                              class="new-wx-equip-input18"></p>
+
+                                <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-inside-box">
+            <div class="page-inside-title">
+                <a id="page-top6"></a>
+
+                <h2 class="page-title-high">同屏显示</h2></a>
+                <div class="page-inside-user">
+                    <span></span>
+
+                    <p>USER</p>
+                </div>
+            </div>
+            <div class="page18-floor-buttons page-s-box">
+                <div class="page18-new-add">
+                    <h2 reload><span></span>刷新</h2>
+
+                    <h3><label><span><input type="checkbox" screen-checked-all></span>全选</label></h3>
+                </div>
+                <ul>
+                    <li>
+                        <button ng-click="openAll(1)">开启GPS</button>
+                        <button ng-click="closeAll(1)">关闭GPS</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(2)">开启WIFI</button>
+                        <button ng-click="closeAll(2)">关闭WIFI</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(3)">开启蓝牙</button>
+                        <button ng-click="closeAll(3)">关闭蓝牙</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(4)">开启飞行模式</button>
+                        <button ng-click="closeAll(4)">关闭飞行模式</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(5)">开启数据流量</button>
+                        <button ng-click="closeAll(5)">关闭数据流量</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(6)">解锁手机屏幕</button>
+                        <button ng-click="closeAll(6)">关闭手机屏幕</button>
+                    </li>
+                    <li>
+                        <button ng-click="openAll(7)">打开微信</button>
+                        <button ng-click="closeAll(7)">关闭微信</button>
+                    </li>
+                    <li>
+                        <button ng-click="backHome()">返回主页</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="page18-floor-one page-s-box" width-watcher>
+                <ul class="canvas-ul">
+                    <!--<li class="canvas-li">-->
+                    <!--<canvas id="canvas1"></canvas>-->
+                    <!--</li>-->
+                </ul>
+                <div class="fucking-pages" id="pages18"></div>
+            </div>
+            <div class="page18-empty">
+                <h2>请选择需要显示的设备</h2>
+            </div>
+        </div>
+    </div>
+</div>

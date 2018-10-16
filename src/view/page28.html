@@ -1,0 +1,114 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox" group-check-all mess_id="{{g.id}}">
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div>
+                        <p>
+                            <input type="checkbox" group-check-all mess_id="{{g.id}}">
+                        </p>
+                        <h4 new-list-show>
+                            {{g.name}}
+                        </h4>
+                        <h5 new-list-show>
+                            {{g.count}}
+                        </h5>
+                    </div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one
+                                                                          class="new-wx-equip-input"></p>
+
+                            <h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top6"></a>
+
+            <h2 class="page-title-high">微信朋友圈点赞</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+
+            <h2>朋友圈点赞</h2>
+        </div>
+        <div class="page28-floor-one">
+            <ul class="page28-floor-two-list">
+                <li class="page28-first-li">
+                    选择最大时间间隔: <input type="number" min="5" max="10" class="page28-first-number" ng-model="maxTime"> 秒
+                </li>
+                <li class="page28-first-li">
+                    选择最小时间间隔: <input type="number" min="1" max="5" class="page28-first-number" ng-model="minTime"> 秒
+                </li>
+                <!--<li class="page28-first-li" style="margin-top: 10px">-->
+                <!--选择点赞好友范围：-->
+                <!--<select class="page7-select-type page28-choose" style="margin-left: -2px;text-indent:20px;width: 125px">-->
+                <!--<option value="0">所有好友</option>-->
+                <!--<option value="1">置顶好友</option>-->
+                <!--<option value="2">输入数量</option>-->
+                <!--</select>-->
+                <!--</li>-->
+                <li class="page28-first-li writeNu">
+                    输入点赞数量:<input type="number" style="margin-left:46px" class="page28-first-number to-num" max="30"
+                                  min="1" ng-model="WriteNums" ng-blur="notFound()"> 个
+                </li>
+            </ul>
+            <a class="page28-last-button" ng-click="sendAll()">点击执行</a>
+
+        </div>
+        <!--<div class="page-floor-title">-->
+        <!--<span class="page-floor-title-logo "></span>-->
+
+        <!--<h2>朋友圈评论</h2>-->
+        <!--</div>-->
+        <!--<div class="page28-floor-two">-->
+        <!--<ul class="page28-floor-two-list" style="padding-top: 30px">-->
+        <!--<li class="page28-first-li">-->
+        <!--选择最大时间间隔: <input type="number" min="5" max="10" class="page28-first-number" ng-model="maxTime1"> 秒-->
+        <!--</li>-->
+        <!--<li class="page28-first-li">-->
+        <!--选择最小时间间隔: <input type="number" min="1" max="5" class="page28-first-number" ng-model="minTime1"> 秒-->
+        <!--</li>-->
+        <!--<li class="page28-first-li" style="margin-top: 10px">-->
+        <!--选择评论好友范围：-->
+        <!--<select class="page7-select-type page28-choose1" style="margin-left: -2px;text-indent:25px;width: 125px">-->
+        <!--<option value="0">所有好友</option>-->
+        <!--<option value="1">置顶好友</option>-->
+        <!--<option value="2">输入数量</option>-->
+        <!--</select>-->
+        <!--</li>-->
+        <!--<li class="page28-first-li writeNu1" style="display: none">-->
+        <!--输入好友人数:<input type="number "  style="margin-left:46px" class="page28-first-number to-num1" ng-model="WriteNums1"> 人-->
+        <!--</li>-->
+        <!--<li class="page28-first-li ">-->
+        <!--打招呼用语:<input type="text" class="page9-say-hello " ng-model="sayHello" style="margin-left: 62px">-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--<div class="page6-floor-middle">-->
+        <!--</div>-->
+        <!--<a class="page6-sure-button" ng-click="sendAll()" ng-show="sendAllButton">点击执行</a>-->
+        <!--</div>-->
+    </div>
+</div>

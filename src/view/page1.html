@@ -1,0 +1,59 @@
+<div class="page-box">
+    <div class="page2-header">
+        <a id="page-top1"></a>
+        <h2>初始化</h2>
+        <div class="page-inside-user">
+            <span></span>
+            <p>USER</p>
+        </div>
+    </div>
+    <div class="page2-title-box">
+        <span class="page-floor-title-logo phone"></span>
+        <h2>设备列表</h2>
+        <button class="page1-top-button page-button" ng-click="overLoad()">重载</button>
+    </div>
+    <div class="page1-floor-one page-s-box">
+        <ul class="page1-floor-one-list page-list">
+            <li class="page2-floor-li first-li">
+                <ul>
+                    <!--<li class="page2-s-li title-li">IMEI</li>-->
+                    <li class="page2-b-li title-li">序列号</li>
+                    <li class="page2-b-li title-li">手机号</li>
+                    <li class="page2-s-li title-li">微信</li>
+                    <li class="page2-s-li title-li">输入法</li>
+                    <li class="page2-s-li title-li">GPS</li>
+                </ul>
+            </li>
+            <li class="page2-floor-li" ng-repeat="i in DataList" ng-class="isEven($index)">
+                <ul>
+                    <!--<li class="page2-s-li">-</li>-->
+                    <li class="page2-b-li">{{i.device||'-'}}</li>
+                    <li class="page2-b-li">{{i.number||'-'}}</li>
+                    <li class="page2-s-li">{{getLoad(i.wechat)}}</li>
+                    <li class="page2-s-li">{{getLoad(i.input)}}</li>
+                    <li class="page2-s-li">{{getLoad(i.gps)}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="page-outside-box" ng-show="outSideBox">
+    <div class="page1-inner-box-one page-inner-box" ng-show="sweepBoxOne">
+        <h2 class="page-inner-title">初始化</h2>
+        <h3>感谢您选择蚁控群系统</h3>
+        <h4>请点击确定按钮，对已连接设备进行初始化</h4>
+        <h3>开始初始化</h3>
+        <button class="page1-inner-box-button" ng-click="getSweepTwo()">确定</button>
+    </div>
+    <div class="sweep-box-one" ng-show="sweepBoxTwo">
+        <h2>扫描设备进度</h2>
+        <h3>扫描中</h3>
+        <div><p class="sweep-box-one-block" ng-class="sweepAssBlock"></p></div>
+    </div>
+    <div class="sweep-box-one" ng-show="sweepBoxThree">
+        <h2>扫描设备</h2>
+        <h4>扫描完成，共耗时{{sweepShowTime}}秒</h4>
+        <h4>共有{{sweepEquipNumber}}台设备</h4>
+        <button ng-click="getDataList(response)">确定</button>
+    </div>
+</div>

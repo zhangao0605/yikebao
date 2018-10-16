@@ -1,0 +1,94 @@
+<div class="page-box">
+    <div class="wx-group-box">
+        <div class="wx-group-title">
+            <!--<span class="wx-logo"></span>-->
+            <h2>设备组选择</h2>
+        </div>
+        <div class="wx-group-list">
+            <div class="new-wx-group-all-title">
+                <h2 class="new-wx-group-all">所有群组</h2>
+                <h3 class="new-wx-group-number">({{groupNumbers}})</h3>
+            </div>
+            <label class="page14-qx-input">
+                <p>
+                    <input type="checkbox"  group-check-all>
+                </p>
+            </label>
+            <ul class="new-wx-group-list">
+                <li class="new-wx-group-list-li" ng-repeat="g in onlineGroupNames">
+                    <div><p><input type="checkbox" group-check-all></p><h4 new-list-show>{{g.name}}</h4><h5 new-list-show>{{g.count}}</h5></div>
+                    <ul style="display: none">
+                        <li ng-repeat="d in g.deviceVos"><label><p><input type="checkbox" group-check-one class="new-wx-equip-input"></p><h2 title="{{d.device}}">{{d.rank}}</h2></label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-inside-box">
+        <div class="page-inside-title">
+            <a id="page-top21"></a>
+            <h2 class="page-title-high">陌陌通讯录加人</h2></a>
+            <div class="page-inside-user">
+                <span></span>
+                <p>USER</p>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo phone"></span>
+            <h2>人员列表名单</h2>
+            <h3 class="in-button-box"><input type="file" id="ass-input6" get-ass-six accept=".XLS,.xlsx">导入本地通讯录</h3>
+        </div>
+        <div class="page6-floor-one">
+            <div class="way-to-box">
+                <ul class="way-to-list">
+                    <li class="way-to-li first-li">
+                        <ul>
+                            <li class="title-li">编号</li>
+                            <li class="title-li">名称</li>
+                            <li class="title-li">手机号</li>
+                        </ul>
+                    </li>
+                    <li class="way-to-li" ng-repeat="w in WxMemberList" ng-class="isEven($index)">
+                        <ul>
+                            <li>{{$index+1}}</li>
+                            <li>{{w.name}}</li>
+                            <li>{{w.number}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-floor-title">
+            <span class="page-floor-title-logo install"></span>
+            <h2>配置策略</h2>
+        </div>
+        <div class="page6-floor-two">
+            <ul class="page6-floor-left" style="width: 283px;">
+                <li class="page6-first-li"><div><input type="checkbox" group-checked ng-click="clear($event)"></div><h2>导入通讯录前清空手机通讯录号码</h2></li>
+                <li class="page6-second-li">选择时间间隔:<input type="number" min="1" ng-model="timeInterval"> 秒</li>
+                <li class="page6-third-li">
+                    <h2>加人策略:</h2>
+                    <ul>
+                        <li><div><input type="radio" name="page6-third" radio-checked-six ng-click="getAssHide()" checked></div>通讯录名单导入所有手机</li>
+                        <li><div><input type="radio" name="page6-third" radio-checked-six ng-click="getAssShow()"></div>手机平分通讯录名单</li>
+                        <li ng-show="assRadioChoose">每个手机最多导入 <input type="number" class="third-number" min="1" ng-model="addPeopleCount"> 个号码</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="page6-floor-middle">
+                <!--<div class="page6-floor-middle-one">-->
+                <!--<h2>选择防封号策略:</h2>-->
+                <!--<select disabled>-->
+                <!--<option>测试1</option>-->
+                <!--<option>测试2</option>-->
+                <!--<option>测试3</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <div class="page6-floor-middle-two">
+                    打招呼用语: <input type="text" ng-model="sayHello">
+                </div>
+            </div>
+            <a class="page6-sure-button" ng-click="sendAll()" ng-show="sendAllButton">点击执行</a>
+        </div>
+    </div>
+</div>
